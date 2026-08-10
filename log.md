@@ -53,3 +53,12 @@
 - 分布式方案对比：Redis SETNX、Redisson 锁、ShedLock、Quartz 集群、XXL-JOB
 - 5 个应用场景：订单超时取消、数据同步、健康检查告警、缓存预热、统计报表
 - 与 spring-boot-redis.md、spring-boot-redisson.md 建立交叉引用
+
+## [2026-08-10] create | Spring Boot 集成 RabbitMQ 文档
+
+- 新建 spring-boot-rabbitmq.md，RabbitMQ 全栈集成专题文档
+- 内容：4种交换机（Direct/Fanout/Topic/Headers）完整示例、RabbitTemplate 发送（对象/Message/后处理器）、@RabbitListener 接收（手动Ack/并发/重试/@RabbitHandler多态分发）、JSON序列化（Jackson2JsonMessageConverter + TypeId映射）、可靠性三环节（生产者Confirm/Return、消息持久化、消费者Ack）、死信队列架构、延迟消息两种方案（TTL死信 vs Delay Exchange插件）、消息幂等三种方式（DB/Redis/业务状态）
+- 2个完整应用场景：订单通知系统（邮件+短信 Direct Exchange 路由）、文章审核系统（重试3次 + 死信人工处理）
+- 8个踩坑记录：启动连接失败、@RabbitListener未纳入Spring容器、序列化不匹配、无限重试、忘ack、事务不一致、延迟消息顺序问题、消息头过大
+- 与 spring-boot-redisson.md、spring-boot-scheduled.md 建立交叉引用
+
