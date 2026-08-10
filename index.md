@@ -1,13 +1,15 @@
 # 学习笔记索引
 
 > 内容目录。每篇文档附一句话摘要。先读这里找到相关文档。
-> 最后更新：2026-08-09 | 总文档数：3
+> 最后更新：2026-08-10 | 总文档数：5
 
 ## 集成实践
 
 - [[spring-boot-redis]] — Spring Boot 集成 Redis 详解：RedisTemplate 五种数据类型、Spring Cache 注解、Pipeline、序列化，含 5 个应用场景
 - [[spring-boot-redisson]] — Spring Boot 集成 Redisson 详解：分布式锁、集合、限流器、布隆过滤器，含 6 个应用场景
 - [[spring-boot-scheduled]] — Spring Boot 集成定时任务详解：@Scheduled、动态调度、分布式锁、Quartz、XXL-JOB，含 5 个应用场景
+- [[spring-boot-mybatis]] — Spring Boot 集成 MyBatis 详解：XML/注解 Mapper、动态 SQL、高级结果映射、PageHelper、MyBatis-Plus、多数据源，含 5 个应用场景
+- [[spring-boot-mybatis-plus]] — Spring Boot 集成 MyBatis-Plus 详解：BaseMapper、Lambda 条件构造器、分页插件、主键策略、逻辑删除、自动填充、乐观锁、代码生成器、多租户、数据权限，含 2 个完整应用场景
 
 ## 概念解析
 
