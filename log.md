@@ -93,3 +93,9 @@
 - 193-Redis面试：新增底层数据结构(SDS/跳表)、过期与淘汰策略、事务与 Lua、大 key/热 key
 - 194-MySQL面试：新增存储引擎、redo/undo/binlog 与两阶段提交、主从复制、分库分表、count(*) 与深分页优化
 - 同步更新 index.md 摘要与 Java_全栈学习知识体系总目录.md 第 49 篇主题清单
+## [2026-08-13] create | 内部类专题文档
+
+- 新建 java-fullstack/02-Java面向对象/InnerClass.md，补齐内部类知识（原知识库中无系统讲解，仅零散提及）
+- 内容：四种内部类（成员/静态/局部/匿名）语法与区别、编译原理（Outer$Inner.class、this$0、access$xxx 桥接方法）、访问私有成员原理、4 个应用场景（迭代器/Builder/Holder 单例/事件监听）、5 条踩坑记录（内存泄漏/序列化/this 语义/局部变量 final/静态成员限制）
+- 186-Java基础面试 补"内部类"面试小节（5 题）
+- 同步更新 index.md 第二篇条目、总目录第二篇补充主题

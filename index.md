@@ -43,6 +43,7 @@
 - [[11-接口]] — interface/implements、default/static 方法、函数式接口、接口多继承
 - [[12-Object类]] — equals/hashCode/toString/clone、wait/notify/notifyAll、getClass
 - [[13-Java包与访问控制]] — package/import/static import、四种访问修饰符详解
+- [[InnerClass]] — 内部类：成员/静态/局部/匿名四种、编译原理(this$0/access$xxx)、Builder 与 Holder 单例、内存泄漏与序列化踩坑
 
 ### 第三篇 — Java 核心 API
 

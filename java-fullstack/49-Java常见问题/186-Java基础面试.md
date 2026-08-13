@@ -18,6 +18,7 @@ tags: [java面试, equals, hashcode, string, final, static, abstract, interface,
 - [基本数据类型与包装类](#基本数据类型与包装类)
 - [final、static、abstract](#finalstaticabstract)
 - [接口与抽象类](#接口与抽象类)
+- [内部类](#内部类)
 - [重载与重写](#重载与重写)
 - [异常体系](#异常体系)
 - [泛型](#泛型)
@@ -269,6 +270,50 @@ JDK 9：
 
 冲突解决：类继承的父类方法和接口 default 方法冲突时，父类方法优先。
 实现多个接口的 default 方法冲突时，必须显式重写。
+```
+
+## 内部类
+
+**问题 1：内部类有哪几种？**
+
+```text
+1. 成员内部类 —— 类体内、方法外，持有外部类引用
+2. 静态内部类 —— static 修饰，不持有外部类引用
+3. 局部内部类 —— 方法/代码块内定义
+4. 匿名内部类 —— 无类名，一次性实现接口/继承类
+```
+
+**问题 2：静态内部类和成员内部类的区别？**
+
+| 维度 | 成员内部类 | 静态内部类 |
+|------|-----------|-----------|
+| 修饰 | 无 static | static |
+| 持有外部类引用 | 是（this$0） | 否 |
+| 创建方式 | outer.new Inner() | new Outer.StaticInner() |
+| 访问外部类 | 任意成员 | 仅静态成员 |
+| 内存泄漏风险 | 有 | 无 |
+
+**问题 3：内部类为什么能访问外部类 private 成员？**
+
+```text
+编译器生成静态桥接方法（access$000）绕过访问控制：
+内部类持有外部类引用 this$0，通过 access$000(this$0) 访问私有成员。
+private 是编译期约束，JVM 层面无 private 屏障。
+```
+
+**问题 4：局部内部类访问的局部变量为什么必须 effectively final？**
+
+```text
+局部变量生命周期短于内部类对象，编译器把局部变量复制进内部类字段。
+若变量可变，两份副本会不一致，所以强制要求 effectively final（赋值后不再改变）。
+```
+
+**问题 5：匿名内部类和 Lambda 的区别？**
+
+```text
+1. 匿名内部类生成 .class 文件（Outer$1.class），Lambda 用 invokedynamic 不生成
+2. 匿名内部类 this 指向自身，Lambda 的 this 指向外部类
+3. Lambda 只能用于函数式接口
 ```
 
 ## 重载与重写
@@ -567,4 +612,5 @@ a.divide(b, 2, RoundingMode.HALF_UP);
 10. 深拷贝 vs 浅拷贝
 11. Java 8 新特性（Lambda/Stream/Optional）
 12. BigDecimal 精度
+13. 内部类（四种类型、静态 vs 成员、访问私有原理、匿名类 vs Lambda）
 ```
