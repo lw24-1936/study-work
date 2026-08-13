@@ -126,3 +126,8 @@
 
 - 文件名：01.4-Git.md
 - 摘要：Git 从基础概念到协作工作流：commit/branch/tag、merge/rebase/cherry-pick、reset/revert/stash/reflog、diff/blame/bisect、submodule/worktree、hooks、Conventional Commits、Git Flow 与主干开发、Monorepo、PR 与 Code Review
+
+## [2026-08-13] create | 前端文档 IDE 与开发环境
+
+- 文件名：01.5-IDE 与开发环境.md
+- 摘要：前端开发环境全链路：VS Code 与 JetBrains、Chrome/Firefox DevTools、Node.js、npm/pnpm/Yarn 包管理器、Corepack、nvm/fnm/Volta 版本管理、Docker、Dev Container、WSL
