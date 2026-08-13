@@ -1,7 +1,7 @@
 # 学习笔记索引
 
 > 内容目录。每篇文档附一句话摘要。先读这里找到相关文档。
-> 最后更新：2026-08-13 | 总文档数：209
+> 最后更新：2026-08-13 | 总文档数：589
 
 ## 集成实践
 
@@ -375,7 +375,7 @@
 
 ## 前端知识库
 
-> 基于「前端完整知识库总目录」搭建目录骨架（103 篇章、416 个主题），内容持续编写中（01~07 篇章已完成）。入口见 `frontend-fullstack/README.md`。
+> 基于「前端完整知识库总目录」搭建目录骨架（103 篇章、416 个主题），内容持续编写中（01~89 篇章已完成）。入口见 `frontend-fullstack/README.md`。
 
 - [[frontend-fullstack/README]] — 前端完整知识库：目录树（103 篇章）+ 进度追踪表，覆盖计算机基础/网络/HTML/CSS/JS/TS/工程化/React/Vue/Node/BFF/性能安全/架构全链路
 
@@ -899,6 +899,130 @@
 ### 69-WebView
 
 - [[69.1-WebView]] — Android/iOS WebView、JS Bridge、Deep Link、Cookie、Hybrid
+
+### 70-Serverless-Edge
+
+- [[70.1-Serverless]] — Function/Trigger/Cold Start/Warm Start、Stateless 无状态约束、Event Driven 事件驱动
+- [[70.2-Edge Computing]] — Edge Runtime/Edge Function、CDN Compute、Low Latency 低延迟
+- [[70.3-平台]] — Cloudflare Workers、Vercel Functions、AWS Lambda、Deno Deploy、Edge Middleware
+
+### 71-前端 AI
+
+- [[71.1-AI SDK]] — LLM API、Streaming、Chat、Tool Calling、Structured Output
+- [[71.2-浏览器 AI]] — WebGPU/WebNN/WASM、ONNX Runtime Web、Transformers.js
+- [[71.3-AI UI]] — Chat UI、Streaming UI、Markdown/Code Highlight、Citation、Tool/Reasoning Status、Human-in-the-loop
+- [[71.4-RAG 前端]] — Document Upload、Chunk Preview、Retrieval、Citation、Source Preview、Vector Search UI
+
+### 72-WebGPU
+
+- [[72.1-WebGPU]] — Adapter/Device/Queue、Buffer/Texture、Shader/Bind Group、Pipeline、Compute/Render Pipeline
+- [[72.2-WGSL]] — Vertex/Fragment/Compute Shader、Uniform、Storage Buffer
+- [[72.3-WebGPU 应用]] — AI Inference、Image Processing、3D、Physics、Data Visualization、Scientific Computing
+
+### 73-前端数据层架构
+
+- [[73.1-数据来源]] — REST/GraphQL/WebSocket/SSE、IndexedDB/Local Storage
+- [[73.2-数据状态]] — UI State/Server State/Cache/Persistent State/Derived State
+- [[73.3-数据同步]] — Polling/Revalidation/Optimistic Update/Conflict Resolution/Offline First/Event Driven
+
+### 74-离线优先
+
+- [[74.1-Offline First]] — Offline Cache/Local Database/Sync Queue/Conflict Resolution
+- [[74.2-数据同步]] — Delta/Incremental Sync、Retry/Idempotency、Version/Timestamp
+- [[74.3-CRDT]] — CRDT/LWW/G-Counter/PN-Counter/OR-Set/Vector Clock、Conflict Free Replication
+
+### 75-前端实时系统
+
+- [[75.1-实时通信]] — WebSocket/SSE/WebRTC/Long Polling
+- [[75.2-实时状态]] — Presence/Online Status/Cursor、Notification/Chat/Collaboration
+- [[75.3-实时协作]] — OT/CRDT、Conflict Resolution、Awareness、Sync Protocol
+
+### 76-前端架构模式
+
+- [[76.1-架构]] — MPA/SPA/SSR/SSG/ISR、Islands Architecture、Micro Frontend、BFF、Edge Rendering
+- [[76.2-代码架构]] — MVC/MVVM/MVP、Clean/Hexagonal/Layered Architecture、Feature Sliced Design
+- [[76.3-设计模式]] — Factory/Singleton/Adapter/Decorator/Proxy/Observer/Strategy/Command/State/Facade/Composite/Builder
+
+### 77-前端领域驱动设计
+
+- [[77.1-DDD]] — Domain/Entity/Value Object/Aggregate/Repository/Domain Service/Application Service
+- [[77.2-前端领域拆分]] — Feature/Domain/Shared/UI/API/State
+- [[77.3-Feature-Sliced Design]] — App/Pages/Widgets/Features/Entities/Shared
+
+### 78-前端 API 架构
+
+- [[78.1-REST API]] — Resource/Version/Pagination/Cursor Pagination/Error/Idempotency
+- [[78.2-GraphQL]] — Schema/Resolver/Query/Mutation/Subscription/DataLoader
+- [[78.3-RPC]] — gRPC/Connect/Protobuf/Serialization
+- [[78.4-API Contract]] — OpenAPI/JSON Schema/Type Generation/Contract Testing
+
+### 79-前端工程性能
+
+- [[79.1-Build Performance]] — Dependency Cache/Incremental Build/Parallel Build/Persistent Cache/Remote Cache
+- [[79.2-CI Performance]] — Dependency/Docker/Build Cache、Test Parallelization、Artifact Cache
+- [[79.3-Bundle Analysis]] — Bundle Analyzer/Source Map Explorer/Bundle Size/Dependency Graph
+
+### 80-CI-CD
+
+- [[80.1-CI]] — GitHub Actions/GitLab CI/Jenkins、Build/Lint/Test/Security Scan
+- [[80.2-CD]] — Deployment/Artifact、Docker/Kubernetes、CDN/Static Hosting
+- [[80.3-Deployment Strategy]] — Rolling/Blue Green/Canary/Shadow、Feature Flag/Rollback
+
+### 81-Docker
+
+- [[81.1-Docker]] — Image/Container/Layer、Dockerfile/Registry、Volume/Network
+- [[81.2-前端 Docker]] — Node Build、Multi-stage Build、Nginx、Static Asset、Runtime Configuration
+
+### 82-Kubernetes
+
+- [[82.1-基础]] — Pod/Deployment/Service/Ingress、ConfigMap/Secret/Namespace
+- [[82.2-前端部署]] — Static Server/Nginx/CDN/Ingress、TLS/Autoscaling
+
+### 83-Nginx
+
+- [[83.1-静态服务]] — root/location/index/try_files
+- [[83.2-反向代理]] — proxy_pass/proxy_set_header/upstream/load balancing
+- [[83.3-缓存]] — Cache-Control/expires/proxy_cache、gzip/brotli
+- [[83.4-SPA]] — history fallback/try_files/404
+
+### 84-前端架构设计
+
+- [[84.1-大型应用]] — Modularization/Componentization、Domain/Feature/Shared、Dependency Management
+- [[84.2-高并发]] — CDN/Cache/Static Rendering/SSR、Edge/API Gateway/Rate Limit
+- [[84.3-高可用]] — Failover/Retry/Timeout、Circuit Breaker/Graceful Degradation/Fallback
+- [[84.4-可扩展]] — Plugin/Micro Frontend/Module Federation、Monorepo/Design System
+
+### 85-大型前端应用工程治理
+
+- [[85.1-代码治理]] — Coding Standard/Lint/Type Check、Review/Architecture Review
+- [[85.2-依赖治理]] — Dependency Graph/Version Policy、Security/License Audit、Bundle Budget
+- [[85.3-组件治理]] — Design System/Component Registry、API Standard/Deprecation/Migration
+- [[85.4-技术债务]] — Refactoring/Legacy/Migration、Deprecation/Compatibility
+
+### 86-前端国际大厂工程实践
+
+- [[86.1-Engineering Excellence]] — Code/Design Review、RFC/ADR、Technical Proposal
+- [[86.2-Development Process]] — Scrum/Kanban、Trunk Based Development、Continuous Delivery
+- [[86.3-Quality]] — Test Pyramid、SLO/Error Budget、Performance Budget、Security Review
+
+### 87-前端架构文档体系
+
+- [[87.1-文档]] — README/Architecture/ADR/RFC、API/Component Spec、Runbook
+- [[87.2-架构图]] — Context/Container/Component/Sequence/Deployment Diagram
+- [[87.3-文档工具]] — Markdown/Mermaid、Docusaurus/VitePress/Storybook
+
+### 88-前端算法与数据结构
+
+- [[88.1-数据结构]] — Array/Linked List/Stack/Queue/Deque/Hash Table/Heap/Tree/Trie/Graph
+- [[88.2-算法]] — Binary Search/Two Pointer/Sliding Window/Prefix Sum/Difference Array/Greedy/DP/Backtracking/Divide and Conquer
+- [[88.3-前端常用算法]] — Virtual List/Diff/Reconciliation、LRU Cache/Debounce/Throttle、Event Delegation/Scheduler/Dependency Graph/Topological Sort
+
+### 89-前端框架原理
+
+- [[89.1-Virtual DOM]] — VNode/Diff/Patch/Reconciliation/Key
+- [[89.2-Compiler]] — Parser/AST/Transform/Codegen/Runtime
+- [[89.3-Reactive System]] — Dependency Tracking/Effect/Trigger/Scheduler/Batch Update
+- [[89.4-Scheduler]] — Priority/Task Queue/Microtask/Macrotask/Yield/Time Slice
 
 ## 概念解析
 
