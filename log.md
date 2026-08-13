@@ -80,3 +80,16 @@
 - 7 个踩坑记录：同类内部调用不走代理、final/private 方法无效、@Around 吞异常、切点范围过大、忘调 proceed()、@Transactional 顺序冲突、忘加 @Component
 - 与 spring-boot-redisson.md、spring-boot-redis.md、spring-boot-mybatis-plus.md 建立交叉引用
 
+## [2026-08-13] update | 49-Java常见问题 面试文档全面扩充
+
+- 以 15 年高级后端视角重写 9 篇面试文档（186-194），每题从 3-5 行简短回答扩充为完整技术点 + 常见面试题
+- 186-Java基础面试：新增异常体系、泛型擦除/PECS、反射、注解、值传递、深拷贝浅拷贝、Object 方法、Java 8 特性、BigDecimal 精度、基本类型与包装类(Integer 缓存)
+- 187-集合面试：新增 JDK7 死循环、负载因子 0.75、红黑树阈值 8/6、fail-fast 与 fail-safe、CopyOnWriteArrayList、LinkedHashMap LRU、阻塞队列
+- 188-并发面试：新增线程基础(创建/状态/sleep 与 wait)、ThreadLocal 内存泄漏、原子类/LongAdder、CountDownLatch/CyclicBarrier/Semaphore、死锁、happens-before
+- 189-JVM面试：新增对象创建与内存布局、四种引用、逃逸分析、JVM 调优参数、排查工具、破坏双亲委派(SPI/Tomcat)
+- 190-Spring面试：新增 Bean 作用域、BeanFactory 与 ApplicationContext、FactoryBean、事件机制、设计模式、事务隔离级别
+- 191-SpringBoot面试：新增配置文件加载顺序、@ConfigurationProperties、Spring Boot 3 变化、fat jar、优雅停机
+- 192-SpringCloud面试：新增 CAP 理论、Sentinel 限流、分布式事务(Seata/TCC/SAGA)、链路追踪、服务雪崩
+- 193-Redis面试：新增底层数据结构(SDS/跳表)、过期与淘汰策略、事务与 Lua、大 key/热 key
+- 194-MySQL面试：新增存储引擎、redo/undo/binlog 与两阶段提交、主从复制、分库分表、count(*) 与深分页优化
+- 同步更新 index.md 摘要与 Java_全栈学习知识体系总目录.md 第 49 篇主题清单

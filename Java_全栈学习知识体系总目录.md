@@ -2523,77 +2523,122 @@ JSP 属于传统 Java Web 技术，建议作为历史知识了解，现代 Sprin
 - == 与 equals
 - hashCode
 - String
+- 基本数据类型与包装类
 - final
 - static
 - abstract
 - interface
 - 重载与重写
+- 异常体系
+- 泛型
+- 反射
+- 注解
+- 值传递与引用传递
+- 深拷贝与浅拷贝
+- Object 类方法
+- Java 8 新特性
+- BigDecimal 精度
 
 ### 187. 集合面试
+- 集合框架总览
 - HashMap
 - ConcurrentHashMap
 - ArrayList
 - LinkedList
 - HashSet
 - TreeMap
+- LinkedHashMap 与 LRU
+- fail-fast 与 fail-safe
+- CopyOnWriteArrayList
+- Queue 队列
 
 ### 188. 并发面试
+- 线程基础
 - synchronized
 - volatile
 - CAS
 - AQS
 - Lock
+- ThreadLocal
 - ThreadPoolExecutor
 - CompletableFuture
+- 原子类
+- 并发工具类
+- 死锁
+- happens-before
 
 ### 189. JVM 面试
-- JVM 内存
+- JVM 内存结构
+- 对象创建与内存布局
 - GC
+- 垃圾收集器
 - 类加载
 - 双亲委派
 - G1
 - ZGC
+- 引用类型
 - OOM
+- JVM 调优
+- 逃逸分析
 
 ### 190. Spring 面试
 - IoC
 - DI
 - AOP
 - Bean 生命周期
+- Bean 作用域
+- BeanFactory 与 ApplicationContext
 - 循环依赖
 - 事务
 - 自动配置
+- @Autowired 与 @Resource
+- FactoryBean 与 BeanFactory
+- Spring 事件机制
+- Spring 设计模式
 
 ### 191. Spring Boot 面试
 - 自动配置
 - Starter
+- 配置文件
 - Actuator
 - 启动流程
+- 核心注解
+- Spring Boot 3 变化
 
 ### 192. Spring Cloud 面试
+- 微服务与 CAP
 - Nacos
 - Gateway
 - Feign
 - LoadBalancer
 - CircuitBreaker
+- Sentinel 限流
+- 分布式事务
+- 链路追踪
+- 服务雪崩
 
 ### 193. Redis 面试
 - 数据结构
+- 底层数据结构
 - 持久化
-- 缓存
+- 过期策略与淘汰策略
+- 缓存问题
 - 分布式锁
 - 集群
+- Redis 事务与 Lua
+- 大 key 与热 key
 
 ### 194. MySQL 面试
+- 存储引擎
 - 索引
 - B+Tree
 - MVCC
 - 事务
 - 锁
+- 日志与两阶段提交
 - SQL 优化
-
----
-
+- 主从复制
+- 分库分表
 ## 第五十篇 综合项目实战
 建议最终至少完成以下项目。
 

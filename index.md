@@ -358,15 +358,15 @@
 
 ### 第四十九篇 — Java 常见问题
 
-- [[186-Java基础面试]] — == 与 equals、hashCode 与 equals 约定、String 不可变/常量池/StringBuilder 区别、final/static/abstract、接口与抽象类、重载与重写
-- [[187-集合面试]] — 集合框架总览、HashMap(底层结构/put 流程/2 的幂/线程不安全)、ConcurrentHashMap(CAS + synchronized)、ArrayList 与 LinkedList、HashSet 与 TreeMap
-- [[188-并发面试]] — synchronized(原理/锁升级)、volatile(可见性/有序性)、CAS 与 AQS、Lock 与 synchronized 对比、ThreadPoolExecutor(7 参数/执行流程/拒绝策略)、CompletableFuture
-- [[189-JVM面试]] — JVM 内存结构、堆的分代、GC(判断可回收/算法/收集器)、类加载与双亲委派、G1 与 ZGC、OOM 排查
-- [[190-Spring面试]] — IoC 与 DI(注入方式)、AOP(原理/概念)、Bean 生命周期、循环依赖(三级缓存)、事务(原理/传播/失效场景)、自动配置
-- [[191-SpringBoot面试]] — 自动配置原理、条件注解、Starter 机制、Actuator 监控、启动流程、@SpringBootApplication 组成
-- [[192-SpringCloud面试]] — Nacos(注册中心/配置中心)、Gateway(三大核心)、Feign(声明式调用)、LoadBalancer(策略)、CircuitBreaker(三态)、熔断降级限流区别
-- [[193-Redis面试]] — 数据结构(类型/场景)、Redis 为什么快、持久化(RDB/AOF)、缓存问题(穿透/击穿/雪崩/一致性)、分布式锁(SET NX PX/Redisson 看门狗)、集群(主从/哨兵/Cluster)
-- [[194-MySQL面试]] — 索引与 B+Tree、聚簇索引与回表、索引失效场景、最左前缀、MVCC 原理、事务(ACID/隔离级别)、锁(类型/乐观悲观)、SQL 优化
+- [[186-Java基础面试]] — == 与 equals、hashCode 约定、String 不可变/常量池/拼接原理、基本类型与包装类(Integer 缓存)、final/static/abstract、接口与抽象类、重载与重写、异常体系、泛型擦除/PECS、反射、注解、值传递、深拷贝浅拷贝、Object 方法、Java 8 特性、BigDecimal 精度
+- [[187-集合面试]] — 集合框架总览、HashMap(底层/put 流程/扩容/2 的幂/JDK7 死循环/负载因子)、ConcurrentHashMap(CAS+synchronized/分段锁)、ArrayList 与 LinkedList、HashSet/TreeMap/TreeSet、LinkedHashMap 实现 LRU、fail-fast 与 fail-safe、CopyOnWriteArrayList、阻塞队列
+- [[188-并发面试]] — 线程基础(创建/状态/sleep 与 wait)、synchronized(原理/锁升级)、volatile(可见性/有序性/双重检查锁)、CAS 与 AQS、Lock 对比、ThreadLocal(原理/内存泄漏)、ThreadPoolExecutor(7 参数/流程/拒绝策略/为什么不用 Executors)、CompletableFuture、原子类、CountDownLatch/CyclicBarrier/Semaphore、死锁、happens-before
+- [[189-JVM面试]] — JVM 内存结构、对象创建与内存布局(对象头/指针压缩)、GC(可达性分析/算法/Minor 与 Full GC)、垃圾收集器(Serial/Parallel/CMS/G1/ZGC)、类加载与双亲委派(破坏场景)、引用类型、OOM 排查、JVM 调优、逃逸分析
+- [[190-Spring面试]] — IoC 与 DI(注入方式)、AOP(动态代理/通知类型)、Bean 生命周期、Bean 作用域、BeanFactory 与 ApplicationContext、循环依赖(三级缓存)、事务(传播/隔离/失效)、自动配置、@Autowired 与 @Resource、FactoryBean、事件机制、设计模式
+- [[191-SpringBoot面试]] — 自动配置原理、条件注解、Starter 机制、配置文件加载顺序与 @ConfigurationProperties、Actuator、启动流程、@SpringBootApplication 组成、Spring Boot 3 变化、fat jar、优雅停机
+- [[192-SpringCloud面试]] — 微服务与 CAP、Nacos(注册/配置/心跳)、Gateway(三大核心)、Feign(原理/优化)、LoadBalancer、CircuitBreaker(三态)、Sentinel 限流、分布式事务(Seata/TCC/SAGA)、链路追踪、服务雪崩
+- [[193-Redis面试]] — 数据结构(类型/场景/为什么快)、底层结构(SDS/跳表)、持久化(RDB/AOF/混合)、过期与淘汰策略、缓存问题(穿透/击穿/雪崩/一致性)、分布式锁(SET NX PX/Redisson 看门狗)、集群(主从/哨兵/Cluster)、事务与 Lua、大 key 热 key
+- [[194-MySQL面试]] — 存储引擎、索引与 B+Tree、聚簇索引与回表/覆盖索引、索引失效、最左前缀、MVCC 原理、事务(ACID/隔离级别)、锁(行锁/间隙锁/乐观悲观)、redo/undo/binlog 与两阶段提交、SQL 优化、主从复制、分库分表
 
 ### 第五十篇 — 综合项目实战
 
