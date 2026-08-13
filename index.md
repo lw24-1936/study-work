@@ -375,7 +375,7 @@
 
 ## 前端知识库
 
-> 基于「前端完整知识库总目录」搭建目录骨架（103 篇章、416 个主题），内容持续编写中（01-计算机基础与开发环境、02-计算机网络、03-Web 标准与浏览器基础、04-HTML 完整知识体系、05-CSS 核心 已完成）。入口见 `frontend-fullstack/README.md`。
+> 基于「前端完整知识库总目录」搭建目录骨架（103 篇章、416 个主题），内容持续编写中（01~07 篇章已完成）。入口见 `frontend-fullstack/README.md`。
 
 - [[frontend-fullstack/README]] — 前端完整知识库：目录树（103 篇章）+ 进度追踪表，覆盖计算机基础/网络/HTML/CSS/JS/TS/工程化/React/Vue/Node/BFF/性能安全/架构全链路
 
@@ -429,6 +429,25 @@
 - [[05.6-Flex]] — 容器属性（direction/wrap/justify/align/gap）、子项属性（grow/shrink/basis）、order/align-self
 - [[05.7-Grid]] — grid-template-columns/rows、fr 与 minmax、grid-column/row/area、显式/隐式网格、auto-fit/auto-fill
 - [[05.8-定位与层叠]] — containing block 包含块、stacking context 层叠上下文、z-index 深入、fixed/sticky/absolute 层叠行为
+
+### 06-CSS 高级布局
+
+- [[06.1-响应式布局]] — Media Query 与 Breakpoint、Mobile First/Desktop First、流式布局、响应式字体与图片、Container Query
+- [[06.2-CSS 单位]] — px、%/em/rem、vw/vh 与 svh/lvh/dvh、vmin/vmax、ch/ex
+- [[06.3-函数]] — calc、min/max/clamp、var、env 安全区域、color-mix、attr
+- [[06.4-CSS 变量]] — Custom Properties、作用域、Theme 与 Design Token、动态主题、Dark Mode
+- [[06.5-CSS Grid 高级]] — 命名网格线、命名区域、自动放置（dense）、Subgrid、Masonry 瀑布流
+- [[06.6-Container Query]] — container-type/name、@container 查询、容器单位（cqw）
+
+### 07-CSS 视觉与动画
+
+- [[07.1-背景]] — background、linear/radial/conic 渐变、background-size/position/repeat
+- [[07.2-边框]] — border、border-radius、outline 焦点、box-shadow 与 inset 内阴影
+- [[07.3-文本]] — font-family/size/weight、line-height、letter-spacing、text-align、white-space、text-overflow、word-break、overflow-wrap
+- [[07.4-Transform]] — translate/rotate/scale/skew、transform-origin、perspective 与 3D transform
+- [[07.5-Transition]] — transition-property/duration/delay、timing-function 与 cubic-bezier
+- [[07.6-Animation]] — @keyframes、animation 各属性、direction/fill-mode/play-state
+- [[07.7-CSS 性能]] — Layout/Paint/Composite 渲染流水线、transform/opacity 高性能、will-change、GPU 合成
 
 ## 概念解析
 
