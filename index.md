@@ -1,7 +1,7 @@
 # 学习笔记索引
 
 > 内容目录。每篇文档附一句话摘要。先读这里找到相关文档。
-> 最后更新：2026-08-13 | 总文档数：644
+> 最后更新：2026-08-13 | 总文档数：787
 
 ## 集成实践
 
@@ -1120,6 +1120,214 @@
 - [[103.3-前端架构师]] — Architecture/Micro Frontend/Design System/Platform/Engineering Governance
 - [[103.4-全栈工程师]] — Frontend/Node.js/Database/API/Cloud
 - [[103.5-AI Frontend Engineer]] — AI UI/LLM/RAG/Agent/WebGPU/WASM
+
+## 算法工程师知识库
+
+> 基于「算法工程师学习知识库总目录」搭建目录骨架（20 篇章、142 个主题），全部 20 篇章、142 个主题已完成。入口见 `algorithm-engineer/README.md`。
+
+- [[algorithm-engineer/README]] — 算法工程师知识库：目录树（20 篇章）+ 进度追踪表，覆盖 Python/数学/机器学习/深度学习/推荐搜索/图/时间序列/CV/LLM/MLOps/工程化全链路
+
+### 01-学习路线与开发环境
+
+- [[01.1-学习路线与开发环境]] — 能力模型、学习阶段与先修、Linux/Git、语言、IDE、构建工具、Docker、大数据本地环境
+
+### 02-计算机基础
+
+- [[02.1-计算机组成]] — CPU/GPU/内存/Cache/磁盘/IO/中断/DMA
+- [[02.2-操作系统]] — 进程/线程/虚拟内存/文件系统/系统调用/cgroups/namespace
+- [[02.3-Linux]] — 进程/权限/网络/日志/systemd/cron/ulimit
+- [[02.4-计算机网络]] — TCP/IP/HTTP/HTTPS/DNS/TLS/RPC/负载均衡/CDN
+- [[02.5-编程]] — Java/Python/Scala/并发/IO/序列化/测试/调试
+
+### 03-数学基础
+
+- [[03.1-离散数学]] — 集合/逻辑/关系/函数/组合/递推/图论/证明
+- [[03.2-概率论]] — 随机变量/分布/条件概率/贝叶斯/期望方差/大数定律/中心极限定理
+- [[03.3-统计学]] — 抽样/估计/MLE/MAP/假设检验/置信区间/t检验/卡方/ANOVA/Bootstrap
+- [[03.4-线性代数]] — 向量/矩阵/秩/特征值/正交/QR/SVD/PCA
+- [[03.5-微积分与优化]] — 导数/梯度/Hessian/凸优化/拉格朗日/GD/SGD/牛顿法
+- [[03.6-信息论]] — 熵/交叉熵/KL散度/互信息/信息增益
+
+### 04-数据结构与算法
+
+- [[04.1-复杂度]] — Big-O/Ω/Θ/摊销分析
+- [[04.2-线性结构]] — 数组/链表/栈/队列/Deque/Priority Queue
+- [[04.3-哈希]] — Hash Table/Bloom Filter/Cuckoo Hash/HyperLogLog
+- [[04.4-树]] — BST/AVL/红黑树/B/B+Tree/Trie/Radix/Heap/Segment Tree/Fenwick/LSM Tree
+- [[04.5-图]] — BFS/DFS/拓扑排序/并查集/最短路/MST/SCC/PageRank
+- [[04.6-排序查找]] — 二分/归并/快排/堆排/计数/基数/外排/Top-K
+- [[04.7-思想]] — 贪心/分治/动态规划/回溯/随机化/近似算法
+- [[04.8-字符串]] — KMP/Z/Rabin-Karp/AC自动机/后缀数组/编辑距离
+- [[04.9-算法工程]] — Benchmark/Profiling/并行/测试/边界与数据规模
+
+### 05-Python 编程语言与算法工程基础
+
+- [[05.1-Python 语言核心]] — 解释器/字节码/CPython、对象与引用、可变不可变、容器/迭代器/生成器/装饰器/上下文管理器
+- [[05.2-Python 面向对象]] — class/继承/组合/多态/抽象基类/dataclass/property/描述符/magic methods
+- [[05.3-Python 类型系统]] — type hints/Generic/TypeVar/Protocol/TypedDict/Literal/Optional/Union/mypy
+- [[05.4-Python 工程化]] — venv/Poetry/uv/pip/pyproject.toml、logging/argparse/pathlib/配置管理
+- [[05.5-测试与质量]] — pytest/fixture/mock/coverage/hypothesis/ruff/black/pre-commit
+- [[05.6-并发与异步]] — threading/multiprocessing/asyncio/GIL/CPU-bound vs IO-bound
+- [[05.7-Python 性能]] — cProfile/line_profiler/向量化/NumPy/Numba/Cython
+- [[05.8-Python 数据处理]] — NumPy/Pandas/Polars/PyArrow/DuckDB/SciPy
+- [[05.9-Python 数据科学]] — ndarray/broadcasting/ufunc/线性代数/Pandas groupby/merge/pivot/时序
+- [[05.10-Python 数据工程]] — SQLAlchemy/redis-py/kafka/FastAPI/Pydantic
+- [[05.11-Notebook 与实验]] — Jupyter/IPython/实验可复现/random seed/数据版本化
+
+### 06-算法数学完整体系
+
+- [[06.1-线性代数]] — 向量空间/范数/内积/特征值/SVD/QR/矩阵微积分/Jacobian/Hessian
+- [[06.2-概率论]] — 分布/联合与条件分布/条件独立/Bayes/大数定律/中心极限定理
+- [[06.3-数理统计]] — 抽样/估计/MLE/MAP/置信区间/假设检验/t检验/卡方/ANOVA/Bootstrap
+- [[06.4-信息论]] — 熵/交叉熵/KL散度/JS散度/互信息/信息增益/困惑度
+- [[06.5-微积分]] — 导数/偏导/梯度/Jacobian/Hessian/链式法则/泰勒展开
+- [[06.6-优化]] — 凸优化/Lagrange/KKT/对偶/GD/SGD/Momentum/Adam/Newton/L-BFGS/学习率调度
+
+### 07-传统机器学习完整体系
+
+- [[07.1-学习范式]] — 监督/无监督/半监督/自监督/迁移/在线/持续/主动/联邦/强化学习
+- [[07.2-学习理论]] — 偏差方差/过拟合欠拟合/正则化/泛化/VC维/PAC/样本复杂度
+- [[07.3-线性模型]] — 线性回归/多项式/Ridge/Lasso/ElasticNet/逻辑回归/GLM/泊松回归
+- [[07.4-概率模型]] — 朴素贝叶斯/贝叶斯模型/GMM/EM/HMM/CRF/贝叶斯网络
+- [[07.5-树模型]] — ID3/C4.5/CART/随机森林/ExtraTrees/AdaBoost/GBDT/XGBoost/LightGBM/CatBoost
+- [[07.6-SVM 与核方法]] — 硬/软间隔/Hinge Loss/核技巧/RBF/多项式核/SVR/One-Class SVM
+- [[07.7-邻近与度量学习]] — KNN/马氏距离/度量学习/对比损失/三元组损失/孪生网络
+- [[07.8-聚类]] — K-Means/K-Means++/K-Medoids/DBSCAN/HDBSCAN/OPTICS/层次聚类/GMM
+- [[07.9-降维]] — PCA/SVD/LDA/ICA/NMF/Kernel PCA/t-SNE/UMAP/Isomap/LLE/MDS
+- [[07.10-异常检测]] — Z-Score/IQR/马氏距离/Isolation Forest/LOF/One-Class SVM/自编码器/变点
+
+### 08-特征工程与模型评估
+
+- [[08.1-数据清洗]] — 缺失值/异常值/重复值/数据校验/泄漏检测
+- [[08.2-数值特征]] — 标准化/Min-Max/Robust/分位数变换/Log/Box-Cox/Yeo-Johnson
+- [[08.3-类别特征]] — One-Hot/Ordinal/Frequency/Count/Target/CatBoost/Hashing
+- [[08.4-特征选择]] — 方差阈值/相关性/卡方/ANOVA/互信息/RFE/L1/树重要性/SHAP
+- [[08.5-时间特征]] — Lag/Rolling/Expanding/EWMA/Trend/Seasonality/Fourier
+- [[08.6-模型评估]] — 准确率/精确率/召回/F1/ROC-AUC/PR-AUC/LogLoss/Brier/校准/MAE/MSE/RMSE/R²
+- [[08.7-数据划分]] — Train/Valid/Test/K-Fold/Stratified/Group/TimeSeries Split/Nested CV/OOF
+- [[08.8-超参数优化]] — Grid/Random/Bayesian/TPE/Hyperband/ASHA
+
+### 09-推荐系统算法
+
+- [[09.1-推荐系统架构]] — 数据采集/画像/召回/排序/重排/在线服务/反馈回路
+- [[09.2-经典召回]] — Popularity/UserCF/ItemCF/内容召回/共现/关联规则/图召回
+- [[09.3-矩阵分解]] — MF/SVD/SVD++/ALS/BPR/隐式反馈
+- [[09.4-深度推荐]] — Wide&Deep/DeepFM/xDeepFM/DCN/DIN/DIEN/MMOE/PLE/Two-Tower/DSSM
+- [[09.5-ANN]] — LSH/KD-Tree/HNSW/IVF/PQ/OPQ/ScaNN/FAISS/DiskANN
+- [[09.6-重排]] — 多样性/新颖性/新鲜度/业务规则/公平性/约束优化
+- [[09.7-推荐评估]] — CTR/CVR/Recall@K/NDCG@K/MAP@K/MRR/Coverage/多样性/A/B Test
+- [[09.8-冷启动]] — 用户/物品/场景冷启动、探索利用、Bandit
+
+### 10-搜索与信息检索算法
+
+- [[10.1-倒排索引]] — Token/Dictionary/Posting List/Skip List/Segment/压缩/FST
+- [[10.2-相关性]] — Boolean/TF-IDF/BM25/Query Likelihood/语言模型
+- [[10.3-Query Understanding]] — 改写/同义词/拼写纠错/意图/实体识别/扩展
+- [[10.4-Learning to Rank]] — Pointwise/Pairwise/Listwise/RankNet/LambdaRank/LambdaMART
+- [[10.5-Hybrid Search]] — BM25+向量/加权融合/RRF/Reranker/Cross Encoder/ColBERT
+
+### 11-图算法与图学习
+
+- [[11.1-图基础]] — 顶点/边/有向无向/加权/属性图/知识图谱
+- [[11.2-图算法]] — BFS/DFS/最短路/MST/PageRank/连通分量/SCC/三角计数/社区发现/中心性
+- [[11.3-图表示学习]] — DeepWalk/Node2Vec/GCN/GraphSAGE/GAT/GNN/知识图谱嵌入
+
+### 12-时间序列算法
+
+- [[12.1-统计方法]] — Trend/Seasonality/平稳性/ACF/PACF/AR/MA/ARMA/ARIMA/SARIMA/VAR/ETS
+- [[12.2-机器学习]] — Lag/Rolling 特征、XGBoost/LightGBM
+- [[12.3-深度学习]] — RNN/LSTM/GRU/TCN/Transformer/TFT
+- [[12.4-异常与变点]] — 残差检测/动态阈值/变点/预测式检测
+
+### 13-计算机视觉与 OpenCV 全栈
+
+- [[13.1-计算机视觉基础]] — 图像/像素/分辨率/通道/颜色空间/位深/动态范围
+- [[13.2-OpenCV 基础]] — imread/imwrite/VideoCapture/颜色转换/Resize/Crop/Rotate/Warp
+- [[13.3-图像处理]] — 阈值/Otsu/模糊/双边滤波/锐化/形态学（腐蚀膨胀开闭）
+- [[13.4-边缘与轮廓]] — Sobel/Scharr/Laplacian/Canny/轮廓/包围盒/凸包
+- [[13.5-几何视觉]] — 仿射/透视/单应性/相机标定/立体视觉/对极几何/PnP/位姿
+- [[13.6-特征点]] — Harris/FAST/ORB/SIFT/SURF/BRIEF/BRISK/AKAZE/特征匹配/BFMatcher/FLANN
+- [[13.7-目标检测传统方法]] — Haar Cascade/HOG/滑动窗口/Selective Search/DPM
+- [[13.8-深度视觉]] — 图像分类/目标检测/语义分割/实例分割/全景分割/关键点/OCR/人脸/跟踪
+- [[13.9-现代视觉模型]] — ResNet/EfficientNet/YOLO/SSD/Faster R-CNN/Mask R-CNN/DETR/ViT/Swin/SAM/CLIP
+- [[13.10-视频分析]] — 光流/背景减除/目标跟踪/MOT/Kalman/SORT/DeepSORT/ByteTrack
+- [[13.11-OCR]] — 文本检测/识别/PaddleOCR/CTC/CRNN/Transformer OCR/版面分析/Document AI
+- [[13.12-OpenCV 工程]] — 摄像头/RTSP/视频流/多线程/GPU-CUDA/性能优化/批处理/服务化/FastAPI
+
+### 14-深度学习与 PyTorch
+
+- [[14.1-神经网络]] — Perceptron/MLP/激活/损失/反向传播/初始化
+- [[14.2-激活函数]] — Sigmoid/Tanh/ReLU/LeakyReLU/GELU/SiLU-Swish/Softmax
+- [[14.3-正则化]] — Dropout/BatchNorm/LayerNorm/GroupNorm/Weight Decay/Early Stopping
+- [[14.4-优化]] — SGD/Momentum/Adam/AdamW/Warmup/Cosine Decay/梯度裁剪/混合精度
+- [[14.5-CNN]] — 卷积/Padding/Stride/Dilation/池化/残差/ResNet/DenseNet/EfficientNet/ConvNeXt
+- [[14.6-序列]] — RNN/LSTM/GRU/Seq2Seq/Teacher Forcing/Attention
+- [[14.7-Transformer]] — Self-Attention/MHA/QKV/位置编码/RoPE/ALiBi/Encoder/Decoder/Causal Mask/KV Cache
+- [[14.8-PyTorch]] — Tensor/DataLoader/nn.Module/Autograd/Optimizer/Scheduler/AMP/DDP/FSDP/TensorBoard
+- [[14.9-训练工程]] — 数据版本化/可复现/实验追踪/Early Stopping/Checkpoint/GPU利用率/显存优化
+
+### 15-生成模型、LLM、RAG 与 Agent
+
+- [[15.1-生成模型]] — Autoencoder/VAE/GAN/WGAN/Normalizing Flow/Diffusion/DDPM/Latent Diffusion
+- [[15.2-Tokenization]] — BPE/WordPiece/SentencePiece/Unigram/Token Budget
+- [[15.3-LLM]] — Decoder-Only/Causal LM/Pretraining/Scaling Laws/MoE/RMSNorm/SwiGLU/RoPE/KV Cache
+- [[15.4-微调]] — Full Fine-Tuning/SFT/LoRA/QLoRA/Adapter/Prefix/Prompt Tuning
+- [[15.5-对齐]] — RLHF/PPO/DPO/IPO/ORPO
+- [[15.6-推理]] — Greedy/Temperature/Top-K/Top-P/Beam Search/量化/GPTQ/AWQ/投机解码/Continuous Batching
+- [[15.7-RAG]] — 文档加载/Chunking/Embedding/稀疏与稠密检索/Hybrid/Reranking/Query Rewrite/HyDE/引用/RAG评估
+- [[15.8-Agent]] — ReAct/Plan-and-Execute/Reflection/Tool Calling/Planning/Memory/Routing/Multi-Agent/评估
+- [[15.9-MCP]] — Client/Server/Tool/Resource/Prompt/Transport/认证/授权/安全
+- [[15.10-多模态]] — VLM/CLIP/Image-Text Embedding/OCR+LLM/Document AI/图像生成/音视频
+
+### 16-算法工程化与服务部署
+
+- [[16.1-服务框架]] — FastAPI/Flask/gRPC/REST/WebSocket/Pydantic
+- [[16.2-模型服务]] — 批量/在线/流式推理、Model Server/Registry/版本化/Canary/Shadow/Blue-Green
+- [[16.3-推理优化]] — ONNX/TensorRT/TensorRT-LLM/OpenVINO/torch.compile/CUDA/量化/剪枝/蒸馏
+- [[16.4-容器与部署]] — Docker/Kubernetes/Helm/GPU调度/服务发现/ConfigMap/Secret/Ingress
+- [[16.5-MLOps]] — 数据/特征/训练/评估流水线、Model Registry/MLflow/Kubeflow/KServe/BentoML/Ray/Feast
+- [[16.6-监控]] — 延迟/吞吐/错误率/GPU利用率/数据漂移/概念漂移/Prometheus/Grafana/OpenTelemetry
+- [[16.7-实验与可复现]] — Git/DVC/数据版本/实验追踪/配置/Seed/Artifact/Model Card
+
+### 17-高级算法与竞赛级能力
+
+- [[17.1-基础技巧]] — 双指针/滑动窗口/前缀和/差分/二分答案/单调栈/单调队列/贪心/分治/回溯
+- [[17.2-高级数据结构]] — Union Find/树状数组/线段树/Sparse Table/Trie/可持久化/Treap/跳表
+- [[17.3-图论]] — Dijkstra/Bellman-Ford/Floyd/0-1 BFS/MST/SCC/Tarjan/桥/割点/二分图/最大流/最小割
+- [[17.4-动态规划]] — 背包/区间/树形/状压/数位/概率 DP/DAG DP/单调队列优化/凸包优化/分治优化
+- [[17.5-字符串]] — KMP/Z/AC 自动机/Manacher/Rolling Hash/后缀数组/后缀自动机
+- [[17.6-数学算法]] — GCD/扩展欧几里得/筛法/快速幂/模运算/矩阵快速幂/组合/容斥/CRT/FFT/NTT
+
+### 18-算法工程师综合项目
+
+- [[18.1-Python 数据分析与机器学习平台]] — NumPy/Pandas/Scikit-learn 全流程 ML 平台
+- [[18.2-端到端推荐系统]] — Spark/Flink + Feature Store + 召回排序 + 在线服务 + A/B
+- [[18.3-搜索与语义检索系统]] — 倒排/BM25/Embedding/ANN/Hybrid/Reranker/LTR
+- [[18.4-OpenCV 智能视觉分析平台]] — RTSP/OpenCV/检测/跟踪/OCR/服务化/GPU
+- [[18.5-时间序列预测与异常检测平台]] — ARIMA/LightGBM/LSTM/异常/变点/告警
+- [[18.6-RAG 知识库]] — 解析/Chunk/Embedding/向量库/BM25/Hybrid/Rerank/LLM/评估
+- [[18.7-Agent 数据分析系统]] — SQL/Python/Search Tool + ReAct + Planning + Memory + MCP
+- [[18.8-算法模型服务平台]] — FastAPI/gRPC + ONNX/TensorRT + K8s/KServe + 监控
+- [[18.9-企业级算法平台]] — 数据/特征/训练/评估/Registry/Serving/Monitoring/A-B
+
+### 19-算法论文与研究能力
+
+- [[19.1-论文阅读]] — Abstract/Problem/Related Work/Method/Experiment/Ablation/Limitation
+- [[19.2-经典机器学习]] — SVM/随机森林/AdaBoost/GBDT/XGBoost/LightGBM/PCA/EM/HMM 论文
+- [[19.3-深度学习]] — AlexNet/VGG/ResNet/BatchNorm/Adam/Attention/Transformer/ViT 论文
+- [[19.4-推荐]] — Matrix Factorization/Wide&Deep/DeepFM/DIN/Two-Tower 论文
+- [[19.5-LLM]] — Transformer/BERT/GPT/Scaling Laws/LoRA/RLHF/DPO/RAG 论文
+
+### 20-算法工程师面试与系统设计
+
+- [[20.1-Python]] — 数据类型/装饰器/生成器/迭代器/GIL/asyncio/多进程/性能优化/内存管理
+- [[20.2-算法]] — 复杂度/数据结构/图/DP/贪心/字符串/数学算法
+- [[20.3-机器学习]] — LR/SVM/Tree/GBDT/XGBoost/LightGBM/K-Means/PCA/GMM
+- [[20.4-深度学习]] — BP/CNN/RNN/LSTM/Attention/Transformer/Normalization/Optimizer
+- [[20.5-视觉]] — OpenCV/图像处理/特征点/目标检测/OCR/Tracking/相机标定
+- [[20.6-推荐与搜索]] — Recall/Ranking/ANN/BM25/LTR/Rerank
+- [[20.7-LLM]] — Tokenizer/Transformer/SFT/LoRA/DPO/RAG/Agent/MCP
+- [[20.8-系统设计]] — 推荐/搜索/实时风控/CV 服务/RAG 平台/Model Serving/Feature Store/ML Platform
 
 ## 概念解析
 
