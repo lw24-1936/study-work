@@ -1,7 +1,7 @@
 # 学习笔记索引
 
 > 内容目录。每篇文档附一句话摘要。先读这里找到相关文档。
-> 最后更新：2026-08-13 | 总文档数：589
+> 最后更新：2026-08-13 | 总文档数：644
 
 ## 集成实践
 
@@ -375,7 +375,7 @@
 
 ## 前端知识库
 
-> 基于「前端完整知识库总目录」搭建目录骨架（103 篇章、416 个主题），内容持续编写中（01~89 篇章已完成）。入口见 `frontend-fullstack/README.md`。
+> 基于「前端完整知识库总目录」搭建目录骨架（103 篇章、416 个主题），内容已全部完成（01~103 篇章全部完成）。入口见 `frontend-fullstack/README.md`。
 
 - [[frontend-fullstack/README]] — 前端完整知识库：目录树（103 篇章）+ 进度追踪表，覆盖计算机基础/网络/HTML/CSS/JS/TS/工程化/React/Vue/Node/BFF/性能安全/架构全链路
 
@@ -1023,6 +1023,103 @@
 - [[89.2-Compiler]] — Parser/AST/Transform/Codegen/Runtime
 - [[89.3-Reactive System]] — Dependency Tracking/Effect/Trigger/Scheduler/Batch Update
 - [[89.4-Scheduler]] — Priority/Task Queue/Microtask/Macrotask/Yield/Time Slice
+
+### 90-React-Vue 源码学习
+
+- [[90.1-React 源码]] — JSX Transform/Fiber/Reconciler/Scheduler、Hooks/Context/Suspense/Server Components
+- [[90.2-Vue 源码]] — Reactivity/Runtime Core/DOM、Compiler Core/DOM、Renderer/Scheduler/VNode/Diff
+
+### 91-前端编译原理
+
+- [[91.1-Lexer]] — Token/Tokenization
+- [[91.2-Parser]] — AST/Recursive Descent/Pratt Parser
+- [[91.3-Transform]] — AST Transform/Optimization
+- [[91.4-Code Generation]] — Codegen/Source Map
+- [[91.5-前端应用]] — Babel/TypeScript/SWC/esbuild、Vue/JSX Compiler、CSS Parser
+
+### 92-浏览器 DevTools 实战
+
+- [[92.1-Elements]] — DOM/CSS/Layout/Accessibility
+- [[92.2-Console]] — JavaScript/Error/Warning/Network
+- [[92.3-Network]] — Request/Response/Headers、Timing/Waterfall/Blocking/Initiator
+- [[92.4-Performance]] — Flame Chart/Main Thread/Long Task、Layout/Paint/Composite/FPS
+- [[92.5-Memory]] — Heap Snapshot/Allocation Timeline、Detached DOM/Retainers
+- [[92.6-Application]] — Storage/Cookies/IndexedDB、Cache/Service Worker
+
+### 93-前端性能诊断方法论
+
+- [[93.1-前端性能诊断方法论]] — 发现问题/建立基线/定位瓶颈、假设/实验验证/优化/回归/监控/持续治理
+
+### 94-前端内存管理
+
+- [[94.1-GC]] — Reachability/Mark/Sweep/Compact/Generational GC
+- [[94.2-内存泄漏]] — Global Variable/Event Listener/Timer/Closure/Detached DOM/Cache/Subscription
+- [[94.3-内存诊断]] — Heap Snapshot/Allocation Timeline、Retainer/Dominator Tree
+
+### 95-前端兼容性
+
+- [[95.1-Browser Compatibility]] — Chrome/Firefox/Safari/Edge、iOS Safari/Android Browser
+- [[95.2-Compatibility]] — Feature Detection/Polyfill/Transpile、Browserslist/Autoprefixer
+- [[95.3-Polyfill]] — core-js/regenerator、Promise/Fetch、IntersectionObserver/ResizeObserver
+
+### 96-浏览器 API 高级
+
+- [[96.1-Observer]] — Mutation/Resize/Intersection/PerformanceObserver
+- [[96.2-Scheduling]] — requestAnimationFrame/requestIdleCallback/scheduler API
+- [[96.3-Performance]] — Performance API/Mark/Measure、Navigation/Resource/Paint Timing、Long Tasks
+
+### 97-文件与大文件处理
+
+- [[97.1-文件上传]] — File/Blob/FormData/Multipart
+- [[97.2-大文件]] — Chunk/Resume/Parallel Upload、Hash/MD5/SHA、Multipart Upload
+- [[97.3-下载]] — Blob/Stream Download、Range Request/Resume Download
+
+### 98-前端加密与安全编程
+
+- [[98.1-Web Crypto API]] — crypto.subtle/Digest/GenerateKey/ImportKey/ExportKey/Encrypt/Decrypt/Sign/Verify
+- [[98.2-算法]] — SHA-256/384/512、AES-GCM/RSA-OAEP/ECDSA/ECDH
+- [[98.3-安全原则]] — 不在前端保存 Secret/HTTPS/Least Privilege/Input Validation/Output Encoding/CSP/Secure Cookie
+
+### 99-前端项目实战
+
+- [[99.1-企业后台管理系统]] — React/Vue + TS + Router + 状态管理、RBAC 权限、Form/Table/Dashboard/ECharts、测试与 CI/CD
+- [[99.2-电商前端]] — 商品/搜索/推荐/购物车/订单/支付/优惠券/用户中心、SSR/SEO/性能优化
+- [[99.3-实时聊天系统]] — WebSocket/Presence/Message、离线消息/通知/文件上传/表情/已读回执/重连
+- [[99.4-在线协作编辑器]] — Canvas/WebSocket、CRDT/OT/Cursor/Presence/冲突解决/离线同步
+- [[99.5-低代码平台]] — Schema/组件注册/拖拽/Renderer、表单/页面构建器、Plugin/DSL/代码生成
+- [[99.6-企业级组件库]] — Design Token/React/Vue/TS、Storybook/可访问性/视觉回归/单测/npm 发布
+- [[99.7-微前端平台]] — Host/Remote/Module Federation、路由/共享依赖/CSS 隔离/认证/监控
+- [[99.8-SSR 全栈应用]] — Next.js/Nuxt、SSR/SSG/ISR/RSC、API/数据库/缓存/CDN/SEO
+- [[99.9-AI Chat 应用]] — LLM API/Streaming/Markdown/代码高亮、Tool Calling/文件上传/RAG/引用/对话/记忆
+- [[99.10-浏览器端 AI 应用]] — WebGPU/WASM/ONNX Runtime Web、Transformers.js/本地推理/模型缓存/Worker/流式 UI
+
+### 100-前端系统设计实战
+
+- [[100.1-设计大型 SPA]] — Module/Routing/State/API/Cache/Error/Monitoring/Deployment
+- [[100.2-设计企业级 Design System]] — Token/Component/Documentation/Versioning/Accessibility/Testing/Publishing
+- [[100.3-设计微前端平台]] — Host/Remote/Shared/Routing/Auth/Communication/Isolation/Deployment
+- [[100.4-设计高性能首页]] — SSR/CDN/Cache/Critical CSS/Image Optimization/Code Splitting/Preload/Streaming
+- [[100.5-设计实时协作系统]] — WebSocket/CRDT/Presence/Sync/Conflict Resolution/Offline
+- [[100.6-设计前端监控平台]] — Error/Performance/RUM/Metrics/Trace/Source Map/Alert
+
+### 101-前端源码阅读路线
+
+- [[101.1-前端源码阅读路线]] — V8/Node.js、Chromium/Blink/WebKit、React/Vue/Angular、Webpack/Vite/Rollup/esbuild/SWC/Babel、UI 库、监控工具
+
+### 102-前端论文与研究方向
+
+- [[102.1-浏览器]] — Rendering/JavaScript Engine/JIT/Garbage Collection/Scheduling
+- [[102.2-编程语言]] — Type Systems/Compilers/Static Analysis/Program Optimization
+- [[102.3-UI]] — Human Computer Interaction/Accessibility/UI Generation/Design Systems
+- [[102.4-AI + Frontend]] — Code Generation/UI Generation/Multimodal UI/Agentic UI/Natural Language Interface
+
+### 103-前端职业方向
+
+- [[103.1-前端开发工程师]] — HTML/CSS/JS/TS、React/Vue、工程化
+- [[103.2-高级前端工程师]] — Architecture/Performance/Security/Testing/Monitoring
+- [[103.3-前端架构师]] — Architecture/Micro Frontend/Design System/Platform/Engineering Governance
+- [[103.4-全栈工程师]] — Frontend/Node.js/Database/API/Cloud
+- [[103.5-AI Frontend Engineer]] — AI UI/LLM/RAG/Agent/WebGPU/WASM
 
 ## 概念解析
 
