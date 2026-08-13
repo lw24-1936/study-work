@@ -373,17 +373,12 @@
 
 - [[195-综合项目实战]] — 9 个项目进阶路线、学生成绩管理系统(Java SE)、用户管理系统(Servlet/JDBC)、企业员工管理系统(Spring Boot/Redis)、企业管理平台(RBAC/JWT/Vue)、订单系统(RabbitMQ)、微服务电商(Spring Cloud/Nacos/Feign)、秒杀系统(Redis/MQ)、数据平台(ES/Kafka)、AI 应用(Spring AI/RAG/Agent/MCP)
 
-## 概念解析
-## 概念解析
-## 概念解析
-## 概念解析
-## 概念解析
-## 概念解析
-## 概念解析
-## 概念解析
-## 概念解析
-## 概念解析
-## 概念解析
+## 前端知识库
+
+> 基于「前端完整知识库总目录」搭建目录骨架（103 篇章、416 个主题），内容待编写。入口见 `frontend-fullstack/README.md`。
+
+- [[frontend-fullstack/README]] — 前端完整知识库：目录树（103 篇章）+ 进度追踪表，覆盖计算机基础/网络/HTML/CSS/JS/TS/工程化/React/Vue/Node/BFF/性能安全/架构全链路
+
 ## 概念解析
 
 <!-- 待补充 -->
