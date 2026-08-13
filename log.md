@@ -121,3 +121,8 @@
 
 - 文件名：01.3-Linux.md
 - 摘要：Linux 文件系统、Shell/Bash/Zsh、文本三剑客、find/xargs、网络与传输工具、进程与网络排查、systemd/cron、权限与环境变量、日志，前端部署排障视角
+
+## [2026-08-13] create | 前端文档 Git
+
+- 文件名：01.4-Git.md
+- 摘要：Git 从基础概念到协作工作流：commit/branch/tag、merge/rebase/cherry-pick、reset/revert/stash/reflog、diff/blame/bisect、submodule/worktree、hooks、Conventional Commits、Git Flow 与主干开发、Monorepo、PR 与 Code Review
