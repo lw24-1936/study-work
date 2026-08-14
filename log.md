@@ -138,3 +138,9 @@
 - 删除空目录 concepts/、comparisons/、troubleshooting/（模式一遗留，未被使用）
 - 生成根目录 README.md（知识库总览、目录结构、文档规范）
 - index.md：集成实践节加 spring-boot/ 目录说明，移除「概念解析/对比分析/排错笔记」三个空章节，更新日期为 2026-08-14
+
+## [2026-08-14] update | README 优化与多语言支持
+
+- README.md 参照优秀开源项目风格重写：语言切换、shields 徽章、锚点目录、特性、数据统计、知识库总览
+- 新增 README.en.md 英文版，结构与中文版一致
+- 默认简体中文（README.md），顶部提供 简体中文 / English 切换
