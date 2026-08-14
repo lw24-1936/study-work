@@ -7,13 +7,14 @@
 
 <p align="center">
   面向 <b>Java 后端</b> · <b>前端</b> · <b>算法工程师</b> 三大方向的体系化技术学习笔记<br/>
-  类 wiki 结构 · 交叉引用 · 持续更新
+  类 wiki 结构 · 交叉引用 · Obsidian 兼容 · 持续更新
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/学习文档-785%20篇-2ea44f" alt="学习文档"/>
   <img src="https://img.shields.io/badge/知识库-3%20个-0969da" alt="知识库"/>
   <img src="https://img.shields.io/badge/Spring%20Boot-8%20篇-eb6f2d" alt="Spring Boot"/>
+  <img src="https://img.shields.io/badge/Obsidian-兼容-7c3aed" alt="Obsidian"/>
   <img src="https://img.shields.io/badge/更新-2026.08.14-6e7781" alt="更新"/>
 </p>
 
@@ -24,6 +25,7 @@
 - [数据统计](#数据统计)
 - [目录结构](#目录结构)
 - [知识库总览](#知识库总览)
+- [用 Obsidian 阅读](#用-obsidian-阅读)
 - [快速开始](#快速开始)
 - [文档规范](#文档规范)
 
@@ -37,6 +39,7 @@
 
 - **三大方向体系化**：Java 全栈 51 篇章、前端 103 篇章、算法工程师 20 篇章，另附 Spring Boot 集成专题 8 篇
 - **类 wiki 交叉引用**：文档间以 `[[filename]]` 互链，从一个主题顺藤摸瓜到相关主题
+- **Obsidian 原生兼容**：`[[filename]]` 双向链接 + frontmatter 标签正是 Obsidian 语法，整库可直接作为 Vault 打开
 - **统一文档规范**：YAML frontmatter + 固定章节结构，全库格式一致，见 [SCHEMA.md](./SCHEMA.md)
 - **可增量更新**：每篇附 `created` / `updated` 日期，操作留痕于 [log.md](./log.md)
 - **附总目录 roadmap**：四份总目录文件对应三大方向与大数据（待建），是知识库的编排蓝图
@@ -87,10 +90,27 @@ study-work/
 
 8 篇独立集成文档：Redis、Redisson、MyBatis、MyBatis-Plus、RabbitMQ、AOP、邮件、定时任务。
 
+## 用 Obsidian 阅读
+
+本知识库的文档用 Obsidian 原生语法编写——`[[filename]]` 双向链接 + YAML frontmatter 标签，整个仓库可以直接作为 Obsidian 库（Vault）打开，交叉引用、反向链接、关系图谱开箱即用。
+
+1. 克隆或下载本仓库到本地
+2. 打开 Obsidian → Open folder as vault → 选择 `study-work` 目录
+3. 打开后即可使用：
+
+- **双向链接**：正文里的 `[[文档名]]` 自动变为可点击链接，Ctrl/Cmd + 点击跳转
+- **反向链接**：每篇文档右侧面板显示「谁引用了这篇」
+- **关系图谱**：Graph view 可视化三大方向的知识网络
+- **标签浏览**：frontmatter 的 tags（spring-boot、redis、distributed…）进入标签面板，点击聚合同主题文档
+- **全文搜索**：Ctrl/Cmd + Shift + F 跨 785 篇文档检索
+
+建议从 [index.md](./index.md) 开始读，或用图谱视图概览整个知识体系。
+
 ## 快速开始
 
 1. 先读 [index.md](./index.md)，按方向找到相关文档，每篇附一句话摘要
 2. 或进入对应知识库目录，读其 `README.md`（含 ascii 目录树 + 进度追踪表）
+3. 或用 Obsidian 打开整个仓库（见[用 Obsidian 阅读](#用-obsidian-阅读)），获得双向链接、反向链接与关系图谱
 
 ## 文档规范
 

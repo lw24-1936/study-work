@@ -144,3 +144,9 @@
 - README.md 参照优秀开源项目风格重写：语言切换、shields 徽章、锚点目录、特性、数据统计、知识库总览
 - 新增 README.en.md 英文版，结构与中文版一致
 - 默认简体中文（README.md），顶部提供 简体中文 / English 切换
+
+## [2026-08-14] update | README 优化 + Obsidian 阅读说明
+
+- README.md / README.en.md 新增「用 Obsidian 阅读 / Reading with Obsidian」章节：知识库用 [[wikilink]] + frontmatter tags（Obsidian 原生语法），整库可直接作为 Vault 打开
+- 副标题、徽章行、特性列表、TOC、快速开始同步加入 Obsidian 相关说明（badge 用 7c3aed 紫）
+- 说明双向链接/反向链接/关系图谱/标签面板/全文搜索开箱即用

@@ -7,13 +7,14 @@
 
 <p align="center">
   Structured technical study notes for <b>Java Backend</b> · <b>Frontend</b> · <b>Algorithm Engineer</b><br/>
-  Wiki-style structure · Cross-referencing · Continuously updated
+  Wiki-style structure · Cross-referencing · Obsidian-compatible · Continuously updated
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/docs-785-2ea44f" alt="docs"/>
   <img src="https://img.shields.io/badge/knowledge%20bases-3-0969da" alt="knowledge bases"/>
   <img src="https://img.shields.io/badge/Spring%20Boot-8-eb6f2d" alt="Spring Boot"/>
+  <img src="https://img.shields.io/badge/Obsidian-compatible-7c3aed" alt="Obsidian"/>
   <img src="https://img.shields.io/badge/updated-2026.08.14-6e7781" alt="updated"/>
 </p>
 
@@ -24,6 +25,7 @@
 - [Statistics](#statistics)
 - [Directory Structure](#directory-structure)
 - [Knowledge Bases](#knowledge-bases)
+- [Reading with Obsidian](#reading-with-obsidian)
 - [Getting Started](#getting-started)
 - [Writing Conventions](#writing-conventions)
 
@@ -37,6 +39,7 @@ See [index.md](./index.md) for the content index, [SCHEMA.md](./SCHEMA.md) for w
 
 - **Three systematic tracks**: 51 chapters of Java Full-Stack, 103 chapters of Frontend, 20 chapters of Algorithm Engineer, plus 8 Spring Boot integration guides
 - **Wiki-style cross-referencing**: documents link to each other via `[[filename]]`, so you can follow a topic to related ones
+- **Obsidian-native**: `[[filename]]` backlinks + frontmatter tags are Obsidian syntax, so the whole repo opens directly as a Vault
 - **Unified conventions**: YAML frontmatter + fixed section structure keep the whole library consistent, see [SCHEMA.md](./SCHEMA.md)
 - **Incremental updates**: every document carries `created` / `updated` dates, and every operation is logged in [log.md](./log.md)
 - **Roadmaps included**: four roadmap files outline the three tracks plus Big Data (not yet built)
@@ -87,10 +90,27 @@ From Python, mathematics, data structures and algorithms, to machine learning, d
 
 8 standalone integration guides: Redis, Redisson, MyBatis, MyBatis-Plus, RabbitMQ, AOP, Email, and Scheduled Tasks.
 
+## Reading with Obsidian
+
+The documents use Obsidian-native syntax — `[[filename]]` backlinks + YAML frontmatter tags — so the whole repository can be opened directly as an Obsidian Vault, with cross-references, backlinks, and graph view working out of the box.
+
+1. Clone or download this repository locally
+2. Open Obsidian → Open folder as vault → select the `study-work` directory
+3. Once open, you get:
+
+- **Backlinks**: `[[document name]]` references become clickable links; Ctrl/Cmd + click to jump
+- **Backlink panel**: each document shows "what links here"
+- **Graph view**: visualize the knowledge network across the three tracks
+- **Tag browsing**: frontmatter tags (spring-boot, redis, distributed…) appear in the tag pane; click to group related documents
+- **Full-text search**: Ctrl/Cmd + Shift + F across all 785 documents
+
+Start with [index.md](./index.md), or use graph view to survey the whole system.
+
 ## Getting Started
 
 1. Start with [index.md](./index.md) and pick a track — every document has a one-line summary
 2. Or enter a knowledge-base directory and read its `README.md` (ascii directory tree + progress tracker)
+3. Or open the whole repository in Obsidian (see [Reading with Obsidian](#reading-with-obsidian)) for backlinks, the backlink panel, and graph view
 
 ## Writing Conventions
 
