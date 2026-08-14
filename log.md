@@ -131,3 +131,10 @@
 
 - 文件名：01.5-IDE 与开发环境.md
 - 摘要：前端开发环境全链路：VS Code 与 JetBrains、Chrome/Firefox DevTools、Node.js、npm/pnpm/Yarn 包管理器、Corepack、nvm/fnm/Volta 版本管理、Docker、Dev Container、WSL
+
+## [2026-08-14] 整理 | 项目结构整理
+
+- 新建 spring-boot/ 目录，将 8 篇 Spring Boot 集成文档移入（aop/email/mybatis/mybatis-plus/rabbitmq/redis/redisson/scheduled）
+- 删除空目录 concepts/、comparisons/、troubleshooting/（模式一遗留，未被使用）
+- 生成根目录 README.md（知识库总览、目录结构、文档规范）
+- index.md：集成实践节加 spring-boot/ 目录说明，移除「概念解析/对比分析/排错笔记」三个空章节，更新日期为 2026-08-14
