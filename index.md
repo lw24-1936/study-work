@@ -1,7 +1,7 @@
 # 学习笔记索引
 
 > 内容目录。每篇文档附一句话摘要。先读这里找到相关文档。
-> 最后更新：2026-08-14 | 总文档数：787
+> 最后更新：2026-08-14 | 总文档数：920
 
 ## 集成实践
 
@@ -1330,3 +1330,200 @@
 - [[20.6-推荐与搜索]] — Recall/Ranking/ANN/BM25/LTR/Rerank
 - [[20.7-LLM]] — Tokenizer/Transformer/SFT/LoRA/DPO/RAG/Agent/MCP
 - [[20.8-系统设计]] — 推荐/搜索/实时风控/CV 服务/RAG 平台/Model Serving/Feature Store/ML Platform
+
+## 大数据知识库
+
+> 基于《大数据学习知识库总目录》编排，覆盖计算机基础、SQL、Hadoop/Hive/Kafka/Spark/Flink、数仓、Lakehouse、CDC、实时数仓、大数据算法、数据治理、云原生与企业级数据平台，共 133 篇。
+
+### 学习路线与开发环境
+- [[01.1-学习路线与开发环境]] — 大数据与算法全栈能力模型、学习阶段与先修关系、Linux Shell 与 Git、Java Python 与 Scala、IDE 与 Jupyter Notebook 等
+
+### 计算机基础
+- [[02.1-计算机组成]] — CPU、GPU、内存、Cache、磁盘 等
+- [[02.2-操作系统]] — 进程、线程、虚拟内存、文件系统、系统调用 等
+- [[02.3-Linux]] — 进程管理、权限、网络、日志、systemd 等
+- [[02.4-计算机网络]] — TCP、IP、HTTP、HTTPS、DNS 等
+- [[02.5-编程基础]] — Java、Python、Scala、并发、IO 等
+
+### 数学基础
+- [[03.1-离散数学]] — 集合、逻辑、关系、函数、组合 等
+- [[03.2-概率论]] — 随机变量、常见分布、条件概率、贝叶斯、期望 等
+- [[03.3-统计学]] — 抽样、估计、MLE、MAP、假设检验 等
+- [[03.4-线性代数]] — 向量、矩阵、秩、特征值、正交 等
+- [[03.5-微积分与优化]] — 导数与偏导、梯度与 Hessian、链式法则与反向传播、凸优化与凸函数、拉格朗日乘子与约束优化 等
+- [[03.6-信息论]] — 熵、交叉熵、KL 散度、互信息、信息增益
+
+### 数据结构与算法
+- [[04.1-复杂度分析]] — Big-O、Ω、Θ、摊销分析
+- [[04.2-线性结构]] — 数组、链表、栈、队列、Deque 等
+- [[04.3-哈希]] — Hash Table、Bloom Filter、Cuckoo Hash、HyperLogLog
+- [[04.4-树]] — BST、AVL、红黑树、B 树、B+Tree 等
+- [[04.5-图]] — BFS、DFS、拓扑排序、并查集、最短路 等
+- [[04.6-排序查找]] — 二分查找、归并排序、快排、堆排、计数排序 等
+- [[04.7-算法思想]] — 贪心、分治、动态规划、回溯、随机化 等
+- [[04.8-字符串算法]] — KMP、Z、Rabin-Karp、AC 自动机、后缀数组 等
+- [[04.9-算法工程]] — Benchmark、Profiling、并行、测试、边界与数据规模
+
+### 数据库与SQL
+- [[05.1-关系模型与范式]] — 关系模型、范式、反范式、主外键、约束
+- [[05.2-SQL]] — SELECT 与投影、WHERE 与过滤、GROUP BY 与聚合、JOIN 与多表关联、UNION 与集合运算 等
+- [[05.3-高级SQL]] — Recursive CTE 递归查询、Rollup 上卷、Cube 多维聚合、Grouping Sets 分组集合、Pivot 行列转换 等
+- [[05.4-MySQL 与 PostgreSQL]] — InnoDB、MVCC、WAL、Redo、Undo 等
+- [[05.5-OLAP 引擎]] — ClickHouse、StarRocks、Doris、Druid、Pinot 等
+- [[05.6-NoSQL]] — Redis、MongoDB、Cassandra、HBase、DynamoDB 等
+- [[05.7-数据库原理]] — CAP、PACELC、分片、复制、读写分离 等
+
+### 数据存储与文件格式
+- [[06.1-文件格式]] — CSV、JSON、XML、Avro、Protobuf 等
+- [[06.2-存储系统与列式原理]] — 行存与列存、字典编码、RLE、Bit Packing、压缩 等
+
+### Hadoop生态
+- [[07.1-Hadoop 概述与架构]] — Hadoop 架构、Common、HDFS、YARN、MapReduce
+- [[07.2-HDFS]] — NameNode 与 DataNode、Block 与副本机制、Rack Awareness 机架感知、HA 高可用、Federation 联邦 等
+- [[07.3-MapReduce]] — Mapper、Reducer、Combiner、Partitioner、Shuffle 等
+- [[07.4-YARN]] — ResourceManager、NodeManager、ApplicationMaster、Container、Scheduler 等
+- [[07.5-Hadoop 生态]] — Hive、HBase、Sqoop、Oozie、ZooKeeper 等
+
+### Hive与大数据SQL
+- [[08.1-Hive 架构与表管理]] — Hive Architecture、Metastore、Beeline、Managed/External Table、Partition 等
+- [[08.2-Hive SQL 与查询优化]] — Hive SQL、UDF/UDAF/UDTF、窗口函数、Tez、向量化 等
+
+### Kafka与消息流
+- [[09.1-Kafka 架构与存储]] — 知识点章节
+- [[09.2-Kafka Producer]] — 知识点章节
+- [[09.3-Kafka Consumer]] — 知识点章节
+- [[09.4-Kafka 生态与数据集成]] — 知识点章节
+
+### Spark
+- [[10.1-Spark 架构]] — Driver、Executor、Cluster Manager、Application、Job 等
+- [[10.2-RDD]] — Partition、Transformation、Action、Lazy、Dependency 等
+- [[10.3-Spark SQL]] — DataFrame、Dataset、Catalyst、Tungsten、AQE 等
+- [[10.4-Structured Streaming]] — Source、Sink、Trigger、Checkpoint、Watermark 等
+- [[10.5-Spark 性能优化]] — Partition 分区、Repartition 重分区、Coalesce 合并分区、Broadcast 广播、SortMerge Join 等
+- [[10.6-Spark 源码解析]] — SparkContext、DAG Scheduler、Task Scheduler、BlockManager、MemoryManager 等
+
+### Flink
+- [[11.1-Flink 架构]] — JobManager、TaskManager、Slot、Operator、JobGraph 等
+- [[11.2-DataStream API]] — Source、Transformation、Sink、KeyBy、ProcessFunction
+- [[11.3-时间与水位线]] — Processing Time、Event Time、Ingestion Time、Timestamp、Watermark 等
+- [[11.4-窗口]] — Tumbling、Sliding、Session、Global、Trigger 等
+- [[11.5-State 状态管理]] — Keyed State、Operator State、ValueState、ListState、MapState 等
+- [[11.6-Checkpoint 与容错]] — Checkpoint、Savepoint、Barrier、Unaligned Checkpoint、State Backend 等
+- [[11.7-Flink SQL]] — Dynamic Table、Changelog、Catalog、Connector、Temporal Join 等
+- [[11.8-CEP 与运行时进阶]] — CEP、Backpressure、Network Buffer、Chaining、Slot Sharing 等
+
+### Trino与联邦查询
+- [[12.1-Trino 与联邦查询]] — Trino/Presto 架构、Coordinator/Worker、Connector/Catalog/Schema、Split、Exchange 等
+
+### 数据仓库
+- [[13.1-数仓建模与分层]] — OLTP 与 OLAP、数仓分层：ODS-DWD-DWS-ADS、数据集市、星型模型与雪花模型、事实表与维度表 等
+- [[13.2-维度建模与缓慢变化维]] — SCD 0/1/2/3、拉链表、快照表、全量/增量、历史回溯
+- [[13.3-ETL 与数仓架构]] — ETL/ELT、CDC、Full/Incremental、Upsert/Merge、数据校验 等
+
+### 数据湖与Lakehouse
+- [[14.1-数据湖概述]] — Data Lake 数据湖、Object Storage 对象存储、Schema-on-Read 读时模式、Bronze-Silver-Gold 分层、数据湖与数仓、Lakehouse 的关系
+- [[14.2-Iceberg]] — Metadata 元数据层、Snapshot 快照、Manifest 与数据文件、Catalog 目录、Schema 与分区演进 等
+- [[14.3-Hudi]] — COW 与 MOR 两种表类型、Timeline 时间轴、Instant 与 Action、Upsert 更新机制、Index 索引 等
+- [[14.4-Delta Lake]] — Transaction Log 事务日志、ACID 事务保证、Version 版本与 Time Travel、Schema Enforcement 模式强制、Schema Evolution 模式演进 等
+- [[14.5-Lakehouse 实践]] — 小文件治理、Compaction 合并、分区策略、数据质量、成本治理
+
+### 数据集成与CDC
+- [[15.1-CDC 原理与工具]] — Binlog 二进制日志、WAL 预写日志、Logical Replication 逻辑复制、Debezium、Canal 等
+- [[15.2-数据集成工具与同步语义]] — 批量与流式 ETL、全量与增量同步、同步一致性、Kafka Connect、NiFi 等
+
+### 实时计算与实时数仓
+- [[16.1-实时数仓架构与分层]] — 流与事件、事件时间、处理时间、窗口、状态 等
+- [[16.2-实时指标与实时应用]] — UVPV、DAUMAU、GMV、CTRCVR、留存 等
+
+### 大数据算法
+- [[17.1-数据采样]] — Random Sampling 随机采样、Reservoir Sampling 蓄水池采样、Stratified Sampling 分层采样、Weighted Sampling 加权采样、Systematic Sampling 系统采样 等
+- [[17.2-基数估计]] — Linear Counting 线性计数、HyperLogLog、HLL++、KMV、Theta Sketch 等
+- [[17.3-频率与 Top-K]] — Count-Min Sketch、Count Sketch、Misra-Gries、Frequent Items 频繁项、Heavy Hitters 重磅项 等
+- [[17.4-成员判定]] — Bloom Filter 布隆过滤器、Counting Bloom Filter 计数布隆、Cuckoo Filter 布谷鸟过滤器、Quotient Filter 商过滤器、XOR Filter
+- [[17.5-分位数与统计摘要]] — t-digest、KLL、Greenwald-Khanna、Quantile Sketch 分位数摘要、Approximate Median 近似中位数 等
+- [[17.6-流式算法]] — Sliding Window、Exponential Histogram、Time Decay、Online Aggregation、Approximate Join 等
+- [[17.7-外存算法]] — External Sort、External Hashing、External Merge、B-Tree、B+Tree 等
+- [[17.8-分布式算法]] — Partitioning、Consistent Hashing、Rendezvous Hashing、MapReduce、Distributed Join 等
+- [[17.9-算法工程]] — 时间复杂度、空间复杂度、IO Complexity、Network Complexity、Benchmark 等
+
+### 数据科学与实验
+- [[26.1-数据探索与分析]] — EDA、描述统计、相关性分析、分布分析、异常检测 等
+- [[26.2-A-B 实验]] — 随机化、样本量、显著性、置信区间、多重检验 等
+- [[26.3-因果推断]] — DAG、Confounder、Potential Outcomes、ATE、ATT 等
+- [[26.4-数据可视化]] — Matplotlib 基础绘图、Seaborn 统计可视化、Plotly 交互式图表、ECharts 前端图表库、Superset 自助式 BI 等
+
+### 数据质量与治理
+- [[27.1-数据质量维度与规则]] — Accuracy 准确性、Completeness 完整性、Consistency 一致性、Timeliness 及时性、Uniqueness 唯一性 等
+- [[27.2-元数据与数据目录]] — Metadata 元数据、Catalog 数据目录、Ownership 数据归属、Classification 数据分类分级、Dictionary 数据字典 等
+- [[27.3-数据血缘]] — 表级血缘、列级血缘、任务血缘、管道血缘、影响分析
+- [[27.4-数据安全与权限]] — Authentication、Authorization、RBAC、ABAC、Encryption 等
+
+### 数据开发工程化
+- [[28.1-数据调度与工作流]] — Pipeline、DAG、Task、Dependency、Retry 等
+- [[28.2-数据测试与工程规范]] — Unit Test、Integration Test、Data Test、Regression Test、Schema Test 等
+
+### MLOps
+- [[29.1-MLOps 流水线与模型服务]] — Data Pipeline、Feature Pipeline、Training Pipeline、Evaluation Pipeline、Deployment Pipeline 等
+- [[29.2-MLOps 工具链与监控]] — Latency 延迟、Throughput 吞吐、Error Rate 错误率、Data Drift 数据漂移、Concept Drift 概念漂移 等
+
+### 分布式系统
+- [[30.1-分布式理论]] — CAP 定理、PACELC、一致性模型、可用性与分区容错、复制 等
+- [[30.2-分布式共识与事务]] — Leader Election 选举、Consensus 共识、Raft、Paxos、ZooKeeper 等
+
+### 大数据性能优化
+- [[31.1-性能优化基础]] — CPU、内存、IO、网络、GC 等
+- [[31.2-SQL 优化]] — 执行计划、Join 优化、分区裁剪、谓词下推、统计信息 等
+- [[31.3-Spark 优化]] — 分区、Shuffle、Join 策略、Cache 缓存、AQE 自适应查询执行 等
+- [[31.4-Flink 优化]] — 并行度、Backpressure 反压、State 状态、Checkpoint 检查点、Buffer 缓冲 等
+- [[31.5-Kafka 优化]] — Batch 批量、Compression 压缩、Partition 分区、Broker IO、Page Cache
+- [[31.6-OLAP 优化]] — Sort Key 排序键、Primary Key 主键、Materialized View 物化视图、Compaction 合并、Pre-Aggregation 预聚合
+
+### 云原生与DevOps
+- [[32.1-Docker 与容器]] — Docker 基础、镜像、容器、Volume 数据卷、Network 网络 等
+- [[32.2-Kubernetes]] — Pod、Deployment、Service、ConfigMap、Secret 等
+- [[32.3-大数据组件上云]] — Spark on K8s、Flink Operator、Kafka on K8s、Airflow on K8s、Trino on K8s 等
+- [[32.4-CI-CD 与基础设施即代码]] — GitHub Actions、GitLab CI、Jenkins、Terraform、Helm 等
+- [[32.5-可观测性与运维]] — Metrics、Logs、Traces、OpenTelemetry、Prometheus 等
+
+### 数据架构
+- [[33.1-数据架构演进]] — Data Warehouse、Data Lake、Lakehouse、Data Mesh、Data Fabric 等
+- [[33.2-企业数据平台]] — 数据采集、数据存储、数据处理、数仓、数据服务 等
+- [[33.3-实时数仓架构]] — Kafka、Flink、Iceberg、StarRocks、ES 等
+- [[33.4-AI 数据架构]] — Data Lake、Feature Store、Vector DB、Embedding、RAG 等
+
+### 数据产品与指标体系
+- [[34.1-指标体系]] — 原子指标、派生指标、复合指标、业务口径、指标血缘 等
+- [[34.2-用户画像与分群]] — 用户画像、分群、Cohort、Retention、Churn 等
+- [[34.3-行业指标体系]] — GMV、订单、转化、复购、Funnel 等
+
+### 源码与论文
+- [[35.1-Hadoop 源码]] — HDFS 源码、YARN 源码、MapReduce 源码
+- [[35.2-Kafka 源码]] — Producer 源码、Consumer 源码、Broker 源码、Replication 复制源码、KRaft 源码
+- [[35.3-Spark 源码]] — Scheduler 调度源码、RDD 源码、Shuffle 源码、Catalyst 优化器源码、Tungsten 源码 等
+- [[35.4-Flink 源码]] — Runtime 运行时源码、Network 网络栈源码、State 状态源码、Checkpoint 源码、Watermark 源码
+- [[35.5-Hive 与 Trino 源码]] — Hive Parser 解析器、Hive Planner 与 Optimizer、Hive 执行引擎、Trino Parser 解析器、Trino Planner 与 Optimizer 等
+- [[35.6-Lakehouse 源码]] — Iceberg Metadata 元数据、Iceberg Snapshot 与 Manifest、Iceberg Commit 提交、Hudi Timeline、Delta Transaction Log
+- [[35.7-经典论文]] — MapReduce、BigTable、Dynamo、Pregel、Spanner 等
+- [[35.8-推荐与深度学习论文]] — MF 矩阵分解、Wide-Deep、DeepFM、DIN、Transformer 等
+
+### 安全与隐私
+- [[36.1-数据安全]] — 数据分类分级、权限、加密、密钥管理、脱敏 等
+- [[36.2-隐私计算]] — Differential Privacy、Federated Learning、SMPC、Homomorphic Encryption
+- [[36.3-AI 安全]] — Prompt Injection（提示词注入）、Data Poisoning（数据投毒）、Model Extraction（模型窃取）、Jailbreak（越狱攻击）、PII Leakage（隐私数据泄露） 等
+
+### 面试与系统设计
+- [[37.1-大数据基础面试]] — 数据结构与算法面试、SQL 与执行计划面试、Hadoop 面试、Hive 面试
+- [[37.2-消息与计算引擎面试]] — Kafka 面试、Spark 面试、Flink 面试、Event Time 与 Watermark 面试、Window 面试 等
+- [[37.3-数仓与 Lakehouse 面试]] — 数仓建模面试、SCD 面试、拉链表面试、实时数仓面试、CDC 面试 等
+- [[37.4-治理与分布式面试]] — 数据质量面试、数据治理面试、分布式系统面试、性能优化面试、容量规划面试
+- [[37.5-机器学习与推荐面试]] — 机器学习面试、推荐系统面试、搜索系统面试、ANN 面试、特征工程面试
+- [[37.6-系统设计面试]] — 数据平台设计、实时平台设计、推荐系统设计、搜索系统设计、日志系统设计 等
+
+### 综合项目实战
+- [[38.1-离线数据分析平台]] — 技术选型、架构设计、数据采集模块、存储与数仓模块、计算与加工模块 等
+- [[38.2-电商离线数仓]] — 技术选型、架构设计、数仓分层设计、维度建模与缓慢变化维、拉链表与快照表设计 等
+- [[38.3-实时数仓]] — 技术选型、架构设计、数据接入与链路、时间语义与水印、窗口计算 等
+- [[38.4-CDC 数据同步平台]] — 技术选型、架构设计、Binlog 原理与解析、Debezium 数据采集、Schema Evolution 等
+- [[38.5-Lakehouse 平台]] — 技术选型、架构设计、对象存储与 Iceberg 表格式、Catalog 与元数据管理、计算引擎统一接入 等
+- [[38.6-实时风控数据平台]] — 技术选型、架构设计、事件接入与 Kafka 缓冲、Flink CEP 规则引擎、黑白名单过滤 等
+- [[38.7-企业级数据平台]] — 技术选型、架构设计、采集与 CDC 接入、消息总线与流批计算、存储层与查询层 等

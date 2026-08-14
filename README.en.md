@@ -6,13 +6,13 @@
 <h1 align="center">Tech Learning Knowledge Base</h1>
 
 <p align="center">
-  Structured technical study notes for <b>Java Backend</b> · <b>Frontend</b> · <b>Algorithm Engineer</b><br/>
+  Structured technical study notes for <b>Java Backend</b> · <b>Frontend</b> · <b>Algorithm Engineer</b> · <b>Big Data</b><br/>
   Wiki-style structure · Cross-referencing · Obsidian-compatible · Continuously updated
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/docs-785-2ea44f" alt="docs"/>
-  <img src="https://img.shields.io/badge/knowledge%20bases-3-0969da" alt="knowledge bases"/>
+  <img src="https://img.shields.io/badge/docs-918-2ea44f" alt="docs"/>
+  <img src="https://img.shields.io/badge/knowledge%20bases-4-0969da" alt="knowledge bases"/>
   <img src="https://img.shields.io/badge/Spring%20Boot-8-eb6f2d" alt="Spring Boot"/>
   <img src="https://img.shields.io/badge/Obsidian-compatible-7c3aed" alt="Obsidian"/>
   <img src="https://img.shields.io/badge/updated-2026.08.14-6e7781" alt="updated"/>
@@ -31,18 +31,18 @@
 
 ## About
 
-This repository is a collection of structured technical study notes for three tracks: **Java Backend**, **Frontend**, and **Algorithm Engineer**. Knowledge is organized into systematic chapters, with one standalone document per topic. Documents cross-reference each other via `[[filename]]`, forming an incrementally updatable, cross-searchable knowledge network.
+This repository is a collection of structured technical study notes for four tracks: **Java Backend**, **Frontend**, **Algorithm Engineer**, and **Big Data**. Knowledge is organized into systematic chapters, with one standalone document per topic. Documents cross-reference each other via `[[filename]]`, forming an incrementally updatable, cross-searchable knowledge network.
 
 See [index.md](./index.md) for the content index, [SCHEMA.md](./SCHEMA.md) for writing conventions, and [log.md](./log.md) for the changelog.
 
 ## Highlights
 
-- **Three systematic tracks**: 51 chapters of Java Full-Stack, 103 chapters of Frontend, 20 chapters of Algorithm Engineer, plus 8 Spring Boot integration guides
+- **Four systematic tracks**: 51 chapters of Java Full-Stack, 103 chapters of Frontend, 20 chapters of Algorithm Engineer, 30 chapters of Big Data, plus 8 Spring Boot integration guides
 - **Wiki-style cross-referencing**: documents link to each other via `[[filename]]`, so you can follow a topic to related ones
 - **Obsidian-native**: `[[filename]]` backlinks + frontmatter tags are Obsidian syntax, so the whole repo opens directly as a Vault
 - **Unified conventions**: YAML frontmatter + fixed section structure keep the whole library consistent, see [SCHEMA.md](./SCHEMA.md)
 - **Incremental updates**: every document carries `created` / `updated` dates, and every operation is logged in [log.md](./log.md)
-- **Roadmaps included**: four roadmap files outline the three tracks plus Big Data (not yet built)
+- **Roadmaps included**: four roadmap files outline the four tracks
 
 ## Statistics
 
@@ -52,8 +52,9 @@ See [index.md](./index.md) for the content index, [SCHEMA.md](./SCHEMA.md) for w
 | Frontend | [frontend-fullstack/](./frontend-fullstack/README.md) | 103 | 433 | Complete |
 | Algorithm Engineer | [algorithm-engineer/](./algorithm-engineer/README.md) | 20 | 142 | Complete |
 | Spring Boot Integration | [spring-boot/](./spring-boot/) | — | 8 | Complete |
+| Big Data | [bigdata/](./bigdata/README.md) | 30 | 133 | Complete |
 
-**785 documents** in total ([index.md](./index.md) registers 787 entries, 2 of which are knowledge-base entry links).
+**918 documents** in total ([index.md](./index.md) registers 920 entries, 2 of which are knowledge-base entry links).
 
 ## Directory Structure
 
@@ -63,13 +64,14 @@ study-work/
 ├── frontend-fullstack/              # Frontend knowledge base (103 chapters / 433 docs)
 ├── algorithm-engineer/              # Algorithm Engineer knowledge base (20 chapters / 142 docs)
 ├── spring-boot/                     # Spring Boot integration guides (8 docs)
+├── bigdata/                         # Big Data knowledge base (30 chapters / 133 docs)
 ├── index.md                         # Content index (start here to find documents)
 ├── SCHEMA.md                        # Writing conventions (frontmatter / tags / structure)
 ├── log.md                           # Changelog
 ├── Java_全栈学习知识体系总目录.md     # Java Full-Stack roadmap
 ├── 前端完整知识库总目录.md            # Frontend roadmap
 ├── 算法工程师学习知识库总目录.md      # Algorithm Engineer roadmap
-└── 大数据学习知识库总目录.md          # Big Data roadmap (knowledge base not yet built)
+└── 大数据学习知识库总目录.md          # Big Data roadmap
 ```
 
 ## Knowledge Bases
@@ -86,6 +88,10 @@ From computer fundamentals, HTML/CSS/JavaScript, to TypeScript, React/Vue, engin
 
 From Python, mathematics, data structures and algorithms, to machine learning, deep learning, CV, LLM/RAG/Agent, and engineering — 20 chapters and 142 documents.
 
+### Big Data — [bigdata/](./bigdata/README.md)
+
+From computer fundamentals, SQL, Hadoop/Hive/Kafka/Spark/Flink, to data warehouse, Lakehouse, CDC, real-time warehouse, big data algorithms, data governance, cloud-native, and enterprise data platform — 30 chapters and 133 documents.
+
 ### Spring Boot Integration — [spring-boot/](./spring-boot/)
 
 8 standalone integration guides: Redis, Redisson, MyBatis, MyBatis-Plus, RabbitMQ, AOP, Email, and Scheduled Tasks.
@@ -100,9 +106,9 @@ The documents use Obsidian-native syntax — `[[filename]]` backlinks + YAML fro
 
 - **Backlinks**: `[[document name]]` references become clickable links; Ctrl/Cmd + click to jump
 - **Backlink panel**: each document shows "what links here"
-- **Graph view**: visualize the knowledge network across the three tracks
+- **Graph view**: visualize the knowledge network across the four tracks
 - **Tag browsing**: frontmatter tags (spring-boot, redis, distributed…) appear in the tag pane; click to group related documents
-- **Full-text search**: Ctrl/Cmd + Shift + F across all 785 documents
+- **Full-text search**: Ctrl/Cmd + Shift + F across all 918 documents
 
 Start with [index.md](./index.md), or use graph view to survey the whole system.
 

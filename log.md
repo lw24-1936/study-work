@@ -150,3 +150,11 @@
 - README.md / README.en.md 新增「用 Obsidian 阅读 / Reading with Obsidian」章节：知识库用 [[wikilink]] + frontmatter tags（Obsidian 原生语法），整库可直接作为 Vault 打开
 - 副标题、徽章行、特性列表、TOC、快速开始同步加入 Obsidian 相关说明（badge 用 7c3aed 紫）
 - 说明双向链接/反向链接/关系图谱/标签面板/全文搜索开箱即用
+## [2026-08-14] create | 大数据学习知识库（bigdata/）
+
+- 基于《大数据学习知识库总目录》新建「大数据学习知识库」，共 30 篇章、133 篇文档
+- 覆盖：学习路线/计算机基础/数学/数据结构算法/SQL/存储/文件格式/Hadoop/Hive/Kafka/Spark/Flink/Trino/数仓/Lakehouse/CDC/实时数仓/大数据算法/数据科学/数据治理/工程化/MLOps/分布式/性能优化/云原生/数据架构/指标体系/源码与论文/安全隐私/面试/项目实战
+- 总目录预处理：重复篇章合并（17/18 大数据算法→「17-大数据算法」、35/39 源码与论文→「35-源码与论文」、37/40 面试与系统设计→「37-面试与系统设计」），41/42 元信息篇章不建目录
+- 编写方式：骨架 scaffold + delegate_task 并行委派（4 篇/子代理批）+ 手工编写核心篇章（14 数据湖/Lakehouse、17 大数据算法部分、35 源码与论文、37 面试、38 项目）
+- 全部 133 篇通过质量校验：frontmatter 完整、围栏偶数、无 emoji、踩坑非空、wikilink 与磁盘一一对应（0 问题）
+- 同步更新：index.md（+133 条 wikilink，总数 920）、README.md / README.en.md（四大方向、数据统计、目录树、知识库总览）、bigdata/README.md 进度表
