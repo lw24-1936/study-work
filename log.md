@@ -257,3 +257,44 @@
 - 按「真实执行」标准：实跑 systemd 255、systemctl get-default（graphical.target）、systemd-analyze（发现本机开机 4min55s、docker.service 拖 2min33s）、systemctl --failed（0 失败单元）、ls /boot 内核与 initramfs
 - 全部通过质量校验，行数 167~200
 - 同步更新：index.md（+5 条 wikilink，总数 969→974）、linux/README.md 进度表（10 篇章 → 已完成）
+
+## [2026-08-18] update | Linux 学习知识库 11、12 篇章完成（一次 2 篇）
+
+- 编写「11-网络基础」6 篇：11.1 TCP/IP 协议栈、11.2 网络配置、11.3 路由与转发、11.4 DNS 与主机名、11.5 网络诊断工具、11.6 TCP 深入
+- 编写「12-防火墙与网络安全」4 篇：12.1 netfilter 框架、12.2 nftables、12.3 firewalld 与 ufw、12.4 安全通信
+- 真实执行：ip addr（WiFi 192.168.1.167 + docker 网桥 + tailscale）、ip route（默认网关 192.168.1.1）、iptables/nft list ruleset（Docker+tailscale 链）、ufw 未启用、ss -tlnp（22/80/3306/2379/3000/19530）、ss -tan 状态统计、sshd -T（发现 PermitRootLogin yes 安全隐患）
+- 全部通过质量校验，行数 166~213
+- 同步更新：index.md（+10 条 wikilink，总数 974→984）、linux/README.md 进度表（11、12 篇章 → 已完成）
+
+## [2026-08-18] update | Linux 学习知识库 13、14 篇章完成（一次 2 篇）
+
+- 编写「13-日志管理与监控」5 篇：13.1 系统日志、13.2 日志轮转与集中、13.3 系统监控、13.4 监控体系、13.5 日志分析实战
+- 编写「14-定时任务与自动化」4 篇：14.1 cron、14.2 systemd timer、14.3 at 与一次性任务、14.4 任务可靠性
+- 真实执行：journalctl/var/log 清单、logrotate 3.21.0 + logrotate.d、监控工具可用性（sysstat 系列齐全、htop 无）、systemctl list-timers（sysstat/logrotate/anacron）、crontab -l（root 空）+ /etc/cron.d（dsh-cert-renew）
+- 全部通过质量校验，行数 151~202
+- 同步更新：index.md（+9 条 wikilink，总数 984→993）、linux/README.md 进度表（13、14 篇章 → 已完成）
+
+## [2026-08-18] update | Linux 学习知识库 15、16 篇章完成（一次 2 篇）
+
+- 编写「15-系统调用与内核基础」4 篇：15.1 系统调用、15.2 内核模块、15.3 内核参数与伪文件系统、15.4 内核编译与升级
+- 编写「16-性能优化与调优」6 篇：16.1 性能分析方法论、16.2 CPU 性能、16.3 内存性能、16.4 IO 性能、16.5 网络性能、16.6 综合调优工具
+- 真实执行：strace 6.8（ls 发 75 次系统调用）、lsmod（nvidia 105MB + 239 模块 + 4 内核）、sysctl（3264 参数）、uname（7.0.0-28）、uptime（8 核 load 0.91）、perf 7.0.12、IO 调度器 mq-deadline、/proc/interrupts
+- 全部通过质量校验，行数 150~206
+- 同步更新：index.md（+10 条 wikilink，总数 993→1003）、linux/README.md 进度表（15、16 篇章 → 已完成）
+
+## [2026-08-18] update | Linux 学习知识库 17、18 篇章完成（一次 2 篇）
+
+- 编写「17-故障排查与调试」4 篇：17.1 排查方法论、17.2 系统追踪、17.3 调试工具、17.4 常见故障案例
+- 编写「18-共享存储与数据备份」4 篇：18.1 共享存储、18.2 数据备份与恢复、18.3 文件同步、18.4 存储性能与容量
+- 真实执行：strace/ltrace/gdb/addr2line 工具可用性、core_pattern（apport）、ulimit -n=1024 + lsof 330847 打开文件、df/df -i（8%/2%）、rsync 3.2.7、无 nfs/samba 挂载
+- 全部通过质量校验，行数 164~196
+- 同步更新：index.md（+8 条 wikilink，总数 1003→1011）、linux/README.md 进度表（17、18 篇章 → 已完成）
+
+## [2026-08-18] update | Linux 学习知识库 19、20 篇章完成（完整模板，一次 2 篇）
+
+- 编写「19-高可用与负载均衡」5 篇：19.1 高可用基础、19.2 Keepalived 与 VRRP、19.3 LVS 负载均衡、19.4 HAProxy 与 Nginx、19.5 集群与一致性
+- 编写「20-网络服务」5 篇：20.1 Web 服务、20.2 DNS 服务、20.3 DHCP 与时间同步、20.4 文件共享服务、20.5 邮件与消息
+- 响应反馈升级为「完整模板」：每篇含 概述/核心概念/工作原理/常用命令与配置/配置文件解析/应用场景实战/性能与调优/安全与权限/故障排查/常见问题/面试题/最佳实践与踩坑记录/相关文档 共 13 节（此前 5~7 节偏薄）
+- 真实执行：nginx 1.24.0（3 站点：default/deepseek-harness/new-admin）、dnsmasq/dig 9.18、timedatectl（Asia/Shanghai、NTP active）、etcd 2379、keepalived/haproxy/LVS/chrony/postfix 未装
+- 全部通过质量校验，行数 265~291
+- 同步更新：index.md（+10 条 wikilink，总数 1011→1021）、linux/README.md 进度表（19、20 篇章 → 已完成）

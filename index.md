@@ -1,7 +1,7 @@
 # 学习笔记索引
 
 > 内容目录。每篇文档附一句话摘要。先读这里找到相关文档。
-> 最后更新：2026-08-18 | 总文档数：974
+> 最后更新：2026-08-18 | 总文档数：1021
 
 ## 参考资源
 
@@ -1536,7 +1536,7 @@
 
 ## Linux 知识库
 
-> 基于《Linux学习知识库总目录》搭建目录骨架（26 篇章、128 个主题），01~10 篇章已完成，其余待逐步编写。入口见 `linux/README.md`。
+> 基于《Linux学习知识库总目录》搭建目录骨架（26 篇章、128 个主题），01~20 篇章已完成，其余待逐步编写。入口见 `linux/README.md`。
 
 - [[linux/README]] — Linux 知识库：目录树（26 篇章）+ 进度追踪表，覆盖命令行、Shell 脚本与三剑客、权限与文件系统、进程与内存、软件包与 systemd、网络与防火墙、日志监控、性能调优、故障排查、存储与高可用、容器与自动化运维、内核与 eBPF 全链路
 
@@ -1621,3 +1621,80 @@
 - [[10.3-编写 Service Unit]] — unit 配置、Type/ExecStart/Restart、日志集成
 - [[10.4-运行级别与 target]] — multi-user/graphical.target、rescue/emergency
 - [[10.5-启动排错]] — 单用户模式、grub 修复、急救模式
+
+### 11-网络基础
+
+- [[11.1-TCP-IP 协议栈]] — OSI/TCP/IP 模型、IP 地址与子网、路由、ARP、ICMP
+- [[11.2-网络配置]] — ip/ifconfig、网卡配置、静态与 DHCP、NetworkManager/systemd-networkd
+- [[11.3-路由与转发]] — 路由表、默认网关、IP 转发、策略路由
+- [[11.4-DNS 与主机名]] — /etc/hosts、resolv.conf、dig/nslookup/host、hostnamectl
+- [[11.5-网络诊断工具]] — ping/traceroute/ss/netstat/nc/tcpdump/mtr/ethtool
+- [[11.6-TCP 深入]] — 三次握手、四次挥手、状态机、TIME_WAIT、Keepalive、拥塞控制
+
+### 12-防火墙与网络安全
+
+- [[12.1-netfilter 框架]] — iptables 表与链、规则匹配、NAT、端口转发
+- [[12.2-nftables]] — nft 语法、表/链/规则、与 iptables 对比
+- [[12.3-firewalld-ufw]] — 区域、服务、富规则、直接规则
+- [[12.4-安全通信]] — SSH 加固、OpenSSL、证书、TLS、VPN
+
+### 13-日志管理与监控
+
+- [[13.1-系统日志]] — syslog/rsyslog、journald、日志级别与设施
+- [[13.2-日志轮转与集中]] — logrotate、日志归档、rsyslog 远程转发、ELK/Loki
+- [[13.3-系统监控]] — top/htop/vmstat/iostat/mpstat/sar/pidstat
+- [[13.4-监控体系]] — Prometheus/node_exporter、Grafana、告警（Alertmanager）
+- [[13.5-日志分析实战]] — 日志检索、异常定位、审计追踪
+
+### 14-定时任务与自动化
+
+- [[14.1-cron]] — crontab 语法、系统级与用户级、特殊字符串、环境变量
+- [[14.2-systemd timer]] — timer unit、OnCalendar、与 cron 对比
+- [[14.3-at 与一次性任务]] — at/batch、anacron
+- [[14.4-任务可靠性]] — 任务锁、日志、失败重试、邮件通知
+
+### 15-系统调用与内核基础
+
+- [[15.1-系统调用]] — 系统调用机制、用户态与内核态、strace 追踪
+- [[15.2-内核模块]] — lsmod/modprobe/insmod、模块依赖、/lib/modules
+- [[15.3-内核参数与伪文件系统]] — sysctl、/proc/sys、内核调优参数
+- [[15.4-内核编译与升级]] — 内核源码、make menuconfig、内核升级与回滚
+
+### 16-性能优化与调优
+
+- [[16.1-性能分析方法论]] — 性能指标、USE 方法、容量规划、基线
+- [[16.2-CPU 性能]] — 负载、上下文切换、中断、CPU 亲和性、perf
+- [[16.3-内存性能]] — 页缓存、内存水位、swap、内存分配
+- [[16.4-IO 性能]] — IO 调度器、磁盘吞吐与延迟、块设备调优
+- [[16.5-网络性能]] — 网络吞吐、延迟、TCP 调优、网卡多队列
+- [[16.6-综合调优工具]] — perf/bcc/bpftrace/eBPF、火焰图
+
+### 17-故障排查与调试
+
+- [[17.1-排查方法论]] — 故障分类、分层排查、信息收集、根因分析
+- [[17.2-系统追踪]] — strace/ltrace、系统调用追踪、性能问题定位
+- [[17.3-调试工具]] — gdb/pstack/addr2line/coredump 分析
+- [[17.4-常见故障案例]] — 磁盘满、OOM、CPU 飙高、网络异常、无法登录、文件句柄耗尽
+
+### 18-共享存储与数据备份
+
+- [[18.1-共享存储]] — NFS/Samba/iSCSI、Ceph/GlusterFS
+- [[18.2-数据备份与恢复]] — 备份策略、rsync/restic/borg、快照与恢复演练
+- [[18.3-文件同步]] — rsync 增量同步、inotify/lsyncd 实时同步
+- [[18.4-存储性能与容量]] — 存储性能评估、容量规划、磁盘老化与替换
+
+### 19-高可用与负载均衡
+
+- [[19.1-高可用基础]] — 高可用概念、心跳、脑裂、仲裁、故障转移
+- [[19.2-Keepalived 与 VRRP]] — VRRP 协议、主备切换、健康检查、VIP 漂移
+- [[19.3-LVS 负载均衡]] — NAT/DR/TUN 模式、调度算法、持久化连接
+- [[19.4-HAProxy 与 Nginx]] — 七层/四层负载均衡、健康检查、会话保持、限流
+- [[19.5-集群与一致性]] — 主从复制、主主、共享存储集群、分布式锁
+
+### 20-网络服务
+
+- [[20.1-Web 服务]] — Nginx/Apache、虚拟主机、反向代理、TLS 证书
+- [[20.2-DNS 服务]] — BIND/dnsmasq/CoreDNS、区域、记录类型、解析流程
+- [[20.3-DHCP 与时间同步]] — dnsmasq/isc-dhcp、NTP/chrony、时区
+- [[20.4-文件共享服务]] — Samba/NFS/FTP/SFTP/rsync
+- [[20.5-邮件与消息]] — Postfix、邮件协议、基础邮件服务
