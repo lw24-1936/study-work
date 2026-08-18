@@ -15,7 +15,7 @@
   <img src="https://img.shields.io/badge/知识库-4%20个-0969da" alt="知识库"/>
   <img src="https://img.shields.io/badge/Spring%20Boot-8%20篇-eb6f2d" alt="Spring Boot"/>
   <img src="https://img.shields.io/badge/Obsidian-兼容-7c3aed" alt="Obsidian"/>
-  <img src="https://img.shields.io/badge/更新-2026.08.14-6e7781" alt="更新"/>
+  <img src="https://img.shields.io/badge/更新-2026.08.19-6e7781" alt="更新"/>
 </p>
 
 ## 目录
