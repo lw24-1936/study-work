@@ -201,3 +201,59 @@
 - 真实发现：/api/pair/heartbeat 接口 527 次全 401（鉴权失败客户端反复重试）、状态码 401:527 / 200:279 / 101:18、请求路径 TOP 榜
 - 全部通过质量校验（frontmatter/围栏/emoji/踩坑/wikilink），行数 165~268
 - 同步更新：index.md（+6 条 wikilink，总数 929→935）、linux/README.md 进度表（03 篇章 → 已完成）
+
+## [2026-08-18] update | Linux 学习知识库 04 篇章完成
+
+- 编写「04-Shell 脚本编程」7 篇：04.1 Bash 基础、04.2 运算符与流程控制、04.3 函数、04.4 数组与字符串处理、04.5 输入输出重定向、04.6 进程与子 Shell、04.7 调试与规范
+- 按「真实执行」标准：写演示脚本实跑（脚本结构/位置参数/函数/数组/重定向/子shell/后台任务/trap/set选项），真实输出嵌入文档
+- 全部通过质量校验，行数 165~211
+- 同步更新：index.md（+7 条 wikilink，总数 935→942）、linux/README.md 进度表（04 篇章 → 已完成）
+
+## [2026-08-18] update | Linux 学习知识库 05 篇章完成
+
+- 编写「05-用户与权限管理」6 篇：05.1 用户与组、05.2 基本权限、05.3 特殊权限与 ACL、05.4 提权与 sudo、05.5 PAM 可插拔认证、05.6 资源限制
+- 按「真实执行」标准：实跑 useradd/usermod/userdel、umask、SUID 程序（passwd/sudo）、visudo -c、ulimit -a、cgroup2 挂载等，真实输出嵌入文档；/etc/shadow 哈希已脱敏
+- 全部通过质量校验，行数 157~188
+- 同步更新：index.md（+6 条 wikilink，总数 942→948）、linux/README.md 进度表（05 篇章 → 已完成）
+
+## [2026-08-18] update | Linux 学习知识库 06 篇章完成
+
+- 编写「06-磁盘与文件系统」6 篇：06.1 磁盘与分区、06.2 文件系统、06.3 逻辑卷管理 LVM、06.4 RAID、06.5 交换空间、06.6 磁盘配额与工具
+- 按「真实执行」标准：实跑 lsblk/df -hT/blkid/fdisk/fstab/swapon/swappiness 等，真实输出嵌入文档（本机双系统：sda ext4 + sdb ntfs，swap 为 8G 文件）
+- 全部通过质量校验，行数 144~196
+- 同步更新：index.md（+6 条 wikilink，总数 948→954）、linux/README.md 进度表（06 篇章 → 已完成）
+
+## [2026-08-18] update | Linux 学习知识库 07 篇章完成
+
+- 编写「07-进程与作业管理」6 篇：07.1 进程基础、07.2 进程管理命令、07.3 进程优先级、07.4 信号、07.5 进程间通信 IPC、07.6 守护进程
+- 按「真实执行」标准：实跑 ps -ef/ps aux/pgrep nginx/kill -l/ipcs/systemctl list-units 等，真实输出嵌入文档（nginx master+8 worker、内核线程 nice=-20、ipcs 当前为空）
+- 全部通过质量校验，行数 159~198
+- 同步更新：index.md（+6 条 wikilink，总数 954→960）、linux/README.md 进度表（07 篇章 → 已完成）
+
+## [2026-08-18] update | Linux 学习知识库 08 篇章完成
+
+- 编写「08-内存管理」4 篇：08.1 虚拟内存、08.2 内存分配与回收、08.3 Swap 与 OOM、08.4 内存监控与调优
+- 按「真实执行」标准：实跑 free -h//proc/meminfo/vmstat/ps 等，真实输出嵌入文档（free used=10Gi 但 available=8.7Gi 的页缓存教材、nacos/chrome/jenkins 内存大户、swappiness=60/overcommit=0/min_free_kbytes=67584）
+- 全部通过质量校验，行数 173~186
+- 同步更新：index.md（+4 条 wikilink，总数 960→964）、linux/README.md 进度表（08 篇章 → 已完成）
+
+## [2026-08-18] update | Linux 学习知识库 09 篇章完成
+
+- 编写「09-软件包管理」5 篇：09.1 Debian 系、09.2 Red Hat 系、09.3 源码编译、09.4 通用包格式、09.5 软件源与镜像
+- 参考 linux-command（wangchujiang.com）资料：DNF 取代 yum（libsolv/hawkey）等背景；Debian + CentOS 双系完整覆盖（apt/dpkg 与 dnf/yum/rpm 对照）
+- 真实执行：实跑 apt/dpkg（apt 2.8.3、dpkg 1.22.6、1846 包）、gcc 13.3.0、snap 已装/flatpak 未装、Ubuntu 24.04 deb822 .sources 源格式
+- 全部通过质量校验，行数 171~189
+- 同步更新：index.md（+5 条 wikilink，总数 964→969）、linux/README.md 进度表（09 篇章 → 已完成）
+
+## [2026-08-18] update | 补充 CentOS 系统内容（01.1 发行版选择）
+
+- 01.1 发行版选择新增「Ubuntu 与 CentOS/RHEL 关键差异」对比表：包管理器（apt/dpkg vs dnf/yum/rpm）、默认文件系统（ext4 vs XFS）、防火墙（ufw vs firewalld）、安全模块（AppArmor vs SELinux）、软件源配置路径
+- 新增「选型建议」：学习用 Ubuntu、企业生产用 CentOS/Rocky/AlmaLinux、本库以 Ubuntu 实测为主 + Red Hat 系差异标注
+- 说明：命令层面 95% 相同，差异集中在包管理/防火墙/安全模块/文件系统默认值，各章节已按「Red Hat 系」标注
+
+## [2026-08-18] update | Linux 学习知识库 10 篇章完成
+
+- 编写「10-系统启动与 systemd」5 篇：10.1 开机启动流程、10.2 systemd、10.3 编写 Service Unit、10.4 运行级别与 target、10.5 启动排错
+- 按「真实执行」标准：实跑 systemd 255、systemctl get-default（graphical.target）、systemd-analyze（发现本机开机 4min55s、docker.service 拖 2min33s）、systemctl --failed（0 失败单元）、ls /boot 内核与 initramfs
+- 全部通过质量校验，行数 167~200
+- 同步更新：index.md（+5 条 wikilink，总数 969→974）、linux/README.md 进度表（10 篇章 → 已完成）

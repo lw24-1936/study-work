@@ -1,7 +1,7 @@
 # 学习笔记索引
 
 > 内容目录。每篇文档附一句话摘要。先读这里找到相关文档。
-> 最后更新：2026-08-18 | 总文档数：935
+> 最后更新：2026-08-18 | 总文档数：974
 
 ## 参考资源
 
@@ -1536,7 +1536,7 @@
 
 ## Linux 知识库
 
-> 基于《Linux学习知识库总目录》搭建目录骨架（26 篇章、128 个主题），01~03 篇章已完成，其余待逐步编写。入口见 `linux/README.md`。
+> 基于《Linux学习知识库总目录》搭建目录骨架（26 篇章、128 个主题），01~10 篇章已完成，其余待逐步编写。入口见 `linux/README.md`。
 
 - [[linux/README]] — Linux 知识库：目录树（26 篇章）+ 进度追踪表，覆盖命令行、Shell 脚本与三剑客、权限与文件系统、进程与内存、软件包与 systemd、网络与防火墙、日志监控、性能调优、故障排查、存储与高可用、容器与自动化运维、内核与 eBPF 全链路
 
@@ -1561,3 +1561,63 @@
 - [[03.4-awk]] — 字段与记录、内置变量、模式与动作、条件/循环/数组、字符串与数值函数、BEGIN/END
 - [[03.5-其他文本工具]] — sort/uniq/tr/cut/paste/join/comm/diff/patch/wc 十件套
 - [[03.6-实战案例]] — Nginx 日志统计、CSV 与配置文件处理、批量改名
+
+### 04-Shell 脚本编程
+
+- [[04.1-Bash 基础]] — 脚本结构与执行、变量与作用域、环境变量、位置参数、特殊变量
+- [[04.2-运算符与流程控制]] — 算术与字符串运算、test/[[]]、if/case、for/while/until/select
+- [[04.3-函数]] — 函数定义、参数传递、返回值、局部变量、函数库
+- [[04.4-数组与字符串处理]] — 一维与关联数组、字符串截取与替换、参数扩展
+- [[04.5-输入输出重定向]] — 文件描述符、Here Document、Here String、进程替换
+- [[04.6-进程与子 Shell]] — 子 shell、命令替换、后台任务、作业控制、trap
+- [[04.7-调试与规范]] — set -x/-e/-u/-o pipefail、shellcheck、编码规范与可移植性
+
+### 05-用户与权限管理
+
+- [[05.1-用户与组]] — passwd/shadow/group/gshadow 四个账号文件、useradd/usermod/userdel/groupadd
+- [[05.2-基本权限]] — rwx 权限、chmod/chown/chgrp、umask 与默认权限
+- [[05.3-特殊权限与 ACL]] — SUID/SGID/Sticky Bit、setfacl/getfacl、ACL 掩码与默认 ACL
+- [[05.4-提权与 sudo]] — su/sudo、sudoers、visudo、sudo 日志与审计、Polkit
+- [[05.5-PAM 可插拔认证]] — PAM 模块、认证流程、pam_unix/pam_tally2/pam_limits
+- [[05.6-资源限制]] — ulimit、limits.conf、cgroups 资源限制
+
+### 06-磁盘与文件系统
+
+- [[06.1-磁盘与分区]] — 磁盘结构、MBR/GPT、fdisk/parted/gdisk 分区工具
+- [[06.2-文件系统]] — VFS、ext4/XFS/Btrfs/ZFS、格式化挂载、fstab/UUID、fsck
+- [[06.3-逻辑卷管理 LVM]] — PV/VG/LV 三层、创建扩容缩容快照
+- [[06.4-RAID]] — RAID 0/1/5/6/10、软 RAID mdadm
+- [[06.5-交换空间]] — swap 分区与文件、swappiness
+- [[06.6-磁盘配额与工具]] — quota、df/du/lsblk/blkid/iostat
+
+### 07-进程与作业管理
+
+- [[07.1-进程基础]] — 进程/线程/任务、PID/PPID、进程状态、fork/exec
+- [[07.2-进程管理命令]] — ps/top/htop/pgrep/pkill/kill/killall/jobs/fg/bg/nohup
+- [[07.3-进程优先级]] — nice/renice、调度器与优先级、cgroups CPU 限制
+- [[07.4-信号]] — 信号机制、SIGTERM/SIGKILL/SIGINT/SIGHUP、signal/trap
+- [[07.5-进程间通信 IPC]] — 管道/命名管道/信号量/共享内存/消息队列/socket
+- [[07.6-守护进程]] — 守护进程特征、nohup、systemd 托管、日志重定向
+
+### 08-内存管理
+
+- [[08.1-虚拟内存]] — 虚拟地址空间、分页、页表与 TLB、mmap 内存映射
+- [[08.2-内存分配与回收]] — 页缓存、Buffer/Cache、匿名页、内存水位线、回收机制
+- [[08.3-Swap 与 OOM]] — 交换、swappiness、OOM Killer、内存超售与隔离
+- [[08.4-内存监控与调优]] — free/vmstat/top/sar、内存泄漏排查、cgroups 内存限制
+
+### 09-软件包管理
+
+- [[09.1-Debian 系]] — apt/dpkg、软件源、依赖解析、apt-get/apt-cache
+- [[09.2-Red Hat 系]] — yum/dnf/rpm、仓库管理、dnf 常用操作
+- [[09.3-源码编译]] — configure/make/make install、configure 选项、编译依赖
+- [[09.4-通用包格式]] — Snap/Flatpak/AppImage
+- [[09.5-软件源与镜像]] — 官方源与镜像源、自建本地源、密钥签名校验
+
+### 10-系统启动与 systemd
+
+- [[10.1-开机启动流程]] — BIOS/UEFI、GRUB2、内核加载、initramfs、systemd
+- [[10.2-systemd]] — unit 类型、systemctl 操作、依赖关系、启动顺序
+- [[10.3-编写 Service Unit]] — unit 配置、Type/ExecStart/Restart、日志集成
+- [[10.4-运行级别与 target]] — multi-user/graphical.target、rescue/emergency
+- [[10.5-启动排错]] — 单用户模式、grub 修复、急救模式
