@@ -298,3 +298,8 @@
 - 真实执行：nginx 1.24.0（3 站点：default/deepseek-harness/new-admin）、dnsmasq/dig 9.18、timedatectl（Asia/Shanghai、NTP active）、etcd 2379、keepalived/haproxy/LVS/chrony/postfix 未装
 - 全部通过质量校验，行数 265~291
 - 同步更新：index.md（+10 条 wikilink，总数 1011→1021）、linux/README.md 进度表（19、20 篇章 → 已完成）
+## [2026-08-19] update | Linux 学习知识库全部完成
+
+- 补全 04.6/04.7、05.1~05.6、11.5/11.6 共 10 篇为完整 13 节模板（01~20 篇章全部完整版）
+- 从零完成 21~26 篇章共 29 篇：虚拟化与容器、自动化运维 IaC、安全加固审计、内核源码驱动 eBPF、面试与系统设计、综合项目实战
+- 全库 26 篇章 128 篇文档全部「已完成」，内容完整优先（不设行数上限）
