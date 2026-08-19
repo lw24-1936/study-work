@@ -324,3 +324,13 @@
 - 主要新增：四层 vs OSI 对照表、CIDR 换算、ARP 状态机、MTU/MSS/巨型帧、netplan YAML 详解、DHCP DORA、策略路由 fwmark（结合本机 Tailscale 规则）、bond/VLAN、DNS 解析链路图与五步排错法、TCP 队列与 2MSL、Nagle+延迟确认、BBR、长肥管道调优
 - Red Hat 系差异标注：ifcfg/nmcli/firewalld 对照表、RHEL 8+ BBR 内置、Red Hat route-<iface> 持久化三方对比
 - wikilink 全部有效（脚本校验无失效链接），frontmatter updated=2026-08-19
+
+## [2026-08-19] update | Linux 知识库 12-防火墙与网络安全 4 篇内容完整度扩充（全部 13 节模板）
+
+- 12 章 4 篇从偏薄版（294~331 行）扩充为完整 13 节模板：12.1-netfilter 框架（710 行）、12.2-nftables（687 行）、12.3-firewalld-ufw（858 行）、12.4-安全通信（852 行），合计约 3107 行
+- 硬性指标全达标：场景 4~5 个、坑 9~10 个、问答 7~8 条、面试题 7~8 道、故障排查子案例 3~4 个
+- 实测输出：iptables --version 证实 nf_tables 后端、update-alternatives 软链、iptables -L/-S/-t nat -S、lsmod 引用数、nf_conntrack 参数与 6 个超时、nft list ruleset（iptables-nft 警告实证）、nft 临时表安全实验、ufw status/app list、firewall-cmd 未装标注、sshd -T 实测 PermitRootLogin/PasswordAuthentication 隐患、DOCKER/DOCKER-USER 链实证、tailscale status、openssl s_client 百度证书链 verify return:1
+- 主要新增：钩子点与表对应关系、三条包路径流程图、conntrack 状态匹配、NAT 三兄弟、iptables-save 逐字段解析、DOCKER-USER 链、nft 字节码虚拟机与 iptables-nft 翻译机制、set 区间匹配+动态封禁、nft -f 原子提交、zone 九区语义、runtime vs permanent、firewalld↔ufw 双栏对照、Docker 绕过 ufw 机制、SSH 握手五阶段、TLS 1.2 vs 1.3、WireGuard Noise 协议与 AllowedIPs、SSH 隧道三模式、证书链验证三错
+- Red Hat 系差异标注：RHEL 8+ nftables 后端、firewalld 管理 nftables、iptables-services 持久化对照
+- 格式修正：12.1/12.2 踩坑记录由 `**坑 N**+bullet` 统一为库内标准 `坑 N：` 三行式
+- wikilink 全部有效，frontmatter updated=2026-08-19
