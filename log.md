@@ -354,3 +354,12 @@
 - Red Hat 系差异标注：cronie vs cron、anacron 机制、/etc/anacrontab、RHEL 7 systemd 219 无秒精度/RandomizedDelaySec、at 包差异
 - 实测发现并纠正：@every_minute 在 Debian cron 不支持（bad time specifier）
 - wikilink 全部有效，frontmatter updated=2026-08-19
+
+## [2026-08-19] update | Linux 知识库 15-系统调用与内核基础 4 篇内容完整度扩充（全部 13 节模板）
+
+- 15 章 4 篇从偏薄版（240~272 行）扩充为完整 13 节模板：15.1-系统调用（743 行）、15.2-内核模块（810 行）、15.3-内核参数与伪文件系统（724 行）、15.4-内核编译与升级（765 行），合计约 3042 行
+- 硬性指标全达标：场景 4~5 个、坑 9~12 个、问答 8~10 条、面试题 7~9 道、故障排查子案例 4~6 个
+- 实测输出：strace -c/-e trace=/-t 系列（77 次调用、openat ENOENT、connect EINPROGRESS）、vDSO 免陷入实证（strace gettimeofday 零输出）、/proc/self/maps vdso/vvar、unistd_64.h 系统调用编号、vermagic 指纹与 taint 位图、modules.dep/depmod 原理、sysctl -a 3302 项、/proc/meminfo|cpuinfo|loadavg、/proc/1/ 目录 60 项、/sys/class/net|block、/boot 双内核并存、gcc 13.3.0/make 4.3、编译依赖检查、/etc/default/grub
+- 主要新增：用户态/内核态 ring0/3、syscall 调用链与 x86-64 传参约定、vDSO 优化、strace 实战（启动慢/配置读取/隐藏请求）、seccomp、LKM 加载流程、modprobe vs insmod、blacklist+initramfs 联动、DKMS vs akmod、Secure Boot/MOK、sysctl 三类生效方式、22 项参数速查表、/proc/PID/ 逐文件详解、hidepid、容器 /proc/sys 共享陷阱、CONFIG y/m/n 与 vermagic 绑定、initramfs 挂根、olddefconfig/localmodconfig 对比、RHEL grub2-mkconfig/grubby 差异、生产升级灰度与回滚预案
+- Red Hat 系差异标注：kernel-devel、/etc/modprobe.conf、dracut、SELinux、/usr/lib/sysctl.d 层级、grub2-mkconfig、yum groupinstall 对照
+- wikilink 全部有效，frontmatter updated=2026-08-19
