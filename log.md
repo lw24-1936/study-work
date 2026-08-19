@@ -334,3 +334,13 @@
 - Red Hat 系差异标注：RHEL 8+ nftables 后端、firewalld 管理 nftables、iptables-services 持久化对照
 - 格式修正：12.1/12.2 踩坑记录由 `**坑 N**+bullet` 统一为库内标准 `坑 N：` 三行式
 - wikilink 全部有效，frontmatter updated=2026-08-19
+
+## [2026-08-19] update | Linux 知识库 13-日志管理与监控 5 篇内容完整度扩充（全部 13 节模板）
+
+- 13 章 5 篇从偏薄版（245~280 行）扩充为完整 13 节模板：13.1-系统日志（758 行）、13.2-日志轮转与集中（786 行）、13.3-系统监控（946 行）、13.4-监控体系（945 行）、13.5-日志分析实战（902 行），合计约 4337 行
+- 硬性指标全达标：场景 4~6 个、坑 9~11 个、问答 8~10 条、面试题 8 道、故障排查子案例 4 个
+- 实测输出：journalctl 全命令族（-n/-u/-p/-o json/short-iso/--since/-t/--list-boots/--disk-usage 637.9M）、rsyslog.conf 与 journald.conf 全文、logrotate -d 预演与 timer 触发、du 实测 journal 638M 最大、uptime/top/vmstat/free/df/iostat（r_await 235ms/%util 90.5% 实测）/mpstat/sar/sadf/pidstat、sysstat systemd timer 驱动实证（ENABLED 开关失效坑）、apt 装 prometheus-node-exporter 抓 2655 个 node_* 指标、nginx access.log 合并分析（状态码分布/PV=1118/IP 排行/23 物理字段）、auth.log Accepted 统计、last/lastb、grep -B1 -A2、awk RS 多行堆栈合并、OOM 检查、fail2ban 未装确认
+- 主要新增：facility/priority 数值表、/var/log 文件用途表、journald 与 rsyslog 双通道、create vs copytruncate inode 原理、rsyslog 集中服务器 imtcp+模板、logrotate 指令速查表、USE 法/红黑法、top/vmstat/iostat 全列含义表、监控基线健康阈值表、Prometheus 架构与 PromQL、node_exporter 指标对照、Alertmanager 告警路由、Zabbix vs Prometheus 对比、日志分析四步法与命令速查表、fail2ban jail 配置、日志脱敏与合规
+- Red Hat 系差异标注：messages vs syslog、secure vs auth.log、RHEL journald 默认持久化、sar 默认启用差异、tuned、/var/log/audit 对照
+- 备注：13.4 实测时本机安装了 prometheus-node-exporter（systemd 服务，9100 端口）用于抓取真实指标，未清理（用户未批准卸载命令），如不需要可自行停止并卸载
+- wikilink 全部有效，frontmatter updated=2026-08-19
