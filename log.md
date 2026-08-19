@@ -400,3 +400,13 @@
 - 主要新增：可用性 9 数对照表、MTBF/MTTR、SPOF 排查清单、脑裂防线（仲裁/fencing）、VRRP 状态机与 skew_time 公式、VIP 漂移免费 ARP、双 VIP 互备、nopreempt、LVS 三模式对比表、10 种调度算法、DR 模式 ARP 专题（arp_ignore/arp_announce）、keepalived+LVS 高可用架构、haproxy.cfg 全段逐行解析、stats 页、Nginx upstream 被动健康检查、LVS vs HAProxy vs Nginx 选型表、CAP/BASE、Raft 选举图文、etcd MVCC+watch+lease、Pacemaker/STONITH、奇数节点容错表、etcd 调优（auto-compaction/defrag）
 - Red Hat 系差异标注：firewalld vrrp 服务、SELinux keepalived_connect_any、/etc/sysconfig/ipvsadm、EPEL haproxy/nginx、semanage port、RHEL HA Add-On、corosync.conf
 - wikilink 全部有效，frontmatter updated=2026-08-19
+
+## [2026-08-19] update | Linux 知识库 20-网络服务 5 篇内容完整度扩充（全部 13 节模板）—— 11~20 章扩充波收官
+
+- 20 章 5 篇从偏薄版（271~281 行）扩充为完整 13 节模板：20.1-Web 服务（865 行）、20.2-DNS 服务（802 行）、20.3-DHCP 与时间同步（704 行）、20.4-文件共享服务（713 行）、20.5-邮件与消息（977 行），合计约 4061 行
+- 硬性指标全达标：场景 4~5 个、坑 9 个、问答 8 条、面试题 7~8 道、故障排查子案例 4~5 个
+- 实测输出：本机 nginx 3 站点配置逐行解析（default/deepseek-harness/new-admin）、ss 80/8082/443 监听、curl 暴露版本号实测、openssl s_client Let's Encrypt 证书链、dig 全套（+trace/+norecurse/MX/NS/TXT/-x）、systemd-resolved 占 53 端口冲突现场、timedatectl 全家桶、dnsmasq 未启用核实、NFS/Samba/vsftpd 未装如实标注、docker 实测（rabbitmq4.3.4 真实队列/DLX/direct-topic 交换机全量输出、pa-redis PUBLISH/SUBSCRIBE 双向演示、XADD/XRANGE 完整输出）、Postfix 未装标注
+- 主要新增：location 匹配优先级（= > ^~ > ~* > 前缀）、proxy_pass 斜杠规则、SPA try_files、WebSocket 反代三件套、TLS+HSTS、zone 文件 SOA 八段解析、AXFR 主从、dnsmasq 与 systemd-resolved 共存、DNS 劫持/投毒与 DNSSEC、DORA 四步图、T1/T2 租约、NTP 四时间戳公式与 Marzullo 算法、chrony vs timesyncd vs ntpd 对比、NFSv3/v4 端口架构、FTP 主动/被动双通道、SFTP ChrootDirectory、SMB 协议演进、MUA/MTA/MDA 链路、telnet 手工 SMTP、SPF/DKIM/DMARC、RabbitMQ 四类交换机+延迟队列（对照本机 orjuice.order.delay/dlx 真实绑定）、Redis Pub/Sub vs Stream、Kafka 分区/消费者组、MQTT QoS、消息服务选型决策表
+- Red Hat 系差异标注：sites-enabled vs conf.d、bind9 vs bind、chrony 默认、dhcp-server 包、nfs-utils、samba_export_all_rw、MTA 包、EPEL、SELinux 布尔值
+- 至此 Linux 知识库 11~20 章内容完整度扩充波全部完成：10 个 commit（7f14ca8 → 本次），60 篇全部 13 节模板 + 场景3坑7问答面试6+ 达标，实测输出与 Red Hat 差异标注全覆盖，wikilink 全部有效
+- wikilink 全部有效，frontmatter updated=2026-08-19
