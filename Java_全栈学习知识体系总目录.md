@@ -2732,6 +2732,81 @@ RabbitMQ/Kafka
 - Agent
 - MCP
 
+## 项目十：博客内容管理系统（新增落地项目）
+- Spring Boot
+- MyBatis-Plus
+- Redis 缓存（详情/计数/热门榜）
+- Elasticsearch 全文搜索
+- 评论审核
+
+## 项目十一：在线考试系统（新增落地项目）
+- Spring Boot
+- MyBatis-Plus
+- Redis
+- 随机组卷
+- 自动判分
+- 防作弊
+
+## 项目十二：医院预约挂号系统（新增落地项目）
+- Spring Boot
+- Redis
+- Redisson 分布式锁
+- MQ
+- 号源池 / 定时放号
+- 预约状态机
+
+## 项目十三：酒店预订管理系统（新增落地项目）
+- Spring Boot
+- Redis
+- 分布式锁
+- 房态日历
+- 订单状态机
+
+## 项目十四：短链接服务（新增落地项目）
+- Spring Boot
+- Redis
+- DB 号段发号器
+- 布隆过滤器
+- 302 重定向
+- PV/UV 统计
+
+## 项目十五：任务协作看板系统（新增落地项目）
+- Spring Boot
+- WebSocket
+- RBAC
+- 看板 / 列表 / 卡片模型
+- 拖拽状态流转
+
+## 项目十六：会员积分与营销系统（新增落地项目）
+- Spring Boot
+- MySQL
+- Redis
+- 积分流水 / 余额一致性
+- 签到日历
+- 积分排行榜
+
+## 项目十七：企业网盘系统（新增落地项目）
+- Spring Boot
+- MinIO
+- 分片上传 / 断点续传 / 秒传
+- 预签名 URL
+- 分享链接
+- 回收站
+
+## 项目十八：企业即时通讯系统（新增落地项目）
+- Spring Boot
+- WebSocket
+- 离线消息
+- 已读回执
+- 在线状态
+
+## 项目十九：工单客服系统（新增落地项目）
+- Spring Boot
+- 状态机
+- SLA 时效管理
+- 智能分派
+- 满意度评价
+
 ---
 
 ## 最终建议的知识库目录结构
