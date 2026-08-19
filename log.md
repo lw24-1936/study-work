@@ -315,3 +315,12 @@
 
 - README.md / README.en.md 补充 Linux 运维方向：数据统计表加 Linux 行（26 篇章 / 128 篇）、目录结构树、知识库总览、五大方向文案
 - 合计文档数 918 -> 1046，index.md 注册数更新为 1050
+
+## [2026-08-19] update | Linux 知识库 11-网络基础 6 篇内容完整度扩充（全部 13 节模板）
+
+- 11 章 6 篇从偏薄版（258~358 行）扩充为完整 13 节模板：11.1-TCP-IP 协议栈（660 行）、11.2-网络配置（759 行）、11.3-路由与转发（705 行）、11.4-DNS 与主机名（747 行）、11.5-网络诊断工具（787 行）、11.6-TCP 深入（937 行），合计约 4595 行
+- 硬性指标全达标：场景 3~6 个、坑 9~10 个、问答 7~8 条、面试题 8~10 道、故障排查子案例 4~5 个
+- 实测输出：ip addr/route/neigh/rule、ping/mtr/tracepath（TTL 推断跳数）、ss -tlnp/-s/-ti（SYN 重传退避 RTO:64000 backoff:6 实证）、tcpdump 真实握手 seq/ack、curl -v TLS 握手、ethtool tx_retries 80 万次、resolvectl/dig 缓存命中统计、15 项 sysctl 实测（tcp_tw_reuse=2、tcp_tw_recycle 已废弃实证）
+- 主要新增：四层 vs OSI 对照表、CIDR 换算、ARP 状态机、MTU/MSS/巨型帧、netplan YAML 详解、DHCP DORA、策略路由 fwmark（结合本机 Tailscale 规则）、bond/VLAN、DNS 解析链路图与五步排错法、TCP 队列与 2MSL、Nagle+延迟确认、BBR、长肥管道调优
+- Red Hat 系差异标注：ifcfg/nmcli/firewalld 对照表、RHEL 8+ BBR 内置、Red Hat route-<iface> 持久化三方对比
+- wikilink 全部有效（脚本校验无失效链接），frontmatter updated=2026-08-19
