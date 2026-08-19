@@ -344,3 +344,13 @@
 - Red Hat 系差异标注：messages vs syslog、secure vs auth.log、RHEL journald 默认持久化、sar 默认启用差异、tuned、/var/log/audit 对照
 - 备注：13.4 实测时本机安装了 prometheus-node-exporter（systemd 服务，9100 端口）用于抓取真实指标，未清理（用户未批准卸载命令），如不需要可自行停止并卸载
 - wikilink 全部有效，frontmatter updated=2026-08-19
+
+## [2026-08-19] update | Linux 知识库 14-定时任务与自动化 4 篇内容完整度扩充（全部 13 节模板）
+
+- 14 章 4 篇从偏薄版（260~285 行）扩充为完整 13 节模板：14.1-cron（692 行）、14.2-systemd timer（746 行）、14.3-at 与一次性任务（789 行）、14.4-任务可靠性（872 行），合计约 3099 行
+- 硬性指标全达标：场景 4~6 个、坑 9~12 个、问答 8~10 条、面试题 8~9 道、故障排查子案例 4~5 个
+- 实测输出：/etc/crontab 与 cron.d/daily 目录实拍、grep CRON /var/log/syslog、systemctl list-timers 19 个全量、systemd-analyze calendar 5 连测（含 cron 语法不兼容实测报错）、实测 @every_minute 被 Debian cron 拒绝（纠正网传说法）、systemd-run --on-active/--on-calendar 一次性任务实测（--collect 自动回收、0 timers listed）、flock -n 非阻塞与阻塞 22s 拿锁实测、timeout 124 超时实测、可靠任务模板脚本全场景（成功 0/并发冲突 1/超时 124）、at 未安装标注
+- 主要新增：crontab 五字段详解与特殊字符串、cron vs anacron、@reboot 场景、cron.allow/deny、Monotonic vs Realtime、OnCalendar 三段式语法、Persistent 补跑、AccuracySec vs RandomizedDelaySec、cron→timer 迁移对照表、at 队列与权限、systemd-run Transient unit、flock 全参数、systemd 可靠性字段表、分布式锁三原则、幂等三招、错峰与告警防抖
+- Red Hat 系差异标注：cronie vs cron、anacron 机制、/etc/anacrontab、RHEL 7 systemd 219 无秒精度/RandomizedDelaySec、at 包差异
+- 实测发现并纠正：@every_minute 在 Debian cron 不支持（bad time specifier）
+- wikilink 全部有效，frontmatter updated=2026-08-19
