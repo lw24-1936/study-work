@@ -382,3 +382,12 @@
 - 主要新增：排障七步法、系统快照一条龙命令集、二分定位法、最近变更检查清单、故障分类树、strace 假死卡点表（read/connect/poll/futex/write）、lsof deleted 文件原理、kprobe vs uprobe vs tracepoint、追踪开销对比表、gdb 完整实战、core dump 全流程、内核 oops 解读、故障速查表、10 个完整四段式故障案例（磁盘满/OOM/GC 风暴/启动失败/网络分层/端口反查/D 状态/时区/NTP/模块加载）
 - Red Hat 系差异标注：sosreport vs ubuntu-bug、messages vs syslog、abrt vs apport、kerneloops、SELinux vs AppArmor、firewalld vs ufw
 - wikilink 全部有效，frontmatter updated=2026-08-19
+
+## [2026-08-19] update | Linux 知识库 18-共享存储与数据备份 4 篇内容完整度扩充（全部 13 节模板）
+
+- 18 章 4 篇从偏薄版（243~275 行）扩充为完整 13 节模板：18.1-共享存储（844 行）、18.2-数据备份与恢复（822 行）、18.3-文件同步（840 行）、18.4-存储性能与容量（811 行），合计约 3317 行
+- 硬性指标全达标：场景 4~6 个、坑 10 个、问答 6~9 条、面试题 6~8 道、故障排查子案例 5 个
+- 实测输出：NFS/Samba/iSCSI 未安装如实标注（systemctl not found、/proc/filesystems 无 nfs 支持、dpkg 仅 4 个 samba 库）、rsync 3.2.7 真实同步（--dry-run 预演、--link-dest stat inode 57415600 硬链接实证、--bwlimit 限速）、df -h/df -i、lsblk、iostat -x sda 全字段、调度器 none [mq-deadline]、quota 工具链探测
+- 主要新增：NFS 完整配置实战（exports 逐行解析、NFSv4 idmapd、root_squash 安全、stale file handle 排错）、Samba/iSCSI/分布式 FS 选型表、3-2-1 备份原则、全量/增量/差异对比表、RPO/RTO、tar+rsync+LVM 快照+mysqldump+binlog PITR、--link-dest 硬链接快照轮换、restic 去重、rsync 滚动校验块算法、lsyncd.conf 解析、etckeeper、inotify 原理、多机同步选型表、IOPS vs 吞吐 vs 延迟（Little 定律队列深度）、HDD/SSD/NVMe 对比表、LVM 在线扩容、quota vs xfs_quota、smartctl 属性解读、容量规划（80% 阈值）
+- Red Hat 系差异标注：nfs-utils vs nfs-kernel-server、SELinux setsebool、firewalld NFS 端口、xfsdump、EPEL lsyncd、xfs_growfs vs resize2fs
+- wikilink 全部有效，frontmatter updated=2026-08-19
