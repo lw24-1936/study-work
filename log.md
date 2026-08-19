@@ -391,3 +391,12 @@
 - 主要新增：NFS 完整配置实战（exports 逐行解析、NFSv4 idmapd、root_squash 安全、stale file handle 排错）、Samba/iSCSI/分布式 FS 选型表、3-2-1 备份原则、全量/增量/差异对比表、RPO/RTO、tar+rsync+LVM 快照+mysqldump+binlog PITR、--link-dest 硬链接快照轮换、restic 去重、rsync 滚动校验块算法、lsyncd.conf 解析、etckeeper、inotify 原理、多机同步选型表、IOPS vs 吞吐 vs 延迟（Little 定律队列深度）、HDD/SSD/NVMe 对比表、LVM 在线扩容、quota vs xfs_quota、smartctl 属性解读、容量规划（80% 阈值）
 - Red Hat 系差异标注：nfs-utils vs nfs-kernel-server、SELinux setsebool、firewalld NFS 端口、xfsdump、EPEL lsyncd、xfs_growfs vs resize2fs
 - wikilink 全部有效，frontmatter updated=2026-08-19
+
+## [2026-08-19] update | Linux 知识库 19-高可用与负载均衡 5 篇内容完整度扩充（全部 13 节模板）
+
+- 19 章 5 篇从偏薄版（261~291 行）扩充为完整 13 节模板：19.1-高可用基础（610 行）、19.2-Keepalived 与 VRRP（805 行）、19.3-LVS 负载均衡（781 行）、19.4-HAProxy 与 Nginx（882 行）、19.5-集群与一致性（1052 行），合计约 4130 行
+- 硬性指标全达标：场景 4~6 个、坑 8~10 个、问答 8~9 条、面试题 7~8 道、故障排查子案例 4~5 个
+- 实测输出：keepalived/haproxy/ipvsadm 未装如实标注、modprobe ip_vs 成功（/proc/net/ip_vs 内核 IPVS 1.2.1 就绪）、ip_nonlocal_bind=0、ip_forward=1、nginx 1.24.0 3 站点实拍、本机 etcd 容器实测（etcdctl member list/endpoint health/put/get/watch/snapshot save/alarm list）、Redis docker 实例实测（info replication、NOAUTH 真实报错）、ss 端口核对（2379/2380/6379/80/443/3306）
+- 主要新增：可用性 9 数对照表、MTBF/MTTR、SPOF 排查清单、脑裂防线（仲裁/fencing）、VRRP 状态机与 skew_time 公式、VIP 漂移免费 ARP、双 VIP 互备、nopreempt、LVS 三模式对比表、10 种调度算法、DR 模式 ARP 专题（arp_ignore/arp_announce）、keepalived+LVS 高可用架构、haproxy.cfg 全段逐行解析、stats 页、Nginx upstream 被动健康检查、LVS vs HAProxy vs Nginx 选型表、CAP/BASE、Raft 选举图文、etcd MVCC+watch+lease、Pacemaker/STONITH、奇数节点容错表、etcd 调优（auto-compaction/defrag）
+- Red Hat 系差异标注：firewalld vrrp 服务、SELinux keepalived_connect_any、/etc/sysconfig/ipvsadm、EPEL haproxy/nginx、semanage port、RHEL HA Add-On、corosync.conf
+- wikilink 全部有效，frontmatter updated=2026-08-19
