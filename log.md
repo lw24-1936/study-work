@@ -363,3 +363,13 @@
 - 主要新增：用户态/内核态 ring0/3、syscall 调用链与 x86-64 传参约定、vDSO 优化、strace 实战（启动慢/配置读取/隐藏请求）、seccomp、LKM 加载流程、modprobe vs insmod、blacklist+initramfs 联动、DKMS vs akmod、Secure Boot/MOK、sysctl 三类生效方式、22 项参数速查表、/proc/PID/ 逐文件详解、hidepid、容器 /proc/sys 共享陷阱、CONFIG y/m/n 与 vermagic 绑定、initramfs 挂根、olddefconfig/localmodconfig 对比、RHEL grub2-mkconfig/grubby 差异、生产升级灰度与回滚预案
 - Red Hat 系差异标注：kernel-devel、/etc/modprobe.conf、dracut、SELinux、/usr/lib/sysctl.d 层级、grub2-mkconfig、yum groupinstall 对照
 - wikilink 全部有效，frontmatter updated=2026-08-19
+
+## [2026-08-19] update | Linux 知识库 16-性能优化与调优 6 篇内容完整度扩充（全部 13 节模板）
+
+- 16 章 6 篇从偏薄版（257~283 行）扩充为完整 13 节模板：16.1-性能分析方法论（729 行）、16.2-CPU 性能（759 行）、16.3-内存性能（757 行）、16.4-IO 性能（815 行）、16.5-网络性能（881 行）、16.6-综合调优工具（1014 行），合计约 4955 行
+- 硬性指标全达标：场景 5~6 个、坑 8~10 个、问答 7~10 条、面试题 7~8 道、故障排查子案例 4 个
+- 实测输出：真实压载实验（6 忙循环把 load 顶到 5.99、孤儿进程烧 CPU 到 8.89 意外坑素材、taskset 绑核单核 100% 实证）、cgroup v2 cpu.max 限额实验、perf stat/top/record/report（python 41461 样本、attach 运行中 redis）、strace -c 78 调用、ftrace available_filter_functions 100375 个、bpftrace v0.20.2 真实 one-shot 计数、gdb attach 容器 redis（命名空间警告坑）、jstack Jenkins 真实线程栈、lscpu 超线程映射、cpufreq 调速器、iostat r_await 235ms、fio 压测、/proc/zoneinfo 碎片证据、slabtop、numactl 单节点、THP/zswap 状态
+- 主要新增：调优六步法与 USE/RED 法、四黄金信号、压测工具选型、CFS vruntime/nice 权重、自愿/非自愿切换、MSI-X 多队列、cgroup v2 限额、IO 栈数据流图、iostat 全字段表、%util 与队列深度关系、blk-mq/NVMe 多队列、D 状态分析、SMART 检查、TCP 调优 20+ 参数表、BBR 开启、RSS 多队列、offload 开关、采样 vs 计数原理、eBPF 加载链路、火焰图生成、perf_event_paranoid 等级表（含 6.10+ 新增 4 档）、CAP_PERFMON/CAP_BPF
+- Red Hat 系差异标注：XFS vs ext4、IO 调度器默认、swappiness 30 vs 60、tuned-adm、perf 包名、debuginfo、tracefs 挂载、pstack/SELinux
+- 波次备注：16.5/16.6 首派 subagent 超时（600s），查盘发现 16.5 已写完、16.6 未动，单独补派后完成
+- wikilink 全部有效，frontmatter updated=2026-08-19
