@@ -373,3 +373,12 @@
 - Red Hat 系差异标注：XFS vs ext4、IO 调度器默认、swappiness 30 vs 60、tuned-adm、perf 包名、debuginfo、tracefs 挂载、pstack/SELinux
 - 波次备注：16.5/16.6 首派 subagent 超时（600s），查盘发现 16.5 已写完、16.6 未动，单独补派后完成
 - wikilink 全部有效，frontmatter updated=2026-08-19
+
+## [2026-08-19] update | Linux 知识库 17-故障排查与调试 4 篇内容完整度扩充（全部 13 节模板）
+
+- 17 章 4 篇从偏薄版（250~342 行）扩充为完整 13 节模板：17.1-排查方法论（608 行）、17.2-系统追踪（731 行）、17.3-调试工具（823 行）、17.4-常见故障案例（1077 行），合计约 3239 行
+- 硬性指标全达标：场景 5~10 个、坑 9~10 个、问答 7~8 条、面试题 7~8 道、故障排查子案例 3~4 个
+- 实测输出：systemctl --failed、journalctl -p err -b、strace -c 统计表、strace -f -e trace=connect curl（nscd 探测实证）、lsof -i :3306、lsof +D /tmp 210 条、ftrace available_filter_functions 100375、bpftrace 一行脚本实测、dmesg 抓到真实 hermes python3.12 segfault 记录、core_pattern apport 管道、readelf/nm/objdump/strings、/var/crash 真实 .crash 文件
+- 主要新增：排障七步法、系统快照一条龙命令集、二分定位法、最近变更检查清单、故障分类树、strace 假死卡点表（read/connect/poll/futex/write）、lsof deleted 文件原理、kprobe vs uprobe vs tracepoint、追踪开销对比表、gdb 完整实战、core dump 全流程、内核 oops 解读、故障速查表、10 个完整四段式故障案例（磁盘满/OOM/GC 风暴/启动失败/网络分层/端口反查/D 状态/时区/NTP/模块加载）
+- Red Hat 系差异标注：sosreport vs ubuntu-bug、messages vs syslog、abrt vs apport、kerneloops、SELinux vs AppArmor、firewalld vs ufw
+- wikilink 全部有效，frontmatter updated=2026-08-19
