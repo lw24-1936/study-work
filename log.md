@@ -311,3 +311,7 @@
 
 - 10-Spark 6 篇（架构/RDD/Spark SQL/Structured Streaming/性能优化/源码解析）从偏薄版升级为完整 13 节模板
 - 内容完整优先、不设行数上限，保留全部原内容与既有知识点
+## [2026-08-19] update | 根 README 补充 Linux 知识库
+
+- README.md / README.en.md 补充 Linux 运维方向：数据统计表加 Linux 行（26 篇章 / 128 篇）、目录结构树、知识库总览、五大方向文案
+- 合计文档数 918 -> 1046，index.md 注册数更新为 1050
