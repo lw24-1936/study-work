@@ -476,3 +476,9 @@
 - 24 章 106 篇全部通过 verify-batch 校验：围栏偶数、无 emoji、踩坑 6-11 条/篇、无坏链接
 - index.md 注册 107 条 wikilink（106 文档 + README 入口），总文档数更新为 1188
 - 覆盖：小程序注册/基础/WXML/WXSS/JS/组件/API/登录/支付/订阅消息/分享/分包性能/安全合规/测试/发布上线 + SpringBoot 后台 + Vue 管理后台 + 联调/部署/运维 + 全栈项目 + 面试
+
+## [2026-09-01] create | spring-boot-tika.md 文件识别与 Apache Tika 详解
+
+- 新建 spring-boot-tika.md（1390 行）：文件签名（魔数）原理、常用签名表、自研魔数匹配工具；Apache Tika 架构（Detector/Parser）、版本选择（3.x 需 Java 11、2.x 已 EOL）、tika-core vs parsers、容器格式检测、自定义 MIME、OCR；对比 JDK probeContentType/guessContentTypeFromStream、Spring MediaTypeFactory、libmagic、JMimeMagic/MimeUtil、POI/PDFBox 等替代方案
+- 3 个应用场景：上传图片白名单三重校验（魔数+解码）、文档全文检索文本抽取（异步+限流）、自定义魔数 Detector 接入 Spring
+- 踩坑 11 条；index.md 总文档数 1188→1189、spring-boot 目录 8→9 篇

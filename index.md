@@ -1,7 +1,7 @@
 # 学习笔记索引
 
 > 内容目录。每篇文档附一句话摘要。先读这里找到相关文档。
-> 最后更新：2026-08-20 | 总文档数：1188
+> 最后更新：2026-09-01 | 总文档数：1189
 
 ## 参考资源
 
@@ -11,7 +11,7 @@
 
 ## 集成实践
 
-> 位于 spring-boot/ 目录，共 8 篇 Spring Boot 集成类文档。
+> 位于 spring-boot/ 目录，共 9 篇 Spring Boot 集成类文档。
 
 - [[spring-boot-redis]] — Spring Boot 集成 Redis 详解：RedisTemplate 五种数据类型、Spring Cache 注解、Pipeline、序列化，含 5 个应用场景
 - [[spring-boot-redisson]] — Spring Boot 集成 Redisson 详解：分布式锁、集合、限流器、布隆过滤器，含 6 个应用场景
@@ -21,6 +21,7 @@
 - [[spring-boot-email]] — Spring Boot 集成邮件详解：JavaMailSender、HTML/附件/内联图片、Thymeleaf/FreeMarker模板、异步发送、可靠性（落库+重试）、多账号、验证码与异常告警场景
 - [[spring-boot-rabbitmq]] — Spring Boot 集成 RabbitMQ 详解：4种交换机、消息发送接收、JSON序列化、可靠性投递、死信队列、延迟消息、幂等设计，含2个完整应用场景
 - [[spring-boot-mybatis-plus]] — Spring Boot 集成 MyBatis-Plus 详解：BaseMapper、Lambda 条件构造器、分页插件、主键策略、逻辑删除、自动填充、乐观锁、代码生成器、多租户、数据权限，含 2 个完整应用场景
+- [[spring-boot-tika]] — Spring Boot 文件识别与 Apache Tika 详解：文件签名（魔数）原理与常用签名表、自研魔数匹配、Tika 检测/文本抽取/元数据/OCR/自定义 MIME，对比 JDK/Spring/libmagic 等替代方案，含 3 个应用场景
 
 ## Java 全栈基础
 
