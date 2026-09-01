@@ -482,3 +482,11 @@
 - 新建 spring-boot-tika.md（1390 行）：文件签名（魔数）原理、常用签名表、自研魔数匹配工具；Apache Tika 架构（Detector/Parser）、版本选择（3.x 需 Java 11、2.x 已 EOL）、tika-core vs parsers、容器格式检测、自定义 MIME、OCR；对比 JDK probeContentType/guessContentTypeFromStream、Spring MediaTypeFactory、libmagic、JMimeMagic/MimeUtil、POI/PDFBox 等替代方案
 - 3 个应用场景：上传图片白名单三重校验（魔数+解码）、文档全文检索文本抽取（异步+限流）、自定义魔数 Detector 接入 Spring
 - 踩坑 11 条；index.md 总文档数 1188→1189、spring-boot 目录 8→9 篇
+
+## [2026-09-01] verify | spring-boot-tika.md 代码编译与内容审查
+
+- 建真实 Maven 项目（Spring Boot 3.3.5 + Tika 3.3.2 + Java 17）编译文档全部 19 个 Java 代码块，修复 6 处编译错误：addMagic(String,int,int) 不存在（包私有，方式二重写为 addPattern + matchesMagic）、parseToString(File,Metadata) 不存在、TesseractOCRConfig 无 setTesseractPath（在 TesseractOCRParser 上）、setTimeout 应为 setTimeoutSeconds、DefaultDetector.DEFAULT 不存在、CompositeDetector 首参是 MediaTypeRegistry 非 MimeTypes、TikaInputStream.get(InputStream,Metadata) 二参重载不存在
+- 修复 6 处逻辑错误：LcfgDetector 3 参接口改为 2 参 detect(InputStream,Metadata) 并补 mark/reset（否则组合链兄弟 detector 读流错位）；MagicMatcher byte[] 不能存 null 通配，重写为 Byte[] + hex("??") 写法；CompositeDetector 语义修正（isSpecializationOf 取最具体非短路、null 致 NPE）；OCR 默认启用非默认关闭（hasTesseract && !skipOcr）；detectWithCustom @Bean 参数无法注入已删；UploadController 补 Exception 捕获
+- 元数据键名实测修正：tiff:ImageWidth/tiff:ImageLength（高度不叫 ImageHeight）、GPS 为 geo:lat/geo:long、PDF 页数 PagedText.N_PAGES、时长 XMPDM.DURATION
+- 实测复现踩坑 7 具体案例：Tika 3.3.2 的 commons-compress 1.28.0 需 commons-lang3 3.15+（SystemProperties.getUserName(String)），Spring Boot 3.3 锁 3.14.0 触发 NoSuchMethodError，解法显式固定 3.17.0
+- 验证结果：19 类全部编译通过，运行时 21 项断言全过（魔数命中/Tika detect/docx 容器细分/流复用/元数据键/组合检测器回退/CSV 文件名精化/custom-mimetypes.xml 生效）

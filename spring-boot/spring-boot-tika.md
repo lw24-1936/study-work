@@ -185,14 +185,19 @@ import java.util.Arrays;
  * 魔数（文件签名）匹配工具。
  *
  * 设计：每种格式定义为一个 Magic 规则，规则包含魔数字节数组和匹配偏移。
- * 通配字节用 null 表示（该位置不参与比对）。
+ * 规则表用十六进制字符串维护（生产上魔数表就是这么写的），
+ * 两个字符的 ?? 表示通配字节（该位置不参与比对）。
+ *
+ * 注意：Java 的 byte[] 是基本类型数组，装不下 null，
+ * 通配必须用 Byte[]（包装类型）表达。
  */
 public class MagicMatcher {
 
-    /** 单条魔数规则 */
-    public record Magic(byte[] bytes, int offset) {
+    /** 单条魔数规则。bytes 里 null 表示通配。 */
+    public record Magic(Byte[] bytes, int offset) {
+
         /** 便捷构造：偏移 0 */
-        public Magic(byte[] bytes) {
+        public Magic(Byte[] bytes) {
             this(bytes, 0);
         }
 
@@ -201,7 +206,8 @@ public class MagicMatcher {
                 return false;   // 头部数据不够长，无法匹配
             }
             for (int i = 0; i < bytes.length; i++) {
-                if (bytes[i] != null && header[offset + i] != bytes[i]) {
+                Byte b = bytes[i];
+                if (b != null && header[offset + i] != b) {
                     return false;
                 }
             }
@@ -209,28 +215,37 @@ public class MagicMatcher {
         }
     }
 
-    /** 常用格式规则表。null 表示通配。 */
+    /** 十六进制魔数字符串转 Byte[]。空格分隔，"??" 表示通配。 */
+    private static Byte[] hex(String pattern) {
+        String[] parts = pattern.trim().split("\s+");
+        Byte[] out = new Byte[parts.length];
+        for (int i = 0; i < parts.length; i++) {
+            out[i] = "??".equalsIgnoreCase(parts[i]) ? null : (byte) Integer.parseInt(parts[i], 16);
+        }
+        return out;
+    }
+
+    /** 常用格式规则表。?? 表示通配。 */
     public static final Magic[] COMMON_MAGICS = {
-            new Magic(new byte[]{(byte) 0x89, 'P', 'N', 'G', 0x0D, 0x0A, 0x1A, 0x0A}),                        // PNG
-            new Magic(new byte[]{(byte) 0xFF, (byte) 0xD8, (byte) 0xFF}),                                      // JPEG
-            new Magic(new byte[]{'G', 'I', 'F', '8', '7', 'a'}),                                              // GIF87a
-            new Magic(new byte[]{'G', 'I', 'F', '8', '9', 'a'}),                                              // GIF89a
-            new Magic(new byte[]{'B', 'M'}),                                                                   // BMP
-            new Magic(new byte[]{'R', 'I', 'F', 'F', null, null, null, null, 'W', 'E', 'B', 'P'}),             // WebP
-            new Magic(new byte[]{'%', 'P', 'D', 'F'}),                                                         // PDF
-            new Magic(new byte[]{'P', 'K', 0x03, 0x04}),                                                       // ZIP 类
-            new Magic(new byte[]{'R', 'a', 'r', '!', 0x1A, 0x07, 0x00}),                                       // RAR
-            new Magic(new byte[]{0x37, 0x7A, (byte) 0xBC, (byte) 0xAF, 0x27, 0x1C}),                           // 7z
-            new Magic(new byte[]{0x1F, (byte) 0x8B}),                                                          // GZIP
-            new Magic(new byte[]{(byte) 0xD0, (byte) 0xCF, 0x11, (byte) 0xE0, (byte) 0xA1, (byte) 0xB1, 0x1A, (byte) 0xE1}), // OLE2
-            new Magic(new byte[]{'I', 'D', '3'}),                                                              // MP3(ID3)
-            new Magic(new byte[]{0x00, 0x00, 0x00, null, 'f', 't', 'y', 'p'}, 0),                              // MP4(ftyp 在偏移 4)
-            new Magic(new byte[]{'S', 'Q', 'L', 'i', 't', 'e', ' ', 'f', 'o', 'r', 'm', 'a', 't', ' ', '3', 0x00}), // SQLite
-            new Magic(new byte[]{0x7F, 'E', 'L', 'F'}),                                                        // ELF
-            new Magic(new byte[]{(byte) 0xCA, (byte) 0xFE, (byte) 0xBA, (byte) 0xBE}),                         // Java class
-            new Magic(new byte[]{(byte) 0xFE, (byte) 0xED, (byte) 0xFE, (byte) 0xED}),                         // jks
-            new Magic(new byte[]{0x1F, 0x8B}, 0),                                                              // 占位示例：偏移匹配写法
-            new Magic(new byte[]{'u', 's', 't', 'a', 'r'}, 257),                                               // TAR(偏移 257)
+            new Magic(hex("89 50 4E 47 0D 0A 1A 0A")),                        // PNG
+            new Magic(hex("FF D8 FF")),                                       // JPEG
+            new Magic(hex("47 49 46 38 37 61")),                              // GIF87a
+            new Magic(hex("47 49 46 38 39 61")),                              // GIF89a
+            new Magic(hex("42 4D")),                                          // BMP
+            new Magic(hex("52 49 46 46 ?? ?? ?? ?? 57 45 42 50")),            // WebP(RIFF....WEBP)
+            new Magic(hex("25 50 44 46")),                                    // PDF
+            new Magic(hex("50 4B 03 04")),                                    // ZIP 类
+            new Magic(hex("52 61 72 21 1A 07 00")),                           // RAR
+            new Magic(hex("37 7A BC AF 27 1C")),                              // 7z
+            new Magic(hex("1F 8B")),                                          // GZIP
+            new Magic(hex("D0 CF 11 E0 A1 B1 1A E1")),                        // OLE2
+            new Magic(hex("49 44 33")),                                       // MP3(ID3)
+            new Magic(hex("00 00 00 ?? 66 74 79 70")),                        // MP4(ftyp 在偏移 4)
+            new Magic(hex("53 51 4C 69 74 65 20 66 6F 72 6D 61 74 20 33 00")),// SQLite
+            new Magic(hex("7F 45 4C 46")),                                    // ELF
+            new Magic(hex("CA FE BA BE")),                                    // Java class
+            new Magic(hex("FE ED FE ED")),                                    // jks
+            new Magic(hex("75 73 74 61 72"), 257),                            // TAR(偏移 257)
     };
 
     /** 读取输入流头部最多 maxLen 字节（自动 mark/reset 保护，不消费流） */
@@ -306,7 +321,7 @@ Tika 的体系可以用两个接口概括：
 **Detector（检测器）——负责回答"这是什么类型"**
 
 ```java
-MediaType detect(TikaInputStream input, Metadata metadata, ParseContext context) throws IOException;
+MediaType detect(InputStream input, Metadata metadata) throws IOException;
 ```
 
 所有检测手段都实现这个接口，由 `DefaultDetector` 用 ServiceLoader 汇总，按优先级依次尝试：
@@ -374,7 +389,8 @@ Spring Boot 3.x + Java 17 的标准组合，Tika 用 3.3.x：
     <type>pom</type>
 </dependency>
 
-<!-- 需要 OCR 时再加（需系统安装 Tesseract） -->
+<!-- 注意：tika-parsers-standard-package 已传递包含 tika-parser-ocr-module，
+     上一步引了它就不需要再单独引；只有"只用 tika-core + 单加 OCR"才需要这个 -->
 <dependency>
     <groupId>org.apache.tika</groupId>
     <artifactId>tika-parser-ocr-module</artifactId>
@@ -631,9 +647,14 @@ public class TikaParseDemo {
 ```java
 import org.apache.tika.Tika;
 import org.apache.tika.metadata.Metadata;
+import org.apache.tika.metadata.PagedText;
+import org.apache.tika.metadata.TIFF;
 import org.apache.tika.metadata.TikaCoreProperties;
+import org.apache.tika.metadata.XMPDM;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 public class TikaMetadataDemo {
 
@@ -645,9 +666,11 @@ public class TikaMetadataDemo {
 
     public Metadata extractMetadata(File file) throws Exception {
         Metadata metadata = new Metadata();
-        // parseToString 的内部实现就是 parse + BodyContentHandler，
-        // 传 Metadata 进去就能把元数据带出来
-        tika.parseToString(file, metadata);
+        // parseToString(InputStream, Metadata) 是 facade 支持的签名，
+        // File 需要先转成流；内部实现就是 parse + BodyContentHandler
+        try (InputStream in = new FileInputStream(file)) {
+            tika.parseToString(in, metadata);
+        }
         return metadata;
     }
 
@@ -657,19 +680,21 @@ public class TikaMetadataDemo {
         System.out.println("Author     = " + metadata.get(TikaCoreProperties.CREATOR));
         System.out.println("Created    = " + metadata.get(TikaCoreProperties.CREATED));
         System.out.println("Modified   = " + metadata.get(TikaCoreProperties.MODIFIED));
-        // 图片 EXIF
-        System.out.println("ImageW     = " + metadata.get("Image Width"));
-        System.out.println("ImageH     = " + metadata.get("Image Height"));
-        System.out.println("GPS        = " + metadata.get("GPS Latitude") + "," + metadata.get("GPS Longitude"));
-        // PDF
-        System.out.println("PageCount  = " + metadata.get("xmpTPg:NPages"));
-        // 音视频
-        System.out.println("Duration   = " + metadata.get("xmpDM:duration"));
+        // 图片：宽高键是 tiff:ImageWidth / tiff:ImageLength（Tika 3.x 里"高度"不叫 ImageHeight）
+        System.out.println("ImageW     = " + metadata.get(TIFF.IMAGE_WIDTH));
+        System.out.println("ImageH     = " + metadata.get(TIFF.IMAGE_LENGTH));
+        // GPS：键是 geo:lat / geo:long（不是 "GPS Latitude"）
+        System.out.println("GPS        = " + metadata.get(TikaCoreProperties.LATITUDE)
+                + "," + metadata.get(TikaCoreProperties.LONGITUDE));
+        // PDF 页数：xmpTPg:NPages
+        System.out.println("PageCount  = " + metadata.get(PagedText.N_PAGES));
+        // 音视频时长
+        System.out.println("Duration   = " + metadata.get(XMPDM.DURATION));
     }
 }
 ```
 
-图片元数据键（`Image Width` 等）是 Tika 内部约定的字符串键，文档里可直接用；PDF 页数等来自 XMP 命名空间。需要稳定的键名时，参考 Tika 的 `org.apache.tika.metadata.*` 常量类（如 `TikaCoreProperties`、`TIFF`、`XMPDM`），不要硬编码裸字符串到业务代码里。
+元数据键用 `org.apache.tika.metadata.*` 的常量类引用（`TikaCoreProperties`、`TIFF`、`PagedText`、`XMPDM`），不要硬编码裸字符串——Tika 3.x 里图片尺寸键是 `tiff:ImageWidth`/`tiff:ImageLength`、GPS 键是 `geo:lat`/`geo:long`，与 2.x 时代的旧键名（`Image Width`/`GPS Latitude`）不一样，写死字符串容易在升级后静默拿到 null。
 
 ### 5.5 容器格式检测
 
@@ -678,7 +703,7 @@ public class TikaMetadataDemo {
 - **ZIP 容器**（docx/xlsx/pptx/odt/jar/apk）：解包看有没有 `[Content_Types].xml`（OOXML 系列）、`mimetype`（ODF 系列）、`META-INF/MANIFEST.MF`（jar），据此细分；
 - **OLE2 容器**（老版 doc/xls/ppt/msg）：看内部流名（`WordDocument`、`Workbook`、`PowerPoint Document`、`__properties_version1.0` 等）细分。
 
-ContainerDetector 在 `tika-parsers-standard-package` 里。所以：
+容器检测的实现分布在 standard-package 聚合的各模块中（ZIP 检测在 `tika-parser-zip-commons` 的 `ZipContainerDetector`，OLE2 检测在 `tika-parser-microsoft-module` 的 `POIFSContainerDetector`），tika-core 只有接口没有实现。所以：
 
 ```text
 只引 tika-core：  detect(docx) -> application/zip     （只能到 ZIP 这层）
@@ -707,25 +732,45 @@ ContainerDetector 在 `tika-parsers-standard-package` 里。所以：
 
 放在 `src/main/resources/custom-mimetypes.xml`，Tika 自动加载，`detect` 就能识别 `.biz` 文件。`priority` 越高越优先；`type="string"` 是 ASCII 字符串匹配，也支持 `type="byte"` 的十六进制序列。
 
-**方式二：编程式往 MimeTypes 注册**
+**方式二：编程式注册（注意公开 API 的限制）**
+
+Tika 的公开 API 里，魔数的增删**没有**对外开放——`MimeType.addMagic` 是包私有方法，运行时动态加魔数规则做不到，魔数规则只能走 custom-mimetypes.xml。公开 API 能做的只有两件事：
+
+1. 注册/追加**扩展名**映射（`MimeTypes.addPattern`），适合"同一个 MIME 类型追加业务后缀"的场景；
+2. 用 `MimeType.matchesMagic(byte[])` 对已注册类型的魔数做运行时校验。
 
 ```java
-import org.apache.tika.mime.MimeTypes;
+import org.apache.tika.mime.MimeType;
 import org.apache.tika.mime.MimeTypeException;
+import org.apache.tika.mime.MimeTypes;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 public class CustomMimeRegister {
 
-    public MimeTypes register() throws MimeTypeException {
+    /**
+     * 给已有 MIME 类型追加扩展名映射。
+     * 注意：addPattern 只影响"按文件名检测"，不影响魔数检测。
+     */
+    public MimeTypes registerPattern() throws MimeTypeException {
         MimeTypes mimeTypes = MimeTypes.getDefaultMimeTypes();
-        // 按字节序列注册魔数：BIZ1 -> application/x-biz
-        mimeTypes.forName("application/x-biz")
-                .addMagic("BIZ1", 0, 0);
+        MimeType biz = mimeTypes.forName("application/x-biz");
+        mimeTypes.addPattern(biz, "*.biz");
         return mimeTypes;
+    }
+
+    /** 对已注册类型做运行时魔数校验（读文件头前 4 字节比对 BIZ1） */
+    public boolean matchesBizMagic(InputStream in) throws IOException, MimeTypeException {
+        byte[] header = in.readNBytes(4);
+        return MimeTypes.getDefaultMimeTypes()
+                .forName("application/x-biz")
+                .matchesMagic(header);
     }
 }
 ```
 
-`addMagic(String value, int type, int offset)` 的第二个参数传 0 表示 string 类型。编程式注册适合"规则存在数据库里、运行时动态加载"的场景。
+如果确实需要"规则存数据库、运行时加载"的动态魔数，正确做法不是魔数注册，而是自己实现一个 `Detector`（见 7.3 场景三的自定义检测器），把业务规则写进 detect 逻辑里。
 
 ### 5.7 OCR：扫描件与图片转文字
 
@@ -753,19 +798,25 @@ import org.apache.tika.parser.ParseContext;
 public class OcrDemo {
 
     public ParseContext buildOcrContext() {
+        // 识别参数在 Config 上
         TesseractOCRConfig config = new TesseractOCRConfig();
-        config.setTesseractPath("/usr/bin/");        // tesseract 可执行文件所在目录
         config.setLanguage("chi_sim+eng");           // 中文+英文
-        config.setTimeout(30);                        // 单张超时秒数
+        config.setTimeoutSeconds(30);                 // 单张超时秒数
+        config.setMaxFileSizeToOcr(10 * 1024 * 1024); // 超过 10MB 不 OCR
+
+        // tesseract 可执行文件路径在 Parser 上（注意不是在 Config 上）
+        TesseractOCRParser parser = new TesseractOCRParser();
+        parser.setTesseractPath("/usr/bin/");
 
         ParseContext context = new ParseContext();
         context.set(TesseractOCRConfig.class, config);
+        context.set(TesseractOCRParser.class, parser);
         return context;
     }
 }
 ```
 
-OCR 默认是**关闭**的（TesseractOCRParser 默认不启用，因为开销大、依赖外部进程）。要开启，在 ParseContext 里把配置设进去即可。注意：OCR 是重型操作，单张图可能几秒到几十秒，务必走异步任务，别在请求线程里同步做。
+OCR 在 Tesseract 安装到位时默认**启用**（`getSupportedTypes` 里 `hasTesseract && !skipOcr` 即生效），不需要额外开关；两种情况下不 OCR：系统里没有 tesseract 可执行文件、或显式 `config.setSkipOcr(true)`。注意：OCR 是重型操作，单张图可能几秒到几十秒，务必走异步任务，别在请求线程里同步做；另外如果 `setLanguage` 指定了系统没装的语言包，解析时 `checkInitialization` 会直接抛 `TikaConfigException`。
 
 ### 5.8 命令行与独立服务
 
@@ -844,7 +895,7 @@ public class JdkGuessDemo {
 }
 ```
 
-内部走 ContentHandler 工厂，能识别的格式非常有限（就是上面那几种），且实现不可配置。理解魔数原理后看一眼就知道它做不了正经的类型校验。这个 API 在历史上被标记为可能移除（JEP 讨论过），新代码不建议依赖。
+内部走 ContentHandler 工厂，能识别的格式非常有限（就是上面那几种），且实现不可配置。理解魔数原理后看一眼就知道它做不了正经的类型校验，新代码不建议依赖。
 
 ### 6.4 Spring 自带：MediaTypeFactory
 
@@ -1040,7 +1091,12 @@ public class UploadController {
             // 生产环境这里还要：生成 object key -> 存对象存储 -> 落库
             return ResponseEntity.ok(Map.of("status", "ok", "detail", result));
         } catch (IllegalArgumentException e) {
+            // 业务拒绝：类型不允许 / 超大小 / 解码失败，返回 400
             return ResponseEntity.badRequest().body(Map.of("status", "error", "message", e.getMessage()));
+        } catch (Exception e) {
+            // 系统异常：IO 错误等，返回 500（生产环境应记日志 + 告警）
+            return ResponseEntity.internalServerError()
+                    .body(Map.of("status", "error", "message", "服务器处理失败"));
         }
     }
 }
@@ -1057,6 +1113,8 @@ import org.apache.tika.Tika;
 import org.apache.tika.exception.TikaException;
 import org.apache.tika.io.TikaInputStream;
 import org.apache.tika.metadata.Metadata;
+import org.apache.tika.metadata.PagedText;
+import org.apache.tika.metadata.TikaCoreProperties;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -1088,12 +1146,13 @@ public class DocumentParseService {
         result.setFileName(file.getOriginalFilename());
         result.setSize(file.getSize());
 
-        // TikaInputStream.get(InputStream, metadata) 自动把资源名写进 metadata，
-        // 容器检测（docx 细分）依赖这个文件名做辅助
+        // TikaInputStream.get(InputStream, Metadata) 这个二参重载在 Tika 3.x 不存在，
+        // 资源名要手动写进 metadata（容器检测 docx 细分依赖文件名做辅助）
         try (InputStream raw = file.getInputStream();
-             TikaInputStream tis = TikaInputStream.get(raw, metadata)) {
+             TikaInputStream tis = TikaInputStream.get(raw)) {
+            metadata.set(TikaCoreProperties.RESOURCE_NAME_KEY, file.getOriginalFilename());
 
-            // 类型检测
+            // 类型检测：detect 内部会 mark/reset，不破坏流位置，可继续 parseToString
             String mime = tika.detect(tis, metadata);
             result.setMimeType(mime);
 
@@ -1101,10 +1160,10 @@ public class DocumentParseService {
             String text = tika.parseToString(tis, metadata);
             result.setText(text);
 
-            // 元数据
-            result.setTitle(metadata.get("title"));
-            result.setAuthor(metadata.get("Author"));
-            result.setPageCount(metadata.get("xmpTPg:NPages"));
+            // 元数据：用常量类引用键名，别硬编码字符串
+            result.setTitle(metadata.get(TikaCoreProperties.TITLE));
+            result.setAuthor(metadata.get(TikaCoreProperties.CREATOR));
+            result.setPageCount(metadata.get(PagedText.N_PAGES));
         } catch (TikaException e) {
             // 解析失败：文件损坏/不支持的格式/超长。不要抛给上传链路，
             // 记录状态即可，索引任务跳过该文档
@@ -1205,17 +1264,22 @@ public class ParseRetryJob {
 
 ```java
 import org.apache.tika.detect.Detector;
-import org.apache.tika.io.TikaInputStream;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.mime.MediaType;
-import org.apache.tika.parser.ParseContext;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * 自定义检测器：识别 LCFG1 / LCFG2 开头的内部配置文件。
- * 实现 Detector 接口后，可以组合进 DefaultDetector 之前的检测链，
- * 也可以单独注入使用（见 ConfigDetectorConfig）。
+ * 实现 Detector 接口后，可以组合进默认检测链（见 DetectorConfig），
+ * 也可以单独注入使用。
+ *
+ * 注意两个约定：
+ * 1. Tika 3.x 的 Detector 接口签名是 detect(InputStream, Metadata)，
+ *    4.0 起才改为带 ParseContext 的三参版本，升级时注意；
+ * 2. 读流必须 mark/reset 复位：检测链里多个 detector 轮流读同一条流，
+ *    不复位会让后面的 detector 从错误位置开始读，魔数全对不上。
  */
 public class LcfgDetector implements Detector {
 
@@ -1226,20 +1290,25 @@ public class LcfgDetector implements Detector {
     public static final MediaType LC_CONFIG_ENCRYPTED = MediaType.application("x-lcfg-encrypted");
 
     @Override
-    public MediaType detect(TikaInputStream input, Metadata metadata, ParseContext context)
-            throws IOException {
+    public MediaType detect(InputStream input, Metadata metadata) throws IOException {
         if (input == null) {
             return MediaType.OCTET_STREAM;
         }
-        // 只读前 5 个字节；TikaInputStream 自带 mark/reset，不会破坏后续解析
-        byte[] header = input.readNBytes(5);
-        if (startsWith(header, LCFG1)) {
-            return LC_CONFIG;
+        // 标准写法：mark -> 读 -> reset（MagicDetector 内部就是这么做的）
+        input.mark(5);
+        try {
+            byte[] header = input.readNBytes(5);
+            if (startsWith(header, LCFG1)) {
+                return LC_CONFIG;
+            }
+            if (startsWith(header, LCFG2)) {
+                return LC_CONFIG_ENCRYPTED;
+            }
+        } finally {
+            input.reset();
         }
-        if (startsWith(header, LCFG2)) {
-            return LC_CONFIG_ENCRYPTED;
-        }
-        return MediaType.OCTET_STREAM;   // 不是我们的格式，返回空类型，让下游检测器继续
+        // 不是我们的格式，返回 octet-stream 表示"未命中"，让下游检测器继续
+        return MediaType.OCTET_STREAM;
     }
 
     private boolean startsWith(byte[] data, byte[] prefix) {
@@ -1261,9 +1330,7 @@ Spring 配置：组装一个"先走自定义检测器、命中不了再走 Tika 
 ```java
 import org.apache.tika.config.TikaConfig;
 import org.apache.tika.detect.CompositeDetector;
-import org.apache.tika.detect.DefaultDetector;
 import org.apache.tika.detect.Detector;
-import org.apache.tika.mime.MediaType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -1278,26 +1345,51 @@ public class DetectorConfig {
     }
 
     /**
-     * 组合检测器：优先自定义规则，未命中交给 Tika 默认链。
-     * CompositeDetector 按传入顺序依次尝试，第一个返回
-     * 非 OCTET_STREAM 的结果胜出。
+     * 组合检测器：先跑自定义规则，再回退到 Tika 默认检测链。
+     * 用 List 构造器即可——不要用 MimeTypes 作首参的版本，
+     * 那个重载要的是 MediaTypeRegistry。
      */
     @Bean
     public Detector compositeDetector(TikaConfig tikaConfig, LcfgDetector lcfgDetector) {
-        return new CompositeDetector(tikaConfig.getMimeRepository(),
-                List.of(lcfgDetector, DefaultDetector.DEFAULT));
-    }
-
-    /** 业务侧直接注入 Detector 使用 */
-    @Bean
-    public MediaType detectWithCustom(Detector composite, org.apache.tika.io.TikaInputStream tis,
-                                      Metadata metadata) throws Exception {
-        return composite.detect(tis, metadata, new org.apache.tika.parser.ParseContext());
+        return new CompositeDetector(List.of(lcfgDetector, tikaConfig.getDetector()));
     }
 }
 ```
 
-注意：`CompositeDetector` 的判据是"返回 `application/octet-stream` 视为未命中，继续下一个"。所以自定义检测器没匹配到时要返回 `MediaType.OCTET_STREAM`，而不是 null——返回 null 会让 CompositeDetector 直接短路报错。这个约定写进团队规范，容易踩。
+组合好的 Detector 注入业务 Service，用法与直接调 Tika 一致：
+
+```java
+import org.apache.tika.detect.Detector;
+import org.apache.tika.io.TikaInputStream;
+import org.apache.tika.metadata.Metadata;
+import org.apache.tika.mime.MediaType;
+import org.springframework.stereotype.Service;
+
+import java.io.InputStream;
+
+@Service
+public class LcfgDetectionService {
+
+    private final Detector detector;
+
+    public LcfgDetectionService(Detector detector) {
+        this.detector = detector;
+    }
+
+    public MediaType detect(InputStream in, String fileName) throws Exception {
+        Metadata metadata = new Metadata();
+        metadata.set(org.apache.tika.metadata.TikaCoreProperties.RESOURCE_NAME_KEY, fileName);
+        try (TikaInputStream tis = TikaInputStream.get(in)) {
+            return detector.detect(tis, metadata);
+        }
+    }
+}
+```
+
+两个约定容易踩，写进团队规范：
+
+1. **未命中返回 `MediaType.OCTET_STREAM`，不能返回 null**。`CompositeDetector.detect` 内部对每个结果调 `registry.isSpecializationOf(detected, type)` 做"谁更具体"的比较，null 传进去直接 NPE。
+2. **组合语义不是短路**。`CompositeDetector` 会遍历全部 detector，用"具体程度"（isSpecializationOf）挑最具体的类型覆盖 octet-stream 基线，而不是"第一个非 octet-stream 就停"。所以自定义 detector 返回的类型越具体，越有机会赢过默认链的结果——设计业务类型时要注意它的 MIME 层级关系。
 
 ---
 
@@ -1310,9 +1402,9 @@ public class DetectorConfig {
 3. **区分"检测"和"解析"两个依赖**：只做类型白名单校验引 `tika-core` 就够；要做文本抽取/容器细分再引 `tika-parsers-standard-package`。依赖体积差一个数量级。
 4. **文本抽取必须限流**：`BodyContentHandler(writeLimit)` 或 `Tika.setMaxStringLength` 二选一，防止超大文档把内存打爆。默认 10 万字符对长文档偏小，按业务调到百万级。
 5. **解析一律异步**：PDF/Office 解析耗时秒级起步，走线程池或 MQ，别占请求线程。解析失败要吞掉记录，不能影响上传主流程。
-6. **`TikaInputStream` 统一入口**：传 `InputStream` 时用 `TikaInputStream.get(in, metadata)`，自动支持 mark/reset 并携带资源名，检测 + 解析共用一条流。
+6. **`TikaInputStream` 统一入口**：传 `InputStream` 时用 `TikaInputStream.get(in)` 包装（自动支持 mark/reset，检测 + 解析共用一条流）；资源名要手动 `metadata.set(TikaCoreProperties.RESOURCE_NAME_KEY, name)`——Tika 3.x 没有 `get(InputStream, Metadata)` 这个二参重载。
 7. **文件名只做辅助**：detect 时传文件名是为了让 `text/csv` 这类文本格式精化，不要把文件名当类型依据。
-8. **OCR 独立评估**：Tesseract 是外部进程，要装系统包、吃 CPU、耗时长。默认关闭，按需开启，且必须走异步 + 超时控制。
+8. **OCR 独立评估**：Tesseract 是外部进程，要装系统包、吃 CPU、耗时长。装了 tesseract 就默认启用，`setSkipOcr(true)` 可显式关闭；必须走异步 + 超时控制。
 9. **解析器放独立进程（可选进阶）**：解析量大的系统用 tika-server 做隔离，解析库的内存问题、崩溃不波及其他服务。
 10. **版本对齐**：Spring Boot 3.x + Java 17 用 Tika 3.3.x；老项目 Java 8 只能用 2.9.x（2.x 已 EOL，有安全风险，建议升级）。
 
@@ -1331,7 +1423,7 @@ public class DetectorConfig {
 坑 3：MultipartFile 的流只能读一次，检测完解析没内容
 结论：一个 InputStream 不能既被 detect 消费又被 parse 消费。
 原因：detect 会读取流头；普通流读完即前进，不支持回退。
-解法：用 TikaInputStream.get(in, metadata) 包装（支持 mark/reset），或者先 `Files.copy(file.getInputStream(), tmpPath)` 落临时文件再处理。
+解法：用 `TikaInputStream.get(in)` 包装（支持 mark/reset），资源名单独 `metadata.set(TikaCoreProperties.RESOURCE_NAME_KEY, name)`；或者先 `Files.copy(file.getInputStream(), tmpPath)` 落临时文件再处理。
 
 坑 4：文件名伪造骗过校验
 结论：只按扩展名或 Content-Type 判断类型，等于没校验。
@@ -1348,10 +1440,10 @@ public class DetectorConfig {
 原因：解析器把整个文档内容读进内存构造文本。
 解法：BodyContentHandler(writeLimit) 限流；上传大小在 yml 限；解析放异步线程池；极端场景用 tika-server 进程隔离 + ForkParser。
 
-坑 7：依赖冲突（POI/PDFBox 版本被覆盖）
-结论：引 tika-parsers-standard-package 后，项目里原有 POI/pdfbox 版本可能被 Tika 的传递依赖顶掉，出现 NoSuchMethodError / AbstractMethodError。
-原因：parsers 聚合了大量第三方库，传递依赖版本与项目已有版本冲突。
-解法：用 `mvn dependency:tree` 查冲突，在 pom 里对冲突库显式 `exclusions` 或固定版本；或者干脆全用 Tika 的版本，业务代码不直接依赖 POI/PDFBox API。
+坑 7：依赖冲突（POI/PDFBox/commons-lang3 版本被覆盖）
+结论：引 tika-parsers-standard-package 后，项目里原有第三方库版本可能被 Tika 的传递依赖顶掉，出现 NoSuchMethodError / AbstractMethodError。实测一个必踩组合：Spring Boot 3.3.x（dependencyManagement 把 commons-lang3 锁在 3.14.0）+ Tika 3.3.2（其 commons-compress 1.28.0 需要 commons-lang3 3.15+ 才有的 `SystemProperties.getUserName(String)` 重载）——解析 TAR 时直接抛 `NoSuchMethodError: org.apache.commons.lang3.SystemProperties.getUserName(String)`。
+原因：parsers 聚合了大量第三方库（POI/PDFBox/commons-compress/commons-lang3），传递依赖版本与项目 dependencyManagement 锁定的版本冲突，且这种冲突只在解析到特定格式时才爆，运行时才能发现。
+解法：`mvn dependency:tree` 查冲突，在 pom 里显式固定正确版本（本例加 `commons-lang3:3.17.0` 即可）；或者干脆全用 Tika 的版本，业务代码不直接依赖 POI/PDFBox API。
 
 坑 8：OCR 报 "tesseract is not installed" / 中文识别乱码
 结论：tika-parser-ocr-module 只是 Java 侧封装，真正干活的是系统 tesseract 进程。
