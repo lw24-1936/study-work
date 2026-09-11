@@ -37,7 +37,7 @@
 
 ## 特性
 
-- **五大方向体系化**：Java 全栈 51 篇章、前端 103 篇章、算法工程师 20 篇章、大数据 30 篇章、Linux 运维 26 篇章，另附 Spring Boot 集成专题 8 篇
+- **多方向体系化**：Java 全栈 51 篇章、前端 103 篇章、算法工程师 20 篇章、大数据 30 篇章、Linux 运维 26 篇章、微信小程序全栈 13 篇章，另附 Spring Boot 集成专题 9 篇、Kubernetes 容器编排专题 2 篇
 - **类 wiki 交叉引用**：文档间以 `[[filename]]` 互链，从一个主题顺藤摸瓜到相关主题
 - **Obsidian 原生兼容**：`[[filename]]` 双向链接 + frontmatter 标签正是 Obsidian 语法，整库可直接作为 Vault 打开
 - **统一文档规范**：YAML frontmatter + 固定章节结构，全库格式一致，见 [SCHEMA.md](./SCHEMA.md)
@@ -48,14 +48,16 @@
 
 | 方向 | 目录 | 篇章数 | 文档数 | 状态 |
 | --- | --- | --- | --- | --- |
-| Java 全栈 | [java-fullstack/](./java-fullstack/README.md) | 51（前置 + 50 篇章） | 202 | 已完成 |
+| Java 全栈 | [java-fullstack/](./java-fullstack/README.md) | 51（前置 + 50 篇章） | 234 | 已完成 |
 | 前端完整知识库 | [frontend-fullstack/](./frontend-fullstack/README.md) | 103 | 433 | 已完成 |
 | 算法工程师 | [algorithm-engineer/](./algorithm-engineer/README.md) | 20 | 142 | 已完成 |
-| Spring Boot 集成 | [spring-boot/](./spring-boot/) | — | 8 | 已完成 |
 | 大数据 | [bigdata/](./bigdata/README.md) | 30 | 133 | 已完成 |
 | Linux 运维 | [linux/](./linux/README.md) | 26 | 128 | 已完成 |
+| 微信小程序全栈 | [weapp-fullstack/](./weapp-fullstack/) | 13 | 106 | 已完成 |
+| Spring Boot 集成 | [spring-boot/](./spring-boot/) | — | 9 | 已完成 |
+| Kubernetes 与容器编排 | [kubernetes/](./kubernetes/) | — | 2 | 已完成 |
 
-合计 **1046 篇**学习文档（[index.md](./index.md) 注册 1050 条索引，其中 3 条为知识库入口链接）。
+合计 **1187 篇**知识库文档（[index.md](./index.md) 注册 1192 条索引，含 4 条知识库入口链接与 1 条学习链接汇总）。
 
 ## 目录结构
 
@@ -101,7 +103,11 @@ study-work/
 
 ### Spring Boot 集成 — [spring-boot/](./spring-boot/)
 
-8 篇独立集成文档：Redis、Redisson、MyBatis、MyBatis-Plus、RabbitMQ、AOP、邮件、定时任务。
+9 篇独立集成文档：Redis、Redisson、MyBatis、MyBatis-Plus、RabbitMQ、AOP、邮件、定时任务、Apache Tika 文件识别。
+
+### Kubernetes 与容器编排 — [kubernetes/](./kubernetes/)
+
+2 篇：minikube 单节点集群的搭建与原理（K8S 架构、部署形态选型、镜像源方案）、SpringBoot + Vue 项目部署到 K8S（compose 到 K8S 的映射、核心对象详解、全链路验证、生产化能力）。全部内容基于本机真实部署过程，命令与输出均为实测。
 
 ## 用 Obsidian 阅读
 

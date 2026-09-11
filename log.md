@@ -490,3 +490,12 @@
 - 元数据键名实测修正：tiff:ImageWidth/tiff:ImageLength（高度不叫 ImageHeight）、GPS 为 geo:lat/geo:long、PDF 页数 PagedText.N_PAGES、时长 XMPDM.DURATION
 - 实测复现踩坑 7 具体案例：Tika 3.3.2 的 commons-compress 1.28.0 需 commons-lang3 3.15+（SystemProperties.getUserName(String)），Spring Boot 3.3 锁 3.14.0 触发 NoSuchMethodError，解法显式固定 3.17.0
 - 验证结果：19 类全部编译通过，运行时 21 项断言全过（魔数命中/Tika detect/docx 容器细分/流复用/元数据键/组合检测器回退/CSV 文件名精化/custom-mimetypes.xml 生效）
+
+## [2026-09-12] create | Kubernetes 与 minikube 单节点集群搭建 + SpringBoot/Vue 项目部署到 K8S
+
+- 新增 kubernetes/ 目录，共 2 篇：
+  - kubernetes-minikube-install.md —— K8S 架构与核心概念、集群部署形态选型、minikube 工作原理、安装实战（全部本机实测输出）、集群验证、容器镜像源方案（docker.io 被阻断、registry.k8s.io 307 重定向到被封的 pkg.dev）、2 个应用场景、8 个踩坑记录
+  - kubernetes-springboot-vue-deploy.md —— docker-compose 到 K8S 的映射对照、9 类核心对象详解、7 个清单文件说明、部署与五层全链路验证实录、2 个应用场景、9 个踩坑记录
+- 素材来源：本机 minikube 集群（K8S v1.37.0、containerd、bridge CNI）与问卷调查系统（Spring Boot 3.5 + Vue 3 + MySQL 8.4 + Redis 7.4）的真实迁移过程
+- 同步更新：index.md 新增「容器与编排」分区；总文档数 1189 增至 1191；最后更新日期 2026-09-12
+- 配套文档（不在本库）：/opt/project-work/Kubernetes-K8S-单节点集群部署文档.md、/opt/project-work/questionnaire_work/K8S-部署手册.md

@@ -1,7 +1,7 @@
 # 学习笔记索引
 
 > 内容目录。每篇文档附一句话摘要。先读这里找到相关文档。
-> 最后更新：2026-09-01 | 总文档数：1189
+> 最后更新：2026-09-12 | 总文档数：1192
 
 ## 参考资源
 
@@ -22,6 +22,13 @@
 - [[spring-boot-rabbitmq]] — Spring Boot 集成 RabbitMQ 详解：4种交换机、消息发送接收、JSON序列化、可靠性投递、死信队列、延迟消息、幂等设计，含2个完整应用场景
 - [[spring-boot-mybatis-plus]] — Spring Boot 集成 MyBatis-Plus 详解：BaseMapper、Lambda 条件构造器、分页插件、主键策略、逻辑删除、自动填充、乐观锁、代码生成器、多租户、数据权限，含 2 个完整应用场景
 - [[spring-boot-tika]] — Spring Boot 文件识别与 Apache Tika 详解：文件签名（魔数）原理与常用签名表、自研魔数匹配、Tika 检测/文本抽取/元数据/OCR/自定义 MIME，对比 JDK/Spring/libmagic 等替代方案，含 3 个应用场景
+
+## 容器与编排
+
+> 位于 kubernetes/ 目录，共 2 篇 Kubernetes 与容器编排文档。
+
+- [[kubernetes-minikube-install]] — Kubernetes 与 minikube 单节点集群搭建：K8S 架构与核心概念（控制面与节点组件、声明式 API 与控制器模式、节点/Pod/Service 三个网段）、四种部署形态选型对比、minikube 工作原理（kicbase、静态 Pod、网桥网络、kubeconfig）、完整安装命令与参数逐条解释、集群验证、容器镜像源方案（containerd certs.d 配置与 registry.k8s.io 不可用的实测结论），含 2 个应用场景与 8 个实践坑
+- [[kubernetes-springboot-vue-deploy]] — SpringBoot + Vue 项目部署到 Kubernetes：docker-compose 到 K8S 的完整映射对照表、9 类核心对象详解（Pod 与三层控制器、Service 与集群内 DNS、ConfigMap/Secret 及热更新差异、PV/PVC/StorageClass、三类探针、resources 与 JVM 容器感知、滚动更新与回滚、HPA、无私有仓库的镜像交付）、7 个清单文件的写法与理由、五层验证实录（前端静态资源/集群内 DNS/登录接口/数据落库/对外入口），含 2 个应用场景与 9 个实践坑
 
 ## Java 全栈基础
 
