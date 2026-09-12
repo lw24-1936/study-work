@@ -23,7 +23,7 @@ containerd：v2.2.4      runc：1.3.5      docker-init：0.19.0
 Docker Compose（插件）：v5.1.4      buildx：v0.34.1
 存储驱动：overlayfs（io.containerd.snapshotter.v1）  Cgroup：v2，驱动 systemd
 日志驱动：json-file（daemon 已配置 100m × 3 轮转）
-测试项目目录：/opt/docker-lab（示例文件全部给出全文，可照着重建）
+实验目录：/opt/docker-lab（示例文件全文都写在本文里，照着建目录即可复现；实验结束后已清理）
 ```
 
 讲解时的节奏建议：第 1 章讲清楚「为什么需要容器」，第 2、3 章把安装和架构讲透，第 4、5 章边敲边看输出（镜像是只读模板、容器是可写实例这条主线贯穿始终），第 6 章是重点（Dockerfile 决定了镜像质量），第 7、8 章解决数据与通信两个最容易出问题的点，第 9 章用一个四服务栈把前面所有内容串起来，第 10~13 章对应生产环境与排错。

@@ -507,7 +507,7 @@
 - 3 个应用场景：传统项目容器化一键交付（含 8 条上线检查清单）、CI 构建推送与服务器滚动更新及回滚脚本、完全离线内网交付
 - 16 条踩坑记录（MySQL 初始化被强杀导致数据卷损坏、depends_on 不保证就绪、curl 000 就绪竞态、alpine 缺 tzdata、PID 1 信号、多用户命名冲突、docker 组等价 root、rootless 不读系统 daemon.json、AppArmor userns 限制、COPY . . 打进垃圾文件、ARG 泄密钥、卷删不掉、默认 bridge 无 DNS、nginx upstream 静态解析 502、私有仓库 HTTPS、npm ci 与 package.json 注释）
 - 同步更新：index.md 的「容器与编排」分区纳入 docker/ 目录；总文档数 1192 增至 1193；最后更新日期 2026-09-12
-- 实验记录与全部真实输出保存在 /opt/docker-lab（exp1~exp13 脚本与 .out 文件）
+- 实验环境（/opt/docker-lab 的项目文件、13 组实验脚本与真实输出、临时用户 dockerdev1/dockerdev2、实验容器/镜像/卷/网络）已在文档完成并提交后全部清理，机器状态复原
 ## [2026-09-12] update | Linux 知识库 02-Linux 系统基础 内容完整度优化（6 篇）
 
 - 修正 02.1 全文多处错误：「LTS 承诺维护 5-6 年」→ 准确事实：2023 年起 Linux 内核 LTS 默认维护期从 6 年降到 2 年，少数被 Android/嵌入式广泛采用的内核延长到 6 年（4.4/4.14/4.19/5.4/5.10/5.15），6.x 默认 2 年（6.6 EOL 2026-12-31、6.12 LTS 2028-12、6.18 最新 LTS 2025-11-30 发布）；同步更新 LTS 版本清单
