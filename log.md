@@ -559,3 +559,14 @@
 - 应用场景 3→5、踩坑 7→12、常见问题 7→12、面试题 7→14
 - verify-expansion.py 03.6 篇 PASS（场景 5/坑 12/问答 12/面试 14/行数 952/13 节齐全/含 Red Hat 差异/含实测块）；围栏 118 行偶数；无彩色 emoji；wikilink 目标（03.1/03.2/03.3/03.4/03.5/13.5）均磁盘存在
 - frontmatter updated 改为 2026-09-12
+
+## [2026-09-12] update | Linux 知识库 03-文本处理与三剑客 内容完整度优化（6 篇）
+
+- 03.1-正则表达式 583→1647 行：补 BRE/ERE/PCRE 三种方言与引擎模型（DFA 线性 vs PCRE2 回溯）、零宽断言、POSIX 字符类与 locale、捕获/非捕获组；纠错「grep 有 ReDoS 风险」的通说（默认 BRE/ERE 走线性 DFA，ReDoS 只在 -P），实测 25000 行长行下 ERE 0.001s 返回、PCRE 报「超过 PCRE 的回溯限制」；新增坑 8~14（分支未分组的锚点陷阱、[[:alpha:]] 少写一层方括号的报错原文、locale 决定 . 与 {n} 按字节还是字符（实测半个汉字被切）、mawk 的 match() 无第三参数、sed 的 & 与 \1 混用、\b 非 POSIX）
+- 03.2-grep 461→924 行：PCRE 与平台差异（libpcre2 依赖）、二进制文件判定 -a/-I/--binary-files、-z/-Z NUL 分隔、四种引擎对比选型、--line-buffered、LC_ALL=C 对 -i 的语义影响；场景 3→8、坑 7→13、问答 7→13、面试 7→14
+- 03.3-sed 511→917 行：模式空间/保持空间、b/t/N/D/P/h/H/g/G/x 分支与循环、地址范围、-E/-z/-s/-u/-n、多文件原地替换与 macOS/BSD 的 -i 差异
+- 03.4-awk 730→1952 行：记录与字段模型、FS/OFS/RS/ORS、BEGIN/END 与规则顺序、关联数组、printf、getline 三形态与返回码、内置变量；重点纠错 Ubuntu 默认 awk 是 mawk 1.3.4 而非 gawk —— gensub()/asort()/IGNORECASE/FPAT/-i inplace 均不可用（贴出「function gensub never defined」报错原文），并给出 apt install gawk 与 mawk 等价替代；场景 6、坑 18、问答 18、面试 19
+- 03.5-其他文本工具 615→2213 行：sort（-k/-t/-n/-h/-V/-u/-s 与稳定排序、LC_COLLATE 影响中文排序实测）、uniq 必须与 sort 连用、cut 与 awk 的分隔符取舍、paste/join/comm、tr 的多字节限制、column/tee（含 sudo tee 权限链路）、iconv 与 locale、perl 一行流，以及各自「什么时候别用」的选型对照；场景 6、坑 24、问答 19、面试 23
+- 03.6-实战案例 517→952 行：Nginx 日志统计、CSV 与配置文件处理、批量改名等端到端流水线
+- 核实：verify-expansion.py 6 篇全部 PASS（行数 917~2213、场景 3~8、坑 12~24、问答 12~19、面试 14~23）；围栏全部偶数、无彩色 emoji、无重复二级标题、wikilink 指向真实文件；6 篇均以 patch 插入式扩写完成，除 frontmatter 的 updated/tags 外未删除已有内容
+- 同步更新：linux/README.md 的更新日期与 03 章标注、index.md 的 03 章 6 篇摘要（总文档数 1188 与索引 1193 条不变，本轮无新增文件）

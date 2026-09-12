@@ -1780,12 +1780,12 @@
 
 ### 03-文本处理与三剑客
 
-- [[03.1-正则表达式]] — 元字符/字符类/量词/锚点/分组/交替、贪婪与懒惰、BRE/ERE/PCRE 三种方言
-- [[03.2-grep]] — 基本与扩展正则、常用选项(-i/-v/-c/-n/-o)、递归搜索、上下文、多模式
-- [[03.3-sed]] — 替换/删除/插入追加、地址范围、模式空间与保持空间
-- [[03.4-awk]] — 字段与记录、内置变量、模式与动作、条件/循环/数组、字符串与数值函数、BEGIN/END
-- [[03.5-其他文本工具]] — sort/uniq/tr/cut/paste/join/comm/diff/patch/wc 十件套
-- [[03.6-实战案例]] — Nginx 日志统计、CSV 与配置文件处理、批量改名
+- [[03.1-正则表达式]] — 元字符/字符类/量词/锚点/分组/交替、贪婪与懒惰、BRE/ERE/PCRE 三种方言与 DFA/回溯引擎差异、POSIX 字符类与 locale、零宽断言与反向引用、ReDoS 边界（含 25000 行长行实测：ERE 线性 0.001s、PCRE 报超出回溯限制）
+- [[03.2-grep]] — 基本与扩展正则、选项全集（-i/-v/-c/-n/-o/-l/-z/-a/-I）、递归与 --include/--exclude、上下文与退出码 0/1/2、PCRE 与 BSD/busybox 差异、grep vs rg 实测量级
+- [[03.3-sed]] — 替换/删除/插入追加、地址范围、模式空间与保持空间、分支与循环 b/t/N/D/P、-E/-z/-s/-i 及 macOS/BSD 差异与破坏风险、多文件原地替换
+- [[03.4-awk]] — 记录与字段模型、FS/OFS/RS/ORS、BEGIN/END 与规则顺序、关联数组、printf、getline 三形态与返回码、内置变量；Ubuntu 默认是 mawk 而非 gawk（gensub/asort/IGNORECASE/FPAT 报错纠错与替代写法）
+- [[03.5-其他文本工具]] — sort/uniq/cut/paste/join/comm/tr/column/tee/iconv/perl 一行流的机制、边界与选型，rg 14.1.0 定位与 fd 未安装时的替代，locale 对排序的影响
+- [[03.6-实战案例]] — Nginx 日志统计、CSV 与配置文件处理、批量改名、文本清洗流水线等端到端可复现案例
 
 ### 04-Shell 脚本编程
 
