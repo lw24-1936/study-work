@@ -528,3 +528,14 @@
 - 6 篇共 450~690 行扩到 997~1594 行（本轮合计 +4168 行），全部为插入式扩写，未删任何已有知识点（仅替换陈旧/错误表述）
 - 核实：verify-expansion.py 6 篇全部 PASS；围栏全部偶数、无彩色 emoji、wikilink 0 坏链、无重复章节；坑 13~15 条、常见问题 14~18 条、面试题 15~20 题
 - 同步更新：README.md 与 README.en.md 的统计数字与徽章（总文档 1188 篇、index 注册 1193 条、Spring Boot 9 篇、补 weapp/kubernetes/docker 条目与目录树）；linux/README.md 的更新日期与 02 章标注；index.md 的 02 章 6 篇摘要
+
+## [2026-09-12] update | Linux 03 章 03.2-grep 内容完整度优化
+
+- 03.2-grep.md 461→924 行（本轮 +463 行，插入式扩写，未删任何已有内容）
+- 纠错/订正：明确 grep -P 是 GNU 扩展非 POSIX（依赖 libpcre2，macOS BSD grep/busybox grep 无 -P）；明确 GNU grep 默认 BRE/ERE 引擎是线性时间 DFA、不会回溯爆炸，ReDoS 只存在于 -P（PCRE2 回溯，实测 (a+)+$ 触发「超过 PCRE 的回溯限制」）；补二进制判定「binary file matches」在中文 locale 下显示「匹配到二进制文件」且退出码仍为 0
+- 新增知识点：PCRE（-P）与平台差异、二进制文件判定（-a/-I/--binary-files）、-z/-Z NUL 分隔、四种模式引擎对比表与选型原则、提取与定位（-n/-o/-H/-h 组合）、-e/-- 处理「以 - 开头的模式」
+- 补 Red Hat/CentOS/RHEL 差异标注（两系同用 GNU grep，差异在版本新旧、locale 默认值、容器 busybox）
+- 真实实测：全部现场真跑（PCRE 前瞻/非贪婪、二进制判定三种行为、-lZ NUL 输出、退出码 0/1/2、LC_ALL=C 对 -i 大小写折叠与 . 匹配多字节字符的影响、grep vs rg vs grep -F 500 万行计时、ReDoS -E vs -P 对照、-oE 提取 IP/邮箱/URL、--exclude-dir 排除实测）
+- 应用场景 3→8、踩坑 7→13、常见问题 7→13、面试题 7→14
+- verify-expansion.py 03.2 篇 PASS（场景 8/坑 13/问答 13/面试 14/行数 924/13 节齐全/含 Red Hat 差异/含实测块）；verify-batch.py 全通过（围栏偶数、无 emoji、0 坏链）；check-toc-anchors 0 问题
+- frontmatter updated 改为 2026-09-12
