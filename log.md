@@ -499,3 +499,21 @@
 - 素材来源：本机 minikube 集群（K8S v1.37.0、containerd、bridge CNI）与问卷调查系统（Spring Boot 3.5 + Vue 3 + MySQL 8.4 + Redis 7.4）的真实迁移过程
 - 同步更新：index.md 新增「容器与编排」分区；总文档数 1189 增至 1191；最后更新日期 2026-09-12
 - 配套文档（不在本库）：/opt/project-work/Kubernetes-K8S-单节点集群部署文档.md、/opt/project-work/questionnaire_work/K8S-部署手册.md
+
+## [2026-09-12] create | Docker 完整教程（讲解版）
+
+- 新增 docker/ 目录，共 1 篇：Docker完整教程.md（4023 行）
+- 覆盖 14 章：Docker 解决什么问题（容器 vs 虚拟机、namespace/cgroups/overlayfs、PID 1 特性）、安装与最小可用配置（官方 apt 源步骤、本机 dpkg/版本实测、daemon.json 镜像加速与日志轮转、docker 组与 rootless 说明）、三大核心概念与架构（Client→dockerd→containerd→runc、tag/digest 命名规则）、镜像（真实 pull 分层日志、docker image inspect、docker history 逐层读镜像来源、save/load 与 export/import 实测差异、buildx 多架构）、容器（生命周期状态机、run 参数表与优先级、-d 就绪竞态、exec vs attach、cp、top/stats/inspect、restart 策略 on-failure:3 实测、commit 与为何不用）、Dockerfile（首个镜像全流程与构建日志逐段解读、指令全景表、层缓存实测、.dockerignore 20.98MB→213B 与镜像 33.1MB→12.1MB、CMD vs ENTRYPOINT 四种组合、exec vs shell 形式、PID 1 信号 137/143 与 --init、多阶段构建 259MB→73.6MB 与 --target、ARG/secret/缓存挂载）、数据卷（命名卷/绑定挂载/只读/匿名卷/--mount 语法对照、MySQL 持久化与备份恢复、卷占用报错）、网络（默认 bridge 不能按名解析→自定义网络 127.0.0.11 内置 DNS→网络别名与项目隔离→端口发布与冲突→host/none/DNS 与排查清单）、docker compose 四服务栈实战（web+api+db+cache 完整项目文件与逐段解释、.env 变量替换、健康检查与 depends_on 条件、双网络隔离、命名卷持久化、常用命令）、私有仓库 Registry（registry:2 起停、tag/push/pull、HTTP 与 insecure-registries、Harbor 对比）、生产运行要点（内存 OOMKilled 三件套、CPU 限速实测、pids-limit、只读根与 tmpfs、时区 tzdata 坑、日志落盘与轮转、健康检查、非 root、构建期密钥泄漏实测、Java/Node 生产 Dockerfile 模板）、镜像瘦身与磁盘清理（六种手段、docker system df 四列解读、label 精确清理脚本）、故障排查手册（五步法 + 退出码速查 + 8 类真实报错与解法）、多用户共用一台 Docker 主机与用户隔离（共享 daemon 的命名/端口/镜像冲突与互删实测、五种隔离方案对比、rootless Docker 全流程实测含 Ubuntu 24.04 AppArmor userns 报错与解法、容器内 root 映射为宿主普通用户、团队规范 8 条）
+- 3 个应用场景：传统项目容器化一键交付（含 8 条上线检查清单）、CI 构建推送与服务器滚动更新及回滚脚本、完全离线内网交付
+- 16 条踩坑记录（MySQL 初始化被强杀导致数据卷损坏、depends_on 不保证就绪、curl 000 就绪竞态、alpine 缺 tzdata、PID 1 信号、多用户命名冲突、docker 组等价 root、rootless 不读系统 daemon.json、AppArmor userns 限制、COPY . . 打进垃圾文件、ARG 泄密钥、卷删不掉、默认 bridge 无 DNS、nginx upstream 静态解析 502、私有仓库 HTTPS、npm ci 与 package.json 注释）
+- 同步更新：index.md 的「容器与编排」分区纳入 docker/ 目录；总文档数 1192 增至 1193；最后更新日期 2026-09-12
+- 实验记录与全部真实输出保存在 /opt/docker-lab（exp1~exp13 脚本与 .out 文件）
+## [2026-09-12] update | Linux 知识库 02-Linux 系统基础 内容完整度优化（6 篇）
+
+- 修正 02.1 全文多处错误：「LTS 承诺维护 5-6 年」→ 准确事实：2023 年起 Linux 内核 LTS 默认维护期从 6 年降到 2 年，少数被 Android/嵌入式广泛采用的内核延长到 6 年（4.4/4.14/4.19/5.4/5.10/5.15），6.x 默认 2 年（6.6 EOL 2026-12-31、6.12 LTS 2028-12、6.18 最新 LTS 2025-11-30 发布）；同步更新 LTS 版本清单
+- 02.1 加深：/proc/sys 内核参数体系（sysctl 分类/配置文件优先级/常用参数）、内核模块签名与 DKMS、/proc/cmdline 常用参数、内核版本查询命令、发行版三系补充；现 687 行
+- 02.2 加深：usr merge 历史与现状、/usr/local vs /opt vs /srv 选型、tmpfs 详解（/run /dev/shm size=）、/boot/efi，补 Red Hat 系差异（RHEL 默认 XFS、/etc/sysconfig）；现 635 行
+- 02.3~02.6 补 Red Hat 系差异：rename 命令两系不同（Debian Perl rename vs RHEL util-linux rename，新增坑 8）、locate/mlocate 安装差异、ext4 固定 inode 表 vs XFS 动态 inode、.deb ar 归档 vs .rpm cpio 归档、apt/dnf 缓存路径、/bin/sh dash（Ubuntu）vs bash（RHEL）的 bashism 可移植性
+- 全部 6 篇 frontmatter updated 与整理日期改为 2026-09-12，verify-expansion.py 全部 PASS（场景 3+/坑 7+/问答 6+/面试 6+/行数 500+，围栏偶数、无 emoji、wikilink 无断链）
+- 修正子代理引入的一处错误：02.2 实测标签误写「内存 32G」（本机实为 19G），已更正
+
