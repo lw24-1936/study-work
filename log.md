@@ -549,3 +549,13 @@
 - 真实实测：全部现场真跑（相对地址/0,/re/ 与 /re/I、b/t 分支、N;D 输出末行、N;P;D、-z od 查看 NUL、-s 多文件 $ 语义、--debug 完整输出、\U\L\u\l、& 字面转义、200 万行 15MB 文件 sed/awk/grep 计时、CRLF→LF 多文件 -i.bak、报错原文 unknown command/unterminated s、LC_ALL=C 中文按字节替换）
 - 应用场景 3→4、踩坑 7→13、常见问题 7→12、面试题 7→14
 - verify-expansion.py 03.3 篇 PASS（场景 4/坑 13/问答 12/面试 14/行数 917/13 节齐全/含 Red Hat 差异/含实测块）；围栏 170 行偶数；无彩色 emoji
+## [2026-09-12] update | Linux 03 章 03.6-实战案例 内容完整度优化
+
+- 03.6-实战案例.md 517→952 行（本轮 +435 行，插入式扩写，未删任何已有内容）
+- 纠错/订正：明确 awk 默认 FS 是「连续空白」而非单空格（与 cut -d' ' 行为不同，实测连续空格产生空字段）；明确 Ubuntu 默认 awk 是 mawk 而非 gawk（gensub/asort 报 "function xxx never defined" 原文，gawk 扩展需 apt install gawk）；明确 sort 中文排序随 LC_COLLATE 变化（zh_CN.UTF-8 与 LC_ALL=C 实测结果不同）；明确 sort 数值排序需 -n、版本号需 -V（字典序下 10 < 100 < 9）；明确 join 按键关联、comm 比较整行（两者不同）
+- 新增知识点：数据清洗与格式转换流水线（CRLF/tr/iconv/sed）、时间窗口聚合（split 拆时间戳）、多文件关联合并（join/comm/paste/column）、awk 关联数组遍历顺序未定义、uniq -c 右对齐导致的字段错位、CSV 忘 NR>1 表头经字符串比较漏过滤
+- 补 Red Hat/CentOS/RHEL 差异标注：两系默认 awk 是 gawk（Ubuntu/Debian 是 mawk）、系统日志 journald 迁移（RHEL 8+ 无 /var/log/messages）、Apache 日志路径差异（apache2 vs httpd）、SELinux 拦 sed 改 /etc、sort --parallel/-S 按服务器硬件调
+- 真实实测：全部现场真跑（状态码/路径/IP 分布、CSV 分组/均值/高薪过滤、时间窗口按小时/分钟聚合、sort 默认/-n/-V、中文 LC_ALL=C、mawk 缺 gensub/asort 报错、cut vs awk 分隔、join/paste/column、200 万行 grep/awk/sort 计时、sort -u vs sort|uniq、sed 变量注入、grep 二进制判定、表头泄漏）
+- 应用场景 3→5、踩坑 7→12、常见问题 7→12、面试题 7→14
+- verify-expansion.py 03.6 篇 PASS（场景 5/坑 12/问答 12/面试 14/行数 952/13 节齐全/含 Red Hat 差异/含实测块）；围栏 118 行偶数；无彩色 emoji；wikilink 目标（03.1/03.2/03.3/03.4/03.5/13.5）均磁盘存在
+- frontmatter updated 改为 2026-09-12
