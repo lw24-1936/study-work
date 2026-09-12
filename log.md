@@ -539,3 +539,13 @@
 - 应用场景 3→8、踩坑 7→13、常见问题 7→13、面试题 7→14
 - verify-expansion.py 03.2 篇 PASS（场景 8/坑 13/问答 13/面试 14/行数 924/13 节齐全/含 Red Hat 差异/含实测块）；verify-batch.py 全通过（围栏偶数、无 emoji、0 坏链）；check-toc-anchors 0 问题
 - frontmatter updated 改为 2026-09-12
+
+## [2026-09-12] update | Linux 03 章 03.3-sed 内容完整度优化
+
+- 03.3-sed.md 511→917 行（本轮 +406 行，插入式扩写，未删任何已有内容）
+- 纠错/订正：明确 \U \L \u \l 是 GNU 扩展（BSD sed 不支持）；明确 -i 内部是「写临时文件 + rename」会换 inode、破坏硬链接/符号链接；明确 sed 的 s/// 用 POSIX BRE/ERE（线性 DFA 无回溯）故不存在 ReDoS，ReDoS 只在 PCRE（grep -P）；明确 LC_ALL=C 下多字节中文按字节处理（实测 你好 的 . 替换 2 个 X vs 6 个 X）
+- 新增知识点：相对地址 addr,+N 与 0,/re/（GNU）与 /re/I 忽略大小写；多行命令 N/P/D 与 D/d 区别、N;D 滑动窗口；分支与测试 b/t/:标签；选项 -z（NUL 分隔）/-s（独立文件流）/-u（无缓冲）/--debug（4.9 新选项）；e 标志命令注入 RCE 风险；GNU sed 大小写转换
+- 补 Red Hat/CentOS/RHEL 差异标注：红帽系默认同为 GNU sed，差异在版本（RHEL 7 的 4.2.2 无 -E 只有 -r、无 --debug；RHEL 8=4.5、RHEL 9=4.8）；真正的跨平台差异是 macOS BSD sed
+- 真实实测：全部现场真跑（相对地址/0,/re/ 与 /re/I、b/t 分支、N;D 输出末行、N;P;D、-z od 查看 NUL、-s 多文件 $ 语义、--debug 完整输出、\U\L\u\l、& 字面转义、200 万行 15MB 文件 sed/awk/grep 计时、CRLF→LF 多文件 -i.bak、报错原文 unknown command/unterminated s、LC_ALL=C 中文按字节替换）
+- 应用场景 3→4、踩坑 7→13、常见问题 7→12、面试题 7→14
+- verify-expansion.py 03.3 篇 PASS（场景 4/坑 13/问答 12/面试 14/行数 917/13 节齐全/含 Red Hat 差异/含实测块）；围栏 170 行偶数；无彩色 emoji
