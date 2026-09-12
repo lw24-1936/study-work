@@ -517,3 +517,14 @@
 - 全部 6 篇 frontmatter updated 与整理日期改为 2026-09-12，verify-expansion.py 全部 PASS（场景 3+/坑 7+/问答 6+/面试 6+/行数 500+，围栏偶数、无 emoji、wikilink 无断链）
 - 修正子代理引入的一处错误：02.2 实测标签误写「内存 32G」（本机实为 19G），已更正
 
+## [2026-09-12] update | Linux 知识库 02-Linux 系统基础 第二轮内容完整度优化（6 篇）
+
+- 02.1-内核与发行版 686→1090 行：纠正内核 LTS 事实（新 longterm 默认 2 年 projected EOL、按产业需求延长；现行 active longterm 6.18/6.12 Dec 2028、6.6/6.1 Dec 2027、5.15/5.10 Dec 2026；主版本已到 7，本机 7.0.0-28、上游 mainline 7.3-rc2）；GA/HWE 内核包纠错（Ubuntu 24.04 装 HWE 用 linux-generic-hwe-24.04，linux-image-generic 会拉回 GA 6.8.0-139）；sysctl 参数条数改为现跑实测 3962（条数随已加载模块浮动）；新增内核模块参数与依赖、模块签名与 DKMS、initramfs、内核 flavor 与 PREEMPT_RT、livepatch、kdump、cgroup v2 与 namespace、zram/zswap、内核命令行参数、内核安全加固 sysctl、CVE 跟踪、发行版家族全景与支持周期表、发行版选型决策树
+- 02.2-文件系统层级标准 FHS 634→997 行：FHS 3.0 现状与 hier(7)/file-hierarchy(7)、XDG Base Directory、/etc 与 /usr 细节（skel/alternatives/ld.so.conf.d/libexec）、持久化设备命名、安全挂载选项与 noexec 副作用、systemd 挂载单元、只读根与 overlay（docker overlayfs 挂载实测）、tmpfiles 清理、/proc 与 /sys 入口、tmpfs 深入、容器镜像 FHS 差异、磁盘目录规划
+- 02.3-文件与目录操作 586→1594 行：补齐 tree/basename/realpath/mktemp/truncate/shred/install/mkfifo/fuser/dircolors 等命令族，find 参数全集与 -exec {} + 性能实测、argument list too long 与 xargs -0、通配符与 extglob、cp/mv/rm 语义（mv 同文件系统原子性、--reflink、稀疏）、od/hexdump/xxd/iconv 对照、which/type/command -v 与 stat 字段对照
+- 02.4-文件类型与属性 544→1185 行：umask、chattr/lsattr（含 +i 后 rm 报错实测）、xattr、稀疏文件（dd seek/fallocate/filefrag 实测）、时间戳与 birth time、四种 atime 策略、设备文件与 major/minor、FIFO 与 socket、符号链接深入（ln -sfn 原子更新）、file 原理与 magic 库
+- 02.5-压缩与归档 687→1527 行：压缩器全景 + 本机真实基准（9.26MB 语料上 gzip -6/-9、pigz、bzip2、zstd -3、xz -T0 的体积与耗时对照）、tar 参数族全集、cpio/ar/bsdtar/7z（.deb 是 ar 归档）、--listed-incremental 增量语义与恢复顺序、校验与 GPG、zip 中文乱码复现与修复、压缩炸弹与路径穿越、logrotate 用 zstd、Red Hat 系差异
+- 02.6-重定向与管道 558→1441 行：fd 深入（exec 3<>file、/proc/PID/fd、{var} 语法、noclobber）、2>&1 >f 与 >f 2>&1 行为差异实测、管道内核缓冲（64KiB/F_SETPIPE_SZ）与 SIGPIPE 退出码 141、PIPESTATUS/pipefail/lastpipe、tee 深入（tee >(gzip)、sudo tee 权限链路）、缓冲与实时输出（stdbuf/python -u/script）、heredoc 与 here string、dash vs bash 的 bashism 差异、安全用法
+- 6 篇共 450~690 行扩到 997~1594 行（本轮合计 +4168 行），全部为插入式扩写，未删任何已有知识点（仅替换陈旧/错误表述）
+- 核实：verify-expansion.py 6 篇全部 PASS；围栏全部偶数、无彩色 emoji、wikilink 0 坏链、无重复章节；坑 13~15 条、常见问题 14~18 条、面试题 15~20 题
+- 同步更新：README.md 与 README.en.md 的统计数字与徽章（总文档 1188 篇、index 注册 1193 条、Spring Boot 9 篇、补 weapp/kubernetes/docker 条目与目录树）；linux/README.md 的更新日期与 02 章标注；index.md 的 02 章 6 篇摘要

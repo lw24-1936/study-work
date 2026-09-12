@@ -6,16 +6,16 @@
 <h1 align="center">Tech Learning Knowledge Base</h1>
 
 <p align="center">
-  Structured technical study notes for <b>Java Backend</b> · <b>Frontend</b> · <b>Algorithm Engineer</b> · <b>Big Data</b> · <b>Linux Operations</b><br/>
+  Structured technical study notes for <b>Java Backend</b> · <b>Frontend</b> · <b>Algorithm Engineer</b> · <b>Big Data</b> · <b>Linux Operations</b> · <b>WeChat Mini-Program Full-Stack</b><br/>
   Wiki-style structure · Cross-referencing · Obsidian-compatible · Continuously updated
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/docs-1046-2ea44f" alt="docs"/>
-  <img src="https://img.shields.io/badge/knowledge%20bases-5-0969da" alt="knowledge bases"/>
-  <img src="https://img.shields.io/badge/Spring%20Boot-8-eb6f2d" alt="Spring Boot"/>
+  <img src="https://img.shields.io/badge/docs-1188-2ea44f" alt="docs"/>
+  <img src="https://img.shields.io/badge/knowledge%20bases-6-0969da" alt="knowledge bases"/>
+  <img src="https://img.shields.io/badge/Spring%20Boot-9-eb6f2d" alt="Spring Boot"/>
   <img src="https://img.shields.io/badge/Obsidian-compatible-7c3aed" alt="Obsidian"/>
-  <img src="https://img.shields.io/badge/updated-2026.08.19-6e7781" alt="updated"/>
+  <img src="https://img.shields.io/badge/updated-2026.09.12-6e7781" alt="updated"/>
 </p>
 
 ## Table of Contents
@@ -31,42 +31,48 @@
 
 ## About
 
-This repository is a collection of structured technical study notes for five tracks: **Java Backend**, **Frontend**, **Algorithm Engineer**, **Big Data**, and **Linux Operations**. Knowledge is organized into systematic chapters, with one standalone document per topic. Documents cross-reference each other via `[[filename]]`, forming an incrementally updatable, cross-searchable knowledge network.
+This repository is a collection of structured technical study notes for six tracks: **Java Backend**, **Frontend**, **Algorithm Engineer**, **Big Data**, **Linux Operations**, and **WeChat Mini-Program Full-Stack**. Knowledge is organized into systematic chapters, with one standalone document per topic. Documents cross-reference each other via `[[filename]]`, forming an incrementally updatable, cross-searchable knowledge network.
 
 See [index.md](./index.md) for the content index, [SCHEMA.md](./SCHEMA.md) for writing conventions, and [log.md](./log.md) for the changelog.
 
 ## Highlights
 
-- **Five systematic tracks**: 51 chapters of Java Full-Stack, 103 chapters of Frontend, 20 chapters of Algorithm Engineer, 30 chapters of Big Data, 26 chapters of Linux Operations, plus 8 Spring Boot integration guides
+- **Six systematic tracks**: 51 chapters of Java Full-Stack, 103 chapters of Frontend, 20 chapters of Algorithm Engineer, 30 chapters of Big Data, 26 chapters of Linux Operations, 13 chapters of WeChat Mini-Program Full-Stack, plus 9 Spring Boot integration guides, 2 Kubernetes guides, and a complete Docker tutorial
 - **Wiki-style cross-referencing**: documents link to each other via `[[filename]]`, so you can follow a topic to related ones
 - **Obsidian-native**: `[[filename]]` backlinks + frontmatter tags are Obsidian syntax, so the whole repo opens directly as a Vault
 - **Unified conventions**: YAML frontmatter + fixed section structure keep the whole library consistent, see [SCHEMA.md](./SCHEMA.md)
 - **Incremental updates**: every document carries `created` / `updated` dates, and every operation is logged in [log.md](./log.md)
-- **Roadmaps included**: five roadmap files outline the five tracks
+- **Roadmaps included**: six roadmap files outline the six tracks
 
 ## Statistics
 
 | Track | Directory | Chapters | Documents | Status |
 | --- | --- | --- | --- | --- |
-| Java Full-Stack | [java-fullstack/](./java-fullstack/README.md) | 51 (preface + 50 chapters) | 202 | Complete |
+| Java Full-Stack | [java-fullstack/](./java-fullstack/README.md) | 51 (preface + 50 chapters) | 234 | Complete |
 | Frontend | [frontend-fullstack/](./frontend-fullstack/README.md) | 103 | 433 | Complete |
 | Algorithm Engineer | [algorithm-engineer/](./algorithm-engineer/README.md) | 20 | 142 | Complete |
-| Spring Boot Integration | [spring-boot/](./spring-boot/) | — | 8 | Complete |
+| Spring Boot Integration | [spring-boot/](./spring-boot/) | — | 9 | Complete |
+| WeChat Mini-Program Full-Stack | [weapp-fullstack/](./weapp-fullstack/) | 13 | 106 | Complete |
+| Kubernetes & Orchestration | [kubernetes/](./kubernetes/) | — | 2 | Complete |
+| Docker | [docker/](./docker/) | — | 1 | Complete |
 | Big Data | [bigdata/](./bigdata/README.md) | 30 | 133 | Complete |
 | Linux Operations | [linux/](./linux/README.md) | 26 | 128 | Complete |
 
-**1046 documents** in total ([index.md](./index.md) registers 1050 entries, 3 of which are knowledge-base entry links).
+**1188 documents** in total ([index.md](./index.md) registers 1193 entries, 4 of which are knowledge-base entry links and 1 is the shared learning-links index).
 
 ## Directory Structure
 
 ```text
 study-work/
-├── java-fullstack/                  # Java Full-Stack knowledge base (preface + 50 chapters / 202 docs)
+├── java-fullstack/                  # Java Full-Stack knowledge base (preface + 50 chapters / 234 docs)
 ├── frontend-fullstack/              # Frontend knowledge base (103 chapters / 433 docs)
 ├── algorithm-engineer/              # Algorithm Engineer knowledge base (20 chapters / 142 docs)
-├── spring-boot/                     # Spring Boot integration guides (8 docs)
+├── spring-boot/                     # Spring Boot integration guides (9 docs)
+├── kubernetes/                      # Kubernetes & orchestration (2 docs)
+├── docker/                          # Complete Docker tutorial (1 doc)
 ├── bigdata/                         # Big Data knowledge base (30 chapters / 133 docs)
 ├── linux/                            # Linux Operations knowledge base (26 chapters / 128 docs)
+├── weapp-fullstack/                 # WeChat Mini-Program Full-Stack (13 chapters / 106 docs)
 ├── index.md                         # Content index (start here to find documents)
 ├── SCHEMA.md                        # Writing conventions (frontmatter / tags / structure)
 ├── log.md                           # Changelog
@@ -81,7 +87,7 @@ study-work/
 
 ### Java Full-Stack — [java-fullstack/](./java-fullstack/README.md)
 
-From Java language fundamentals, collections, concurrency, and JVM, to Spring Framework, Spring Boot, Spring Cloud, distributed systems, microservices, and performance tuning — 51 chapter directories (preface + 50 chapters) and 202 documents.
+From Java language fundamentals, collections, concurrency, and JVM, to Spring Framework, Spring Boot, Spring Cloud, distributed systems, microservices, and performance tuning — 51 chapter directories (preface + 50 chapters) and 234 documents.
 
 ### Frontend — [frontend-fullstack/](./frontend-fullstack/README.md)
 
@@ -113,9 +119,9 @@ The documents use Obsidian-native syntax — `[[filename]]` backlinks + YAML fro
 
 - **Backlinks**: `[[document name]]` references become clickable links; Ctrl/Cmd + click to jump
 - **Backlink panel**: each document shows "what links here"
-- **Graph view**: visualize the knowledge network across the five tracks
+- **Graph view**: visualize the knowledge network across the six tracks
 - **Tag browsing**: frontmatter tags (spring-boot, redis, distributed…) appear in the tag pane; click to group related documents
-- **Full-text search**: Ctrl/Cmd + Shift + F across all 1046 documents
+- **Full-text search**: Ctrl/Cmd + Shift + F across all 1188 documents
 
 Start with [index.md](./index.md), or use graph view to survey the whole system.
 

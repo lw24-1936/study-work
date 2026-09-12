@@ -6,16 +6,16 @@
 <h1 align="center">技术学习知识库</h1>
 
 <p align="center">
-  面向 <b>Java 后端</b> · <b>前端</b> · <b>算法工程师</b> · <b>大数据</b> · <b>Linux 运维</b> 五大方向的体系化技术学习笔记<br/>
+  面向 <b>Java 后端</b> · <b>前端</b> · <b>算法工程师</b> · <b>大数据</b> · <b>Linux 运维</b> · <b>微信小程序全栈</b> 六大方向的体系化技术学习笔记<br/>
   类 wiki 结构 · 交叉引用 · Obsidian 兼容 · 持续更新
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/学习文档-1046%20篇-2ea44f" alt="学习文档"/>
-  <img src="https://img.shields.io/badge/知识库-5%20个-0969da" alt="知识库"/>
-  <img src="https://img.shields.io/badge/Spring%20Boot-8%20篇-eb6f2d" alt="Spring Boot"/>
+  <img src="https://img.shields.io/badge/学习文档-1188%20篇-2ea44f" alt="学习文档"/>
+  <img src="https://img.shields.io/badge/知识库-6%20个-0969da" alt="知识库"/>
+  <img src="https://img.shields.io/badge/Spring%20Boot-9%20篇-eb6f2d" alt="Spring Boot"/>
   <img src="https://img.shields.io/badge/Obsidian-兼容-7c3aed" alt="Obsidian"/>
-  <img src="https://img.shields.io/badge/更新-2026.08.19-6e7781" alt="更新"/>
+  <img src="https://img.shields.io/badge/更新-2026.09.12-6e7781" alt="更新"/>
 </p>
 
 ## 目录
@@ -31,18 +31,18 @@
 
 ## 项目简介
 
-本仓库是一套面向 **Java 后端**、**前端**、**算法工程师**、**大数据**、**Linux 运维** 五个方向的技术学习笔记。知识按体系化篇章组织，每个主题一篇独立文档；文档间以 `[[filename]]` 交叉引用，形成可增量更新、可交叉检索的知识网络。
+本仓库是一套面向 **Java 后端**、**前端**、**算法工程师**、**大数据**、**Linux 运维**、**微信小程序全栈** 六个方向的技术学习笔记。知识按体系化篇章组织，每个主题一篇独立文档；文档间以 `[[filename]]` 交叉引用，形成可增量更新、可交叉检索的知识网络。
 
 内容索引见 [index.md](./index.md)，文档规范见 [SCHEMA.md](./SCHEMA.md)，操作记录见 [log.md](./log.md)。
 
 ## 特性
 
-- **多方向体系化**：Java 全栈 51 篇章、前端 103 篇章、算法工程师 20 篇章、大数据 30 篇章、Linux 运维 26 篇章、微信小程序全栈 13 篇章，另附 Spring Boot 集成专题 9 篇、Kubernetes 容器编排专题 2 篇
+- **多方向体系化**：Java 全栈 51 篇章、前端 103 篇章、算法工程师 20 篇章、大数据 30 篇章、Linux 运维 26 篇章、微信小程序全栈 13 篇章，另附 Spring Boot 集成专题 9 篇、Kubernetes 容器编排专题 2 篇、Docker 完整教程 1 篇
 - **类 wiki 交叉引用**：文档间以 `[[filename]]` 互链，从一个主题顺藤摸瓜到相关主题
 - **Obsidian 原生兼容**：`[[filename]]` 双向链接 + frontmatter 标签正是 Obsidian 语法，整库可直接作为 Vault 打开
 - **统一文档规范**：YAML frontmatter + 固定章节结构，全库格式一致，见 [SCHEMA.md](./SCHEMA.md)
 - **可增量更新**：每篇附 `created` / `updated` 日期，操作留痕于 [log.md](./log.md)
-- **附总目录 roadmap**：五份总目录文件对应五大方向，是知识库的编排蓝图
+- **附总目录 roadmap**：六份总目录文件对应六大方向，是知识库的编排蓝图
 
 ## 数据统计
 
@@ -56,19 +56,23 @@
 | 微信小程序全栈 | [weapp-fullstack/](./weapp-fullstack/) | 13 | 106 | 已完成 |
 | Spring Boot 集成 | [spring-boot/](./spring-boot/) | — | 9 | 已完成 |
 | Kubernetes 与容器编排 | [kubernetes/](./kubernetes/) | — | 2 | 已完成 |
+| Docker 完整教程 | [docker/](./docker/) | — | 1 | 已完成 |
 
-合计 **1187 篇**知识库文档（[index.md](./index.md) 注册 1192 条索引，含 4 条知识库入口链接与 1 条学习链接汇总）。
+合计 **1188 篇**知识库文档（[index.md](./index.md) 注册 1193 条索引，含 4 条知识库入口链接与 1 条学习链接汇总）。
 
 ## 目录结构
 
 ```text
 study-work/
-├── java-fullstack/                  # Java 全栈学习知识库（前置 + 50 篇章 / 202 篇）
+├── java-fullstack/                  # Java 全栈学习知识库（前置 + 50 篇章 / 234 篇）
 ├── frontend-fullstack/              # 前端完整知识库（103 篇章 / 433 篇）
 ├── algorithm-engineer/              # 算法工程师知识库（20 篇章 / 142 篇）
-├── spring-boot/                     # Spring Boot 集成实践（8 篇）
+├── spring-boot/                     # Spring Boot 集成实践（9 篇）
+├── kubernetes/                      # Kubernetes 与容器编排专题（2 篇）
+├── docker/                          # Docker 完整教程（1 篇）
 ├── bigdata/                         # 大数据学习知识库（30 篇章 / 133 篇）
 ├── linux/                            # Linux 运维学习知识库（26 篇章 / 128 篇）
+├── weapp-fullstack/                 # 微信小程序与后台知识库（13 篇章 / 106 篇）
 ├── index.md                         # 全库内容索引（先读这里找文档）
 ├── SCHEMA.md                        # 文档规范（frontmatter / 标签 / 结构）
 ├── log.md                           # 操作日志
@@ -83,7 +87,7 @@ study-work/
 
 ### Java 全栈 — [java-fullstack/](./java-fullstack/README.md)
 
-从 Java 语言基础、集合、并发、JVM，到 Spring Framework、Spring Boot、Spring Cloud、分布式与微服务、性能优化，共 51 章节目录（前置 + 50 篇章）、202 篇文档。
+从 Java 语言基础、集合、并发、JVM，到 Spring Framework、Spring Boot、Spring Cloud、分布式与微服务、性能优化，共 51 章节目录（前置 + 50 篇章）、234 篇文档。
 
 ### 前端完整知识库 — [frontend-fullstack/](./frontend-fullstack/README.md)
 
@@ -119,9 +123,9 @@ study-work/
 
 - **双向链接**：正文里的 `[[文档名]]` 自动变为可点击链接，Ctrl/Cmd + 点击跳转
 - **反向链接**：每篇文档右侧面板显示「谁引用了这篇」
-- **关系图谱**：Graph view 可视化五大方向的知识网络
+- **关系图谱**：Graph view 可视化六大方向的知识网络
 - **标签浏览**：frontmatter 的 tags（spring-boot、redis、distributed…）进入标签面板，点击聚合同主题文档
-- **全文搜索**：Ctrl/Cmd + Shift + F 跨 1046 篇文档检索
+- **全文搜索**：Ctrl/Cmd + Shift + F 跨 1188 篇文档检索
 
 建议从 [index.md](./index.md) 开始读，或用图谱视图概览整个知识体系。
 

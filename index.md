@@ -1771,12 +1771,12 @@
 
 ### 02-Linux 系统基础
 
-- [[02.1-内核与发行版]] — 内核概念、宏内核与微内核、版本号规则、主线与 LTS、发行版与内核关系、Debian/Red Hat/Arch 三大系
-- [[02.2-文件系统层级标准 FHS]] — 根目录结构（/bin /etc /usr /var /opt 等职责）、/proc /sys /dev /run 伪文件系统
-- [[02.3-文件与目录操作]] — 增删改查（ls/cd/mkdir/touch/cp/mv/rm）、文件查看（cat/less/head/tail/od/hexdump）、文件查找（find/locate/which/whereis/type）
-- [[02.4-文件类型与属性]] — 七种文件类型、inode 与目录项、stat、硬链接与符号链接、atime/mtime/ctime 时间戳
-- [[02.5-压缩与归档]] — tar 归档、gzip/bzip2/xz/zstd/zip 压缩、分卷、增量备份、归档校验
-- [[02.6-重定向与管道]] — 标准输入输出错误、重定向符号、管道、tee、xargs
+- [[02.1-内核与发行版]] — 内核概念、宏内核与微内核、版本号规则与三条维护线（现行 active longterm 及 projected EOL）、内核模块参数与依赖、模块签名与 DKMS、initramfs 生成、内核 flavor 与 PREEMPT_RT、livepatch、kdump、内核命令行参数、cgroup v2 与 namespace、zram/zswap、内核安全加固 sysctl、CVE 跟踪、发行版家族全景与支持周期、发行版选型决策树（1090 行）
+- [[02.2-文件系统层级标准 FHS]] — 根目录结构（/bin /etc /usr /var /opt 等职责）、FHS 与 hier(7)/file-hierarchy(7)、XDG Base Directory、/etc 与 /usr 细节、持久化设备命名（by-uuid/by-label/by-partuuid/by-path）、安全挂载选项与副作用、systemd 挂载单元、只读根与 overlay、tmpfiles 清理策略、/proc 与 /sys 入口、tmpfs 深入、容器镜像 FHS 差异、磁盘目录规划（997 行）
+- [[02.3-文件与目录操作]] — 增删改查、查看（less/od/hexdump/xxd/iconv）、查找（find 参数全集/locate/fd 对照）、命令族补齐（tree/basename/dirname/realpath/mktemp/truncate/shred/install/mkfifo/fuser/dircolors）、通配符展开与 extglob、argument list too long 与 xargs -0、cp/mv/rm 语义（原子性、--reflink、稀疏、防护）、ls -l 与 stat 字段对照（1594 行）
+- [[02.4-文件类型与属性]] — 七种文件类型、inode 表与目录项（ext4 固定 vs XFS 动态）、umask、SetUID/SetGID/Sticky、chattr/lsattr、扩展属性 xattr、稀疏文件与 fallocate/filefrag、时间戳与 birth time、四种 atime 策略、设备文件 major/minor、FIFO 与 socket、符号链接深入、file 命令原理与 magic 库（1185 行）
+- [[02.5-压缩与归档]] — 压缩器全景与真实基准对照（gzip/bzip2/xz/zstd/pigz/lz4 的体积与时耗实测）、tar 参数族全集（-r/-u/--delete/-A/--transform/--sparse/--listed-incremental）、cpio/ar/bsdtar/7z、增量备份语义与恢复顺序、校验与 GPG 签名、跨平台中文乱码复现与修复、压缩炸弹与路径穿越、logrotate 深入、Red Hat 系差异（1527 行）
+- [[02.6-重定向与管道]] — 标准流与文件描述符深入（exec 3<>file、/proc/PID/fd、{var} 语法、noclobber）、重定向顺序与 fd 复制、管道内核缓冲与 SIGPIPE（退出码 141）、PIPESTATUS/pipefail/lastpipe、tee 深入（含 tee >(gzip) 与 sudo tee）、缓冲与实时输出（stdbuf/python -u/script）、heredoc 与 here string、性能对比、安全用法、dash vs bash 差异（1441 行）
 
 ### 03-文本处理与三剑客
 
