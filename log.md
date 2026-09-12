@@ -502,12 +502,12 @@
 
 ## [2026-09-12] create | Docker 完整教程（讲解版）
 
-- 新增 docker/ 目录，共 1 篇：Docker完整教程.md（4023 行）
+- 新增 docker/ 目录，共 1 篇：Docker完整教程.md（4216 行）
 - 覆盖 14 章：Docker 解决什么问题（容器 vs 虚拟机、namespace/cgroups/overlayfs、PID 1 特性）、安装与最小可用配置（官方 apt 源步骤、本机 dpkg/版本实测、daemon.json 镜像加速与日志轮转、docker 组与 rootless 说明）、三大核心概念与架构（Client→dockerd→containerd→runc、tag/digest 命名规则）、镜像（真实 pull 分层日志、docker image inspect、docker history 逐层读镜像来源、save/load 与 export/import 实测差异、buildx 多架构）、容器（生命周期状态机、run 参数表与优先级、-d 就绪竞态、exec vs attach、cp、top/stats/inspect、restart 策略 on-failure:3 实测、commit 与为何不用）、Dockerfile（首个镜像全流程与构建日志逐段解读、指令全景表、层缓存实测、.dockerignore 20.98MB→213B 与镜像 33.1MB→12.1MB、CMD vs ENTRYPOINT 四种组合、exec vs shell 形式、PID 1 信号 137/143 与 --init、多阶段构建 259MB→73.6MB 与 --target、ARG/secret/缓存挂载）、数据卷（命名卷/绑定挂载/只读/匿名卷/--mount 语法对照、MySQL 持久化与备份恢复、卷占用报错）、网络（默认 bridge 不能按名解析→自定义网络 127.0.0.11 内置 DNS→网络别名与项目隔离→端口发布与冲突→host/none/DNS 与排查清单）、docker compose 四服务栈实战（web+api+db+cache 完整项目文件与逐段解释、.env 变量替换、健康检查与 depends_on 条件、双网络隔离、命名卷持久化、常用命令）、私有仓库 Registry（registry:2 起停、tag/push/pull、HTTP 与 insecure-registries、Harbor 对比）、生产运行要点（内存 OOMKilled 三件套、CPU 限速实测、pids-limit、只读根与 tmpfs、时区 tzdata 坑、日志落盘与轮转、健康检查、非 root、构建期密钥泄漏实测、Java/Node 生产 Dockerfile 模板）、镜像瘦身与磁盘清理（六种手段、docker system df 四列解读、label 精确清理脚本）、故障排查手册（五步法 + 退出码速查 + 8 类真实报错与解法）、多用户共用一台 Docker 主机与用户隔离（共享 daemon 的命名/端口/镜像冲突与互删实测、五种隔离方案对比、rootless Docker 全流程实测含 Ubuntu 24.04 AppArmor userns 报错与解法、容器内 root 映射为宿主普通用户、团队规范 8 条）
 - 3 个应用场景：传统项目容器化一键交付（含 8 条上线检查清单）、CI 构建推送与服务器滚动更新及回滚脚本、完全离线内网交付
-- 16 条踩坑记录（MySQL 初始化被强杀导致数据卷损坏、depends_on 不保证就绪、curl 000 就绪竞态、alpine 缺 tzdata、PID 1 信号、多用户命名冲突、docker 组等价 root、rootless 不读系统 daemon.json、AppArmor userns 限制、COPY . . 打进垃圾文件、ARG 泄密钥、卷删不掉、默认 bridge 无 DNS、nginx upstream 静态解析 502、私有仓库 HTTPS、npm ci 与 package.json 注释）
+- 17 条踩坑记录（MySQL 初始化被强杀导致数据卷损坏、depends_on 不保证就绪、curl 000 就绪竞态、alpine 缺 tzdata、PID 1 信号、多用户命名冲突、docker 组等价 root、rootless 不读系统 daemon.json、AppArmor userns 限制、COPY . . 打进垃圾文件、ARG 泄密钥、卷删不掉、默认 bridge 无 DNS、nginx upstream 静态解析 502、私有仓库 HTTPS、npm ci 与 package.json 注释、MySQL 初始化脚本中文乱码）
 - 同步更新：index.md 的「容器与编排」分区纳入 docker/ 目录；总文档数 1192 增至 1193；最后更新日期 2026-09-12
-- 实验环境（/opt/docker-lab 的项目文件、13 组实验脚本与真实输出、临时用户 dockerdev1/dockerdev2、实验容器/镜像/卷/网络）已在文档完成并提交后全部清理，机器状态复原
+- 实验环境（/opt/docker-lab 的项目文件、13 组实验脚本与真实输出、临时用户 dockerdev1/dockerdev2、实验容器/镜像/卷/网络）已在文档完成并提交后清理（/opt/docker-lab 目录、临时用户 dockerdev1/dockerdev2、实验容器/镜像/卷/网络均已确认不存在）；2026-09-12 复查补清了两处遗漏：实验期间创建的 2 个 hello-world 容器（zealous_wozniak/zen_beaver）与 2 个匿名卷（0d78cf92…/b9633bec…），另有一个 6 月创建的 hello-world 容器属历史遗留、未动
 ## [2026-09-12] update | Linux 知识库 02-Linux 系统基础 内容完整度优化（6 篇）
 
 - 修正 02.1 全文多处错误：「LTS 承诺维护 5-6 年」→ 准确事实：2023 年起 Linux 内核 LTS 默认维护期从 6 年降到 2 年，少数被 Android/嵌入式广泛采用的内核延长到 6 年（4.4/4.14/4.19/5.4/5.10/5.15），6.x 默认 2 年（6.6 EOL 2026-12-31、6.12 LTS 2028-12、6.18 最新 LTS 2025-11-30 发布）；同步更新 LTS 版本清单
