@@ -570,3 +570,12 @@
 - 03.6-实战案例 517→952 行：Nginx 日志统计、CSV 与配置文件处理、批量改名等端到端流水线
 - 核实：verify-expansion.py 6 篇全部 PASS（行数 917~2213、场景 3~8、坑 12~24、问答 12~19、面试 14~23）；围栏全部偶数、无彩色 emoji、无重复二级标题、wikilink 指向真实文件；6 篇均以 patch 插入式扩写完成，除 frontmatter 的 updated/tags 外未删除已有内容
 - 同步更新：linux/README.md 的更新日期与 03 章标注、index.md 的 03 章 6 篇摘要（总文档数 1188 与索引 1193 条不变，本轮无新增文件）
+
+
+## [2026-09-16] create | Docker 面试题 + Docker 部署大模型 + Kubernetes 完整教程（3 篇）
+
+- docker/Docker面试题.md（644 行，type: concept）：Docker 面试题大全，11 个主题 61 题——基础概念（容器 vs 虚拟机、三大组件与 dockerd→containerd→runc 调用链、OCI 标准）、镜像与分层（UnionFS/overlay2/写时复制、COPY vs ADD、CMD vs ENTRYPOINT、多阶段构建、层缓存）、容器生命周期（状态机、restart 策略、exec vs attach、退出码 0/1/125/126/127/137/143）、Dockerfile 指令、存储三兄弟（named/bind/tmpfs/anonymous + 备份恢复）、网络五驱动（默认 bridge 无 DNS vs 自定义网络 127.0.0.11）、docker compose、底层原理（namespace 7 种/cgroups/unionfs）、安全（非 root/只读/capability/BuildKit secret/docker 组风险）、故障排查、生产运维（资源限制/日志轮转/live-restore），附面试重点总结
+- docker/Docker部署大模型.md（731 行，type: integration）：通过 Docker 部署大模型全链路——GPU 环境（nvidia-container-toolkit、--gpus all、CUDA 版本匹配）、Ollama、llama.cpp/llama-server（GGUF 低显存 + CPU/GPU 混合 -ngl）、vLLM（生产高吞吐/PagedAttention/OpenAI 兼容/--ipc=host/硬门槛计算能力≥7.0）、TGI、Open WebUI、模型缓存与数据卷（HF cache/Ollama models）、量化（GGUF/AWQ/GPTQ/FP8 与显存估算）、多 GPU 张量并行、显存规划与性能调优、OpenAI 兼容客户端接入；3 个应用场景 + 8 条踩坑；本机环境（GTX 1050 4GB、未装 toolkit）已在文中如实标注，vLLM/TGI 章节明确门槛不误导
+- kubernetes/Kubernetes完整教程.md（961 行，type: concept）：Kubernetes 完整知识教程——架构与核心组件（控制面 apiserver/etcd/scheduler/controller-manager、节点 kubelet/kube-proxy/containerd）、声明式 API 与对象模型、Pod（initContainer/sidecar、共享网络）、五类控制器、Service 四类型与 DNS 服务发现、Ingress、ConfigMap/Secret、PV/PVC/StorageClass、Namespace 与资源配额、三类探针、调度（nodeSelector/污点容忍/亲和性）、RBAC/ServiceAccount/SecurityContext/NetworkPolicy、滚动更新回滚与 HPA、Helm；2 个应用场景 + 10 条踩坑；命令与输出来自本机正在运行的 minikube v1.37.0 集群实测（demo 命名空间 web Deployment 双探针/initContainer/ConfigMap、questionnaire 命名空间 mysql StatefulSet 等）
+- 自检：3 篇 frontmatter 完整、围栏全部偶数、无彩色 emoji、无待编写、无坏链接；Docker面试题 的「踩坑=0」为面试文档正常形态（同 49-Java常见问题 186-194 的「面试重点总结」结构，非缺陷）
+- 同步更新：index.md 容器与编排节新增 3 条 wikilink（共 3 篇→共 6 篇，总文档数 1193→1196）；README.md / README.en.md 的徽章、特性、统计表、目录树、kubernetes 节描述（docker 1→3 篇、kubernetes 2→3 篇、合计 1188→1191 篇、索引 1193→1196 条）

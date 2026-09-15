@@ -1,7 +1,7 @@
 # 学习笔记索引
 
 > 内容目录。每篇文档附一句话摘要。先读这里找到相关文档。
-> 最后更新：2026-09-12 | 总文档数：1193
+> 最后更新：2026-09-16 | 总文档数：1196
 
 ## 参考资源
 
@@ -25,11 +25,14 @@
 
 ## 容器与编排
 
-> 位于 docker/ 与 kubernetes/ 目录，共 3 篇容器与容器编排文档。
+> 位于 docker/ 与 kubernetes/ 目录，共 6 篇容器与容器编排文档。
 
 - [[Docker完整教程]] — Docker 完整教程（讲解版）：三大概念与架构（namespace/cgroups/overlayfs、Client-daemon-containerd-runc 调用链）、安装与 daemon 配置（镜像加速、日志轮转、live-restore）、镜像（分层与 docker history 读镜像来源、save/load 与 export/import 对比、多架构）、容器（生命周期、run 参数优先级、exec/cp/top/stats、restart 策略、commit）、Dockerfile（单阶段→层缓存→.dockerignore→CMD vs ENTRYPOINT→PID 1 信号→多阶段构建 259MB→73.6MB→ARG/secret/缓存挂载）、数据卷（命名卷/绑定挂载/只读/匿名卷/--mount/备份恢复）、网络（默认 bridge 无 DNS→自定义网络 127.0.0.11→隔离与多网络→端口发布→host/none/DNS 排查）、docker compose 四服务栈实战（web+api+db+cache，含 .env 替换、healthcheck、depends_on 条件、双网络隔离、数据持久化）、私有仓库 Registry（tag/push/pull、HTTP 与 insecure-registries、Harbor 对比）、生产运行要点（内存 OOM/CPU 限速/pids、只读根、时区 tzdata、日志轮转、健康检查、非 root、构建期密钥、两个生产级 Dockerfile 模板）、镜像瘦身与磁盘清理、故障排查手册（退出码速查 + 8 类真实报错）、多用户共用一台主机与用户隔离（共享 daemon 的真实冲突、rootless Docker 实测、Ubuntu 24.04 AppArmor userns 坑、团队规范）、3 个应用场景与 16 条踩坑记录，全部命令与输出来自本机实测
+- [[Docker面试题]] — Docker 面试题大全（61 题）：基础概念（容器 vs 虚拟机、三大组件与调用链、OCI 标准）、镜像分层与 UnionFS/写时复制、容器生命周期与退出码（137/143 含义）、Dockerfile 指令与多阶段构建、CMD vs ENTRYPOINT、存储三兄弟、网络五驱动与自定义网络 DNS、docker compose、底层原理（namespace/cgroups/unionfs）、安全加固（非 root/只读/capability/构建期密钥）、故障排查与生产运维，附面试重点总结
+- [[Docker部署大模型]] — 通过 Docker 部署大模型：GPU 环境准备（nvidia-container-toolkit、--gpus all）、Ollama、llama.cpp/llama-server（GGUF 低显存与 CPU+GPU 混合）、vLLM（生产高吞吐、OpenAI 兼容 API、PagedAttention）、HuggingFace TGI、Open WebUI 前端、模型缓存与数据卷、量化（GGUF/AWQ/GPTQ/FP8）、多 GPU 张量并行、显存规划与性能调优、OpenAI 兼容接口客户端接入，含 3 个应用场景与 8 条踩坑记录
 - [[kubernetes-minikube-install]] — Kubernetes 与 minikube 单节点集群搭建：K8S 架构与核心概念（控制面与节点组件、声明式 API 与控制器模式、节点/Pod/Service 三个网段）、四种部署形态选型对比、minikube 工作原理（kicbase、静态 Pod、网桥网络、kubeconfig）、完整安装命令与参数逐条解释、集群验证、容器镜像源方案（containerd certs.d 配置与 registry.k8s.io 不可用的实测结论），含 2 个应用场景与 8 个实践坑
 - [[kubernetes-springboot-vue-deploy]] — SpringBoot + Vue 项目部署到 Kubernetes：docker-compose 到 K8S 的完整映射对照表、9 类核心对象详解（Pod 与三层控制器、Service 与集群内 DNS、ConfigMap/Secret 及热更新差异、PV/PVC/StorageClass、三类探针、resources 与 JVM 容器感知、滚动更新与回滚、HPA、无私有仓库的镜像交付）、7 个清单文件的写法与理由、五层验证实录（前端静态资源/集群内 DNS/登录接口/数据落库/对外入口），含 2 个应用场景与 9 个实践坑
+- [[Kubernetes完整教程]] — Kubernetes 完整知识教程：架构与核心组件（控制面 apiserver/etcd/scheduler/controller-manager、节点 kubelet/kube-proxy/运行时）、声明式 API 与对象模型（label/selector）、Pod（initContainer/sidecar/共享网络）、五类控制器（Deployment/ReplicaSet/StatefulSet/DaemonSet/Job/CronJob）、Service 与 DNS 服务发现（四种类型/headless）、Ingress 七层路由、ConfigMap/Secret、PV/PVC/StorageClass、Namespace 与资源配额、三类探针、调度（nodeSelector/污点容忍/亲和性）、RBAC/SecurityContext/NetworkPolicy、滚动更新回滚与 HPA、Helm，含 2 个应用场景与 10 条踩坑记录，命令与输出来自本机 minikube 集群实测
 
 ## Java 全栈基础
 
