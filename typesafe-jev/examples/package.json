@@ -1,0 +1,13 @@
+{
+  "name": "typesafe-jev-examples",
+  "private": true,
+  "version": "1.0.0",
+  "description": "TypeSafe Jev 教程配套示例",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@typesafe-ai/sdk": "^0.6.0"
+  }
+}

@@ -1,7 +1,7 @@
 # 学习笔记索引
 
 > 内容目录。每篇文档附一句话摘要。先读这里找到相关文档。
-> 最后更新：2026-09-16 | 总文档数：1196
+> 最后更新：2026-09-20 | 总文档数：1197
 
 ## 参考资源
 
@@ -33,6 +33,12 @@
 - [[kubernetes-minikube-install]] — Kubernetes 与 minikube 单节点集群搭建：K8S 架构与核心概念（控制面与节点组件、声明式 API 与控制器模式、节点/Pod/Service 三个网段）、四种部署形态选型对比、minikube 工作原理（kicbase、静态 Pod、网桥网络、kubeconfig）、完整安装命令与参数逐条解释、集群验证、容器镜像源方案（containerd certs.d 配置与 registry.k8s.io 不可用的实测结论），含 2 个应用场景与 8 个实践坑
 - [[kubernetes-springboot-vue-deploy]] — SpringBoot + Vue 项目部署到 Kubernetes：docker-compose 到 K8S 的完整映射对照表、9 类核心对象详解（Pod 与三层控制器、Service 与集群内 DNS、ConfigMap/Secret 及热更新差异、PV/PVC/StorageClass、三类探针、resources 与 JVM 容器感知、滚动更新与回滚、HPA、无私有仓库的镜像交付）、7 个清单文件的写法与理由、五层验证实录（前端静态资源/集群内 DNS/登录接口/数据落库/对外入口），含 2 个应用场景与 9 个实践坑
 - [[Kubernetes完整教程]] — Kubernetes 完整知识教程：架构与核心组件（控制面 apiserver/etcd/scheduler/controller-manager、节点 kubelet/kube-proxy/运行时）、声明式 API 与对象模型（label/selector）、Pod（initContainer/sidecar/共享网络）、五类控制器（Deployment/ReplicaSet/StatefulSet/DaemonSet/Job/CronJob）、Service 与 DNS 服务发现（四种类型/headless）、Ingress 七层路由、ConfigMap/Secret、PV/PVC/StorageClass、Namespace 与资源配额、三类探针、调度（nodeSelector/污点容忍/亲和性）、RBAC/SecurityContext/NetworkPolicy、滚动更新回滚与 HPA、Helm，含 2 个应用场景与 10 条踩坑记录，命令与输出来自本机 minikube 集群实测
+
+## AI 与模型服务
+
+> 位于 typesafe-jev/ 目录，共 1 篇。
+
+- [[TypeSafe-Jev完整教程]] — TypeSafe Jev（System One 决策模型）完整教程：Jev 与通用 LLM 的差别（闭合输出、概率化答案、只计输入）、Python / JavaScript SDK 安装与实测、三种问题原语（Noul 是/否、Choice 单选、Score 有序打分）的请求与响应结构、HTTP API 直连、Python SDK（同步/异步/类型化响应/模型列表/底层协议）、JS/TS SDK 与两个 SDK 的差异对照、probabilities 与 confidence 的读法与 SDK 源码解析、异常分层与 RetryPolicy 退避重试（503 重试实测）、无 API Key 时用本地 stub 验证全链路、四种工作流模式（推测性扇出/置信度门控路由/复合打分/意图路由）、成本与限额、与 LLM 及传统分类器的方案对比，含 3 个应用场景（客服工单分诊、LLM 入站出站守门、离线批量打标）与 12 条踩坑记录，14 个可运行示例
 
 ## Java 全栈基础
 

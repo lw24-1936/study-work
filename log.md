@@ -579,3 +579,14 @@
 - kubernetes/Kubernetes完整教程.md（961 行，type: concept）：Kubernetes 完整知识教程——架构与核心组件（控制面 apiserver/etcd/scheduler/controller-manager、节点 kubelet/kube-proxy/containerd）、声明式 API 与对象模型、Pod（initContainer/sidecar、共享网络）、五类控制器、Service 四类型与 DNS 服务发现、Ingress、ConfigMap/Secret、PV/PVC/StorageClass、Namespace 与资源配额、三类探针、调度（nodeSelector/污点容忍/亲和性）、RBAC/ServiceAccount/SecurityContext/NetworkPolicy、滚动更新回滚与 HPA、Helm；2 个应用场景 + 10 条踩坑；命令与输出来自本机正在运行的 minikube v1.37.0 集群实测（demo 命名空间 web Deployment 双探针/initContainer/ConfigMap、questionnaire 命名空间 mysql StatefulSet 等）
 - 自检：3 篇 frontmatter 完整、围栏全部偶数、无彩色 emoji、无待编写、无坏链接；Docker面试题 的「踩坑=0」为面试文档正常形态（同 49-Java常见问题 186-194 的「面试重点总结」结构，非缺陷）
 - 同步更新：index.md 容器与编排节新增 3 条 wikilink（共 3 篇→共 6 篇，总文档数 1193→1196）；README.md / README.en.md 的徽章、特性、统计表、目录树、kubernetes 节描述（docker 1→3 篇、kubernetes 2→3 篇、合计 1188→1191 篇、索引 1193→1196 条）
+
+
+## [2026-09-20] create | TypeSafe Jev 完整教程（System One 决策模型，14 个可运行示例）
+
+- typesafe-jev/TypeSafe-Jev完整教程.md（1963 行，type: concept）：TypeSafe Jev（TypeSafe AI 于 2026-09-15 发布的 System One 决策模型）完整教程——Jev 是什么（与通用 LLM 的差别对照表、RLCD 训练与「校准」的确切含义）、安装与凭据（Python SDK / JS SDK / 官方 Agent Skill / 生态集成辨别 / 四个环境变量）、本机安装实测（typesafe-sdk 0.7.0 依赖构成、@typesafe-ai/sdk 0.6.0、无效 Key 打真实 API 的 401 原始响应与 curl HTTP/2 报文）、三种问题原语（Noul 是/否、Choice 单选最多 255 项、Score 有序 2~10 级的请求与响应结构、结构化 instructions/criteria 写法、Score 描述场景而非程度的三条官方实测结论）、HTTP API 直连、Python SDK（客户端参数、同步/异步、类型化响应、models.list、请求响应头与日志脱敏）、JS/TS SDK（choice/noul/score 构造、类型推导、与 Python 的 11 项差异对照含超时单位与键类型）、probabilities 与 confidence（分布形状读法、官方 Score 实测表、SDK 源码里的冻结模型与 int 键转换）、错误处理与重试（9 类异常分层、分支写法、RetryPolicy 字段与退避算法、503 重试实测 0.45 秒）、无 API Key 时用本地 stub 验证全链路、四种工作流模式（推测性扇出 / 置信度门控路由 / 复合打分 / 意图路由）、成本限额与模型别名（$0.042/Mtok 输入、输出免费、与通用 LLM 约 276 倍差价实测计算）、与 LLM 及传统分类器对比
+- 3 个应用场景（完整可运行代码 + 实机输出）：客服工单分诊（一次请求问 5 个问题，含复合打分与置信度门控）、LLM 入站出站守门（越狱/PII/危害程度 → pass/review/block）、离线批量打标（asyncio + Semaphore 并发闸门 + JSONL 可续跑落盘 + 低置信统计）
+- 12 条踩坑记录：全部带本机实测输出（ESM 不认 NODE_PATH、baseUrl 拼错被静默忽略并打到真实 API、JS timeout 单位是毫秒导致 10ms 超时、Score criteria 为空时客户端直接抛错、confidence 不等于正确率、只看 choice 不看 confidence、两个 SDK 的概率键类型不同、别名上线导致行为漂移、把重试当限流器用、state 里塞提示词、把 Jev 当 LLM 用、忘记关闭客户端）
+- 14 个可运行示例（typesafe-jev/examples/）：01 环境自检、02 同步三原语、03 异步并发、04 真实 401 错误分类、05 503 重试、06 类型化响应、07 置信度路由、08 curl 直连、09 JS 客户端、10 工单分诊、11 LLM 守门、12 离线批量打标、13 baseUrl 拼错实测、14 timeout 单位实测，外加 stub_server.py（对齐官方 schema 的本地模拟服务，支持 STUB_FLAKY 抖动模式用于演示重试）
+- 输出标注纪律：本机没有 TypeSafe API Key（早期访问阶段），文中逐处标注输出来源——「真实」= 直连 api.typesafe.ai 得到（401、HTTP/2 报文、SDK 异常分类、模型列表失败），「stub」= 本地模拟服务生成（所有成功响应与概率数值），并说明换成真实 Key 只需改 TYPESAFE_BASE_URL
+- 自检：check-toc-anchors.py 0 问题；围栏 222 行（偶数）、无彩色 emoji、无「待编写」、坑 12 条、最佳实践 12 条、相关文档 6 条 wikilink 均指向真实文件（跨库 basename 链接，Obsidian 可解析；verify-batch 报的 6 条「坏链接」属跨库链接的已知误报）
+- 同步更新：index.md 新增「AI 与模型服务」节 + 1 条 wikilink（总文档数 1196→1197）、README.md 与 README.en.md 的徽章（1191→1192 篇）、特性、统计表（新增 TypeSafe Jev 行）、目录树、知识库总览节与检索篇数；顺带修正 README.en.md 中 Spring Boot 集成篇数 8→9 的既有漂移
