@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/docs-1193-2ea44f" alt="docs"/>
+  <img src="https://img.shields.io/badge/docs-1194-2ea44f" alt="docs"/>
   <img src="https://img.shields.io/badge/knowledge%20bases-6-0969da" alt="knowledge bases"/>
   <img src="https://img.shields.io/badge/Spring%20Boot-9-eb6f2d" alt="Spring Boot"/>
   <img src="https://img.shields.io/badge/Obsidian-compatible-7c3aed" alt="Obsidian"/>
@@ -37,7 +37,7 @@ See [index.md](./index.md) for the content index, [SCHEMA.md](./SCHEMA.md) for w
 
 ## Highlights
 
-- **Six systematic tracks**: 51 chapters of Java Full-Stack, 103 chapters of Frontend, 20 chapters of Algorithm Engineer, 30 chapters of Big Data, 26 chapters of Linux Operations, 13 chapters of WeChat Mini-Program Full-Stack, plus 9 Spring Boot integration guides, 3 Kubernetes guides, 3 Docker documents, 1 TypeSafe Jev guide, and 1 Kafka guide
+- **Six systematic tracks**: 51 chapters of Java Full-Stack, 103 chapters of Frontend, 20 chapters of Algorithm Engineer, 30 chapters of Big Data, 26 chapters of Linux Operations, 13 chapters of WeChat Mini-Program Full-Stack, plus 9 Spring Boot integration guides, 3 Kubernetes guides, 3 Docker documents, 1 TypeSafe Jev guide, and 2 Kafka guides
 - **Wiki-style cross-referencing**: documents link to each other via `[[filename]]`, so you can follow a topic to related ones
 - **Obsidian-native**: `[[filename]]` backlinks + frontmatter tags are Obsidian syntax, so the whole repo opens directly as a Vault
 - **Unified conventions**: YAML frontmatter + fixed section structure keep the whole library consistent, see [SCHEMA.md](./SCHEMA.md)
@@ -56,11 +56,11 @@ See [index.md](./index.md) for the content index, [SCHEMA.md](./SCHEMA.md) for w
 | Kubernetes & Orchestration | [kubernetes/](./kubernetes/) | — | 3 | Complete |
 | Docker | [docker/](./docker/) | — | 3 | Complete |
 | TypeSafe Jev | [typesafe-jev/](./typesafe-jev/) | — | 1 | Complete |
-| Kafka & Messaging | [kafka/](./kafka/) | — | 1 | Complete |
+| Kafka & Messaging | [kafka/](./kafka/) | — | 2 | Complete |
 | Big Data | [bigdata/](./bigdata/README.md) | 30 | 133 | Complete |
 | Linux Operations | [linux/](./linux/README.md) | 26 | 128 | Complete |
 
-**1193 documents** in total ([index.md](./index.md) registers 1198 entries, 4 of which are knowledge-base entry links and 1 is the shared learning-links index).
+**1194 documents** in total ([index.md](./index.md) registers 1199 entries, 4 of which are knowledge-base entry links and 1 is the shared learning-links index).
 
 ## Directory Structure
 
@@ -73,7 +73,7 @@ study-work/
 ├── kubernetes/                      # Kubernetes & orchestration (3 docs)
 ├── docker/                          # Docker (3 docs)
 ├── typesafe-jev/                    # TypeSafe Jev (1 doc: System One decision model)
-├── kafka/                           # Kafka (1 doc: full tutorial + runnable examples)
+├── kafka/                           # Kafka (2 docs: usage introduction + full tutorial + runnable examples)
 ├── bigdata/                         # Big Data knowledge base (30 chapters / 133 docs)
 ├── linux/                            # Linux Operations knowledge base (26 chapters / 128 docs)
 ├── weapp-fullstack/                 # WeChat Mini-Program Full-Stack (13 chapters / 106 docs)
@@ -129,7 +129,7 @@ The documents use Obsidian-native syntax — `[[filename]]` backlinks + YAML fro
 - **Backlink panel**: each document shows "what links here"
 - **Graph view**: visualize the knowledge network across the six tracks
 - **Tag browsing**: frontmatter tags (spring-boot, redis, distributed…) appear in the tag pane; click to group related documents
-- **Full-text search**: Ctrl/Cmd + Shift + F across all 1193 documents
+- **Full-text search**: Ctrl/Cmd + Shift + F across all 1194 documents
 
 Start with [index.md](./index.md), or use graph view to survey the whole system.
 

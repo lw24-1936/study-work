@@ -1,7 +1,7 @@
 # 学习笔记索引
 
 > 内容目录。每篇文档附一句话摘要。先读这里找到相关文档。
-> 最后更新：2026-09-20 | 总文档数：1198
+> 最后更新：2026-09-21 | 总文档数：1199
 
 ## 参考资源
 
@@ -42,8 +42,9 @@
 
 ## Kafka 与消息流
 
-> 位于 kafka/ 目录，共 1 篇。
+> 位于 kafka/ 目录，共 2 篇。
 
+- [[Kafka使用介绍]] — Kafka 使用介绍（提炼版，无代码）：Kafka 是什么与三类角色、在大数据体系中的位置（传输层、数据总线、流批同源，与数据湖/计算引擎/数据库的边界）、核心概念速查（分区与有序边界、ISR 与 ELR、HW 与 LEO、segment 与索引）、服务端组件（Broker 与监听器、Controller、KRaft Quorum 的 voter/observer、ZooKeeper 的历史角色、Topic/Partition/Replica、内部主题、Coordinator、保留与压实）、客户端组件（Producer 的累加器与 acks/幂等/事务、Consumer 的拉模型与位移提交、Consumer Group、AdminClient、版本兼容、Spring Kafka）、生态组件（Connect、Streams、ksqlDB、Schema Registry、MirrorMaker 2、REST Proxy、CDC 与计算引擎侧消费者、分层存储）、数据流动全链路、六类大数据用法（业务解耦/日志采集/CDC 入湖/实时计算/削峰/事件溯源）、四种部署形态与集群拓扑、可靠性与成功语义、监控运维与容量规格、安全、与 RabbitMQ/RocketMQ/Pulsar 选型对比、14 条常见误区，3 个应用场景与 12 条踩坑记录
 - [[Kafka完整教程]] — Kafka 完整教程：概念与 KRaft 架构（分区/副本/ISR/segment/controller、broker 与 controller 角色、数据目录结构）、部署（apache/kafka:4.1.2 容器单节点与三节点集群、二进制包 + systemd 裸机部署、advertised.listeners 等关键配置逐条解释）、命令行工具全解（主题/收发/消费组/位移重置/配置管理/dump-log/perf-test）、存储格式与保留策略（segment 与索引、消息批次结构、按时间与大小清理、compact 与 tombstone、容量规划）、生产者与消费者（原生 Java 客户端的同步/异步/key 分区/事务、消费组与 Rebalance、手动提交、并发与分区数）、可靠性（不丢不重有序的配置矩阵、三副本集群宕机演练实测、幂等与事务边界）、集群运维（副本分布、首选 Leader、KRaft quorum 状态、分区重分配、监控指标、规模与规格）、Spring Boot 2.7 集成（KafkaTemplate、@KafkaListener、手动 ack、重试与死信闭环）、生态与选型对比、3 个应用场景（订单事件流、日志削峰与积压追平、CDC 原子链路）与 15 条踩坑记录、3.x 与 4.x 差异与迁移清单，全部命令与输出来自本机实测
 
 ## Java 全栈基础

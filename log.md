@@ -599,3 +599,19 @@
 - 本机实测踩到的坑（已写入教程）：官方镜像 offsets.topic.replication.factor 默认 3 导致单节点消费组完全不可用（日志只有反复的 auto-creation 请求）；log.retention.check.interval.ms 是静态配置、动态修改被拒；三 combined 节点 + 静态 controller.quorum.voters 在 4.1.2 上 quorum 选不出 leader（改用 1 controller + 3 broker 拓扑）；controller-only 节点不允许 KAFKA_ADVERTISED_LISTENERS；kafka-server-start.sh 需要预先建好并授权 $KAFKA_HOME/logs（否则 GC 日志写不进去、JVM 起不来）；4.x 的 GetOffsetShell/JmxTool 类名与参数都变了；命令行消费者退出时会为所有被分配分区提交位移；裸机上 systemctl stop 会让 JVM 以 143 退出并被 systemd 记为失败（需 SuccessExitStatus=143）
 - 自检：check-toc-anchors.py 0 问题；围栏 320 行（偶数）、无彩色 emoji、无「待编写」、踩坑 15 条、相关文档 11 条 wikilink 全部指向真实文件（跨库 basename 链接）
 - 同步更新：index.md 新增「Kafka 与消息流」节 + 1 条 wikilink（总文档数 1197→1198）；README.md / README.en.md 的徽章（1192→1193 篇）、特性、统计表（新增 Kafka 行）、目录树、知识库总览节与检索篇数
+
+## [2026-09-21] create | Kafka 使用介绍（提炼版，无代码）
+
+- kafka/Kafka使用介绍.md（1033 行，type: concept，tags: kafka/kafka-kraft/message-queue/streaming/big-data/data-pipeline/producer/consumer/kafka-connect/kafka-streams）：Kafka 的「使用介绍」提炼版，全文不下代码与命令，只做介绍与判断——
+  - 定位与边界：Kafka 是什么（提交日志 + 消息队列/存储/流处理三类角色）、与传统 MQ 的三个差别（消费不删、拉模型、位移自己维护）、不该用的五种场景；在大数据体系中的位置（采集/传输/计算/存储四层里的传输层、数据总线、缓冲与解耦、流批同源、变更管道四个角色），以及与数据湖、计算引擎、数据库、ETL 工具的四条边界，Lambda 与 Kappa 架构里的位置
+  - 概念与组件：概念速查表（Broker/Topic/Partition/Replica/Leader/Follower/ISR/ELR/Offset/LEO/HW/Consumer Group/Segment/Controller/KRaft）；组件地图按服务端、客户端、生态、运维四类列全
+  - 服务端组件逐个介绍：Broker（监听器与端口、advertised.listeners 通告地址、页缓存/零拷贝/顺序写、fd 与磁盘、meta.properties 节点身份）、Controller（职责、分角色部署）、KRaft Quorum（voter 与 observer、broker 是 observer、奇数多数派、元数据日志、排障入口与多 voter 实测教训）、ZooKeeper（历史角色与 4.0 移除后的升级路径）、Topic 与 Partition（并发上限、有序边界、分区只能增、粘性分区与热点 key）、Replica 与 ISR/ELR（高水位、选举顺序、三副本宕机行为、unclean 选举）、Segment 与索引文件（三类文件 + leader-epoch-checkpoint、空分区占几十 MB 的误解、三段式查找）、内部主题（__cluster_metadata / __consumer_offsets / __transaction_state 及独立副本因子配置）、Coordinator（消费组协调者与事务协调者）、保留与压实（retention、compact 与 tombstone、删除以 segment 为单位且后台轮询）
+  - 客户端组件：Producer（累加器与 Sender 线程、acks 语义、幂等与事务的区别、参数表）、Consumer（拉模型、三种位移提交、Rebalance 触发与缓解、起点策略、读不到数据的四种原因）、Consumer Group 与 AdminClient、客户端与服务端的双向兼容与 Java 版本要求（KIP-750/KIP-1013）、Spring Kafka 六类组件与三个易漏认知（AckMode、不可重试异常、死信不是终点）
+  - 生态组件：Kafka Connect（Source/Sink、单机与分布式、三个内部主题、SMT 的边界）、Kafka Streams（KStream/KTable、状态存储无限增长的坑）、ksqlDB、Schema Registry（为什么生产必备、兼容性策略、Confluent 归属）、MirrorMaker 2 与跨集群复制（灾备/汇聚/迁移、RPO）、REST Proxy（价值与暴露风险）、CDC 工具（Debezium/Canal/Maxwell/Flink CDC 与批量同步工具的分工）、计算引擎侧消费者、采集端与分层存储（KIP-405：3.6 早期访问、3.9 生产可用、压实主题不支持）
+  - 数据流动与用法：写入七步与读取路径（HW 与 read_committed 的可见性）、位移与 Rebalance 与积压的三角关系、保留与压实如何改变「能读到什么」；六类大数据用法速览表（业务解耦/日志采集/CDC 入湖/实时计算/削峰/事件溯源，含 key、语义与风险），并各自展开链路要点
+  - 部署、可靠性与运维：四种部署形态对比与裸机三个真实门槛（JDK 17/GC 日志目录/退出码 143）、集群拓扑建议（controller 奇数、三节点起步、大规模拆集群）、监听器与端口分类、关键配置分类与静态/动态参数的区别；不丢数据的三个关键配置与配置矩阵、三副本集群宕机实测结论、幂等与事务的边界、顺序性四个前提；命令行工具族按四类分组、监控指标体系（broker 侧八项 + 消费侧三项 + 采集链路）、日常运维动作、容量与规格参考、磁盘满的连锁反应；安全四件事（TLS/SASL/ACL/配额审计）与两条红线
+  - 选型与误区：与 RabbitMQ/RocketMQ/Pulsar 的九维对比表与选型口诀、Connect 与自研消费者的分工；14 条常见误区（当数据库用、单分区求全局有序、自动提交、内部主题副本因子、裸 JSON、命令行演示积压、4.x 连 ZooKeeper 等）
+  - 3 个应用场景（CDC 数据管道、日志采集与削峰填谷、实时指标与风控链路，各含分步链路与设计要点）+ 17 条最佳实践 + 12 条踩坑记录（结论/原因/解法三行式），源来自同目录完整教程的本机实测结论
+- 本次只新增介绍类文档，未改动任何示例与脚本；kafka/ 目录现有 2 篇（使用介绍 + 完整教程及 examples/）
+- 自检：verify-batch.py 全部通过（frontmatter 完整、围栏偶数、无彩色 emoji、无「待编写」、踩坑 12 条、坏链接 0）；check-toc-anchors.py 0 问题；相关文档 14 条 wikilink 全部指向真实文件
+- 同步更新：index.md「Kafka 与消息流」节 + 1 条 wikilink（总文档数 1198→1199，日期 2026-09-21）；README.md / README.en.md 的徽章（1193→1194 篇）、特性、统计表 Kafka 行、目录树、Kafka 概览段与检索篇数；Kafka完整教程.md 的「相关文档」补一条反向链接
