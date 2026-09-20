@@ -46,6 +46,7 @@ Spring Boot：2.7.18 + spring-kafka 2.8.11（kafka-clients 3.1.2）
 - [12. 应用场景实战](#12-应用场景实战)
 - [13. 最佳实践与踩坑记录](#13-最佳实践与踩坑记录)
 - [14. 3.x 与 4.x 的差异](#14-3x-与-4x-的差异)
+- [配套示例与脚本](#配套示例与脚本)
 - [相关文档](#相关文档)
 
 ## 1. Kafka 是什么
@@ -2646,6 +2647,55 @@ ELR 字段：kafka-topics.sh --describe 里新增 Elr / LastKnownElr（Eligible 
 [ ] 内部主题（__consumer_offsets、__transaction_state）副本数与 min.insync 已按新集群规模设置
 [ ] 监控项已适配（ISR、UnderReplicatedPartitions、Controller 选举状态在 KRaft 下的指标名有变化）
 [ ] 演练过：单 broker 宕机、controller 宕机、磁盘写满、客户端版本混跑
+```
+
+## 配套示例与脚本
+
+教程里的每段输出都由同目录下的脚本或工程产生，可逐个复跑（实测顺序：01 → 02 → 05 → 06，03c 与 04 各自独立）。
+
+```text
+kafka/examples/
+├── compose/
+│   ├── docker-compose-single.yml        单节点 KRaft（1 broker + 1 controller 合并，端口 9092/9093）
+│   └── docker-compose-cluster.yml       三节点集群 compose 文件（保留作对照；实测见 03c 的说明）
+├── scripts/
+│   ├── 01-single-up.sh                  容器单节点：启动、健康检查、meta.properties、broker API、建主题、副本超限报错
+│   ├── 02-produce-consume.sh            收发消息、同 key 同分区、消费组与 LAG、位移重置、自动建主题、segment 结构、性能测试
+│   ├── 03-cluster.sh                    三个 combined 节点 + 静态 voters —— 【失败样例】quorum 选不出 leader，保留用于复现选举风暴
+│   ├── 03b-cluster-dynamic.sh           改用 KIP-853 动态 quorum —— 【失败样例】被镜像的自动格式化直接拒绝
+│   ├── 03c-cluster.sh                   单 controller + 三 broker（可用拓扑）：副本分布、ISR 收缩与回补、kill 掉 Leader、分区重分配
+│   ├── 04-native-systemd.sh             裸机部署：useradd、解压、format、systemd unit、启动验证、JMX、优雅停止
+│   ├── 05-retention.sh                  保留策略：改 retention.ms、观察过期删除与 log-start-offset 推进
+│   └── 06-scenario-backlog.sh           应用场景：日志削峰、消费者离线积压 10000、恢复后追平
+└── java/
+    ├── kafka-client-demo/               原生客户端（kafka-clients 3.9.0，Java 8 目标）：TopicAdmin / ProducerDemo / ConsumerDemo / TransactionDemo
+    └── springboot-kafka-demo/           Spring Boot 2.7.18 + spring-kafka 2.8.11：手动 ack、重试、死信主题 DLT、DemoRunner 自测
+```
+
+复跑方式：
+
+```bash
+cd kafka/examples/scripts
+bash 01-single-up.sh          # 需要 docker，会自动拉取 apache/kafka:4.1.2
+bash 02-produce-consume.sh    # 依赖 01 起的容器
+bash 05-retention.sh
+bash 06-scenario-backlog.sh
+bash 03c-cluster.sh           # 独立跑：自带 kafka-net 网络与 kafka-cli 客户端容器
+bash 04-native-systemd.sh     # 独立跑：需要 root，会写 /opt/kafka 与 systemd 单元
+
+# Java 示例
+cd ../java/kafka-client-demo && mvn -B package
+java -cp target/kafka-client-demo-1.0.0-jar-with-dependencies.jar com.example.kafka.ProducerDemo localhost:9092 demo-orders
+cd ../springboot-kafka-demo && mvn -B spring-boot:run
+```
+
+注意事项：
+
+```text
+1. 03 与 03b 是"失败样例"，不要拿它们当部署模板；它们是踩坑记录的现场，跑起来会看到 quorum 选举风暴与镜像报错
+2. 所有脚本都往 /opt/kafka-lab/out/ 写日志；内存紧张时不要同时跑 03c 与 04（一个是 4 个 JVM，一个是 1 个 JVM + 已有容器）
+3. 04 会先停掉容器 kafka-single 再占用 9092，跑完记得 systemctl stop kafka 释放端口
+4. Java 示例的 target/ 目录不入库（见 examples/.gitignore），需要先 mvn package 生成
 ```
 
 ## 相关文档
