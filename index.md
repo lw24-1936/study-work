@@ -1,7 +1,7 @@
 # 学习笔记索引
 
 > 内容目录。每篇文档附一句话摘要。先读这里找到相关文档。
-> 最后更新：2026-09-20 | 总文档数：1197
+> 最后更新：2026-09-20 | 总文档数：1198
 
 ## 参考资源
 
@@ -39,6 +39,12 @@
 > 位于 typesafe-jev/ 目录，共 1 篇。
 
 - [[TypeSafe-Jev完整教程]] — TypeSafe Jev（System One 决策模型）完整教程：Jev 与通用 LLM 的差别（闭合输出、概率化答案、只计输入）、Python / JavaScript SDK 安装与实测、三种问题原语（Noul 是/否、Choice 单选、Score 有序打分）的请求与响应结构、HTTP API 直连、Python SDK（同步/异步/类型化响应/模型列表/底层协议）、JS/TS SDK 与两个 SDK 的差异对照、probabilities 与 confidence 的读法与 SDK 源码解析、异常分层与 RetryPolicy 退避重试（503 重试实测）、无 API Key 时用本地 stub 验证全链路、四种工作流模式（推测性扇出/置信度门控路由/复合打分/意图路由）、成本与限额、与 LLM 及传统分类器的方案对比，含 3 个应用场景（客服工单分诊、LLM 入站出站守门、离线批量打标）与 12 条踩坑记录，14 个可运行示例
+
+## Kafka 与消息流
+
+> 位于 kafka/ 目录，共 1 篇。
+
+- [[Kafka完整教程]] — Kafka 完整教程：概念与 KRaft 架构（分区/副本/ISR/segment/controller、broker 与 controller 角色、数据目录结构）、部署（apache/kafka:4.1.2 容器单节点与三节点集群、二进制包 + systemd 裸机部署、advertised.listeners 等关键配置逐条解释）、命令行工具全解（主题/收发/消费组/位移重置/配置管理/dump-log/perf-test）、存储格式与保留策略（segment 与索引、消息批次结构、按时间与大小清理、compact 与 tombstone、容量规划）、生产者与消费者（原生 Java 客户端的同步/异步/key 分区/事务、消费组与 Rebalance、手动提交、并发与分区数）、可靠性（不丢不重有序的配置矩阵、三副本集群宕机演练实测、幂等与事务边界）、集群运维（副本分布、首选 Leader、KRaft quorum 状态、分区重分配、监控指标、规模与规格）、Spring Boot 2.7 集成（KafkaTemplate、@KafkaListener、手动 ack、重试与死信闭环）、生态与选型对比、3 个应用场景（订单事件流、日志削峰与积压追平、CDC 原子链路）与 15 条踩坑记录、3.x 与 4.x 差异与迁移清单，全部命令与输出来自本机实测
 
 ## Java 全栈基础
 

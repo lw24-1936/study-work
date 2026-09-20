@@ -1,0 +1,26 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: springboot-kafka-demo
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      # 消费组：同组内分区互斥。改名等于换一组全新的位移，会从头/从最新重新消费
+      group-id: order-demo-group
+      auto-offset-reset: earliest
+
+app:
+  topics:
+    order-events: order-events
+  # 演示程序跑完自动退出，真实服务不要开这个开关
+  auto-exit: true
+
+logging:
+  level:
+    # 只看自己的日志，把 Kafka 客户端的 INFO 压掉，方便观察消费顺序
+    com.example.kafkademo: INFO
+    org.apache.kafka: WARN
+    org.springframework.kafka: INFO

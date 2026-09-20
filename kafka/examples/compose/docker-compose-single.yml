@@ -1,0 +1,88 @@
+# Kafka 单节点 KRaft 模式（生产可用最小部署：1 broker + 1 controller 合并角色）
+#
+# 启动：docker compose -f docker-compose-single.yml up -d
+# 停止：docker compose -f docker-compose-single.yml down
+# 查看：docker exec -it kafka-single /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
+#
+# 说明：apache/kafka 官方镜像内置 KRaft 自动格式化逻辑——首次启动时若
+# /var/lib/kafka/data 下没有 meta.properties，会用 CLUSTER_ID（或自动生成的 UUID）
+# 执行 kafka-storage.sh format，因此不需要手工跑格式化命令。
+
+services:
+  kafka:
+    image: apache/kafka:4.1.2
+    container_name: kafka-single
+    hostname: kafka-single
+    ports:
+      # 宿主机端口:容器端口。9092 给宿主机上的 Java / CLI 客户端用
+      - "9092:9092"
+      # 9093 是 controller 端口，调试时可从宿主机访问
+      - "9093:9093"
+    environment:
+      # ---- 集群身份 ----
+      # 节点 ID，集群内唯一；KRaft 下 controller 与 broker 各自有一套 ID 空间
+      KAFKA_NODE_ID: 1
+      # 该节点承担的角色：broker 负责数据读写，controller 负责元数据管理
+      # combined 模式（两者合一）适合开发与中小规模；生产推荐角色分离
+      KAFKA_PROCESS_ROLES: broker,controller
+      # 静态 controller 集群成员列表：{nodeId}@{host}:{controllerPort}
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka-single:9093
+
+      # ---- 监听器 ----
+      # 容器内实际绑定的地址，PLAINTEXT 是监听器名，://后面的 host 为空即绑定 0.0.0.0
+      KAFKA_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
+      # 客户端连接时的地址：容器外部用 localhost:9092，容器内部用 kafka-single:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      # 监听器与安全协议映射
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      # 集群内部 broker 之间通信使用的监听器（单节点也必须有，值要存在于 LISTENERS 中）
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      # controller 角色使用的监听器名
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+
+      # ---- 存储 ----
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
+      # 主题默认分区数（建主题不指定时使用）
+      KAFKA_NUM_PARTITIONS: 3
+      # 默认副本因子；单节点只能为 1
+      KAFKA_DEFAULT_REPLICATION_FACTOR: 1
+
+      # ---- 日志保留 ----
+      KAFKA_LOG_RETENTION_HOURS: 168
+      KAFKA_LOG_SEGMENT_BYTES: 1073741824
+      # 清理线程的检查间隔。这是**静态配置**：用 kafka-configs 动态修改会被拒绝
+      # （InvalidRequestException: Cannot update these configs dynamically），
+      # 只能改这里再重建容器。实验里调到 5 秒以便观察消息过期删除。
+      KAFKA_LOG_RETENTION_CHECK_INTERVAL_MS: 5000
+
+      # ---- 开发环境常用的放宽项 ----
+      # 允许自动创建主题（生产建议关闭，避免客户端打错主题名产生垃圾主题）
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      # 单条消息最大 1MB（默认），批量/大消息场景需调大
+      KAFKA_MESSAGE_MAX_BYTES: 1048588
+      # ---- 内部主题的副本数（单节点必须显式设为 1）----
+      # 官方镜像默认把 offsets.topic.replication.factor 设为 3。
+      # 单 broker 集群下 __consumer_offsets 会创建失败，broker 日志只会反复打印
+      # "Sent auto-creation request for Set(__consumer_offsets) to the active controller"，
+      # 表现为消费组完全不可用（消费一直超时），排查时极易误判为网络问题。
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      # 消费组首次 rebalance 延迟，默认 3 秒（生产环境用于等待同组消费者一起加入）
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      # 副本同步的 socket 超时
+      KAFKA_REPLICA_SOCKET_TIMEOUT_MS: 30000
+      # 未被消费的消息最多保留多久（默认 7 天）
+      KAFKA_OFFSETS_RETENTION_MINUTES: 10080
+    volumes:
+      # 命名卷：容器重建后数据仍在，方便连续实验
+      - kafka-single-data:/var/lib/kafka/data
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/kafka/bin/kafka-broker-api-versions.sh --bootstrap-server localhost:9092 > /dev/null 2>&1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+
+volumes:
+  kafka-single-data:

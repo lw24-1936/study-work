@@ -1,0 +1,12 @@
+# Maven 构建产物（jar 体积大，不入库；用 `mvn package` 重新生成）
+target/
+*.jar
+*.class
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# 本地实验数据（docker 卷/日志）
+*.log

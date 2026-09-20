@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/学习文档-1192%20篇-2ea44f" alt="学习文档"/>
+  <img src="https://img.shields.io/badge/学习文档-1193%20篇-2ea44f" alt="学习文档"/>
   <img src="https://img.shields.io/badge/知识库-6%20个-0969da" alt="知识库"/>
   <img src="https://img.shields.io/badge/Spring%20Boot-9%20篇-eb6f2d" alt="Spring Boot"/>
   <img src="https://img.shields.io/badge/Obsidian-兼容-7c3aed" alt="Obsidian"/>
@@ -37,7 +37,7 @@
 
 ## 特性
 
-- **多方向体系化**：Java 全栈 51 篇章、前端 103 篇章、算法工程师 20 篇章、大数据 30 篇章、Linux 运维 26 篇章、微信小程序全栈 13 篇章，另附 Spring Boot 集成专题 9 篇、Kubernetes 容器编排专题 3 篇、Docker 专题 3 篇、TypeSafe Jev 专题 1 篇
+- **多方向体系化**：Java 全栈 51 篇章、前端 103 篇章、算法工程师 20 篇章、大数据 30 篇章、Linux 运维 26 篇章、微信小程序全栈 13 篇章，另附 Spring Boot 集成专题 9 篇、Kubernetes 容器编排专题 3 篇、Docker 专题 3 篇、TypeSafe Jev 专题 1 篇、Kafka 专题 1 篇
 - **类 wiki 交叉引用**：文档间以 `[[filename]]` 互链，从一个主题顺藤摸瓜到相关主题
 - **Obsidian 原生兼容**：`[[filename]]` 双向链接 + frontmatter 标签正是 Obsidian 语法，整库可直接作为 Vault 打开
 - **统一文档规范**：YAML frontmatter + 固定章节结构，全库格式一致，见 [SCHEMA.md](./SCHEMA.md)
@@ -58,8 +58,9 @@
 | Kubernetes 与容器编排 | [kubernetes/](./kubernetes/) | — | 3 | 已完成 |
 | Docker | [docker/](./docker/) | — | 3 | 已完成 |
 | TypeSafe Jev | [typesafe-jev/](./typesafe-jev/) | — | 1 | 已完成 |
+| Kafka 与消息流 | [kafka/](./kafka/) | — | 1 | 已完成 |
 
-合计 **1192 篇**知识库文档（[index.md](./index.md) 注册 1197 条索引，含 4 条知识库入口链接与 1 条学习链接汇总）。
+合计 **1193 篇**知识库文档（[index.md](./index.md) 注册 1198 条索引，含 4 条知识库入口链接与 1 条学习链接汇总）。
 
 ## 目录结构
 
@@ -72,6 +73,7 @@ study-work/
 ├── kubernetes/                      # Kubernetes 与容器编排专题（3 篇）
 ├── docker/                          # Docker 专题（3 篇）
 ├── typesafe-jev/                    # TypeSafe Jev 专题（1 篇：System One 决策模型）
+├── kafka/                           # Kafka 专题（1 篇：完整教程 + 可运行示例与脚本）
 ├── bigdata/                         # 大数据学习知识库（30 篇章 / 133 篇）
 ├── linux/                            # Linux 运维学习知识库（26 篇章 / 128 篇）
 ├── weapp-fullstack/                 # 微信小程序与后台知识库（13 篇章 / 106 篇）
@@ -115,6 +117,10 @@ study-work/
 
 1 篇：System One 决策模型 Jev 的完整教程——安装与凭据、Noul / Choice / Score 三种问题原语、HTTP API 与 Python、JavaScript SDK 用法、probabilities 与 confidence 的读法、错误分类与重试策略、工作流模式（扇出 / 置信度路由 / 复合打分 / 意图路由）、成本与限额，附 14 个可运行示例与本地 stub 验证方案；安装命令、SDK 行为与 API 响应均来自本机实测。
 
+### Kafka 与消息流 — [kafka/](./kafka/)
+
+1 篇：Kafka 完整教程（4.1.2 / KRaft 模式）——架构原理、容器与裸机两种部署方式、命令行工具全解、存储格式与保留策略、生产者与消费者、可靠性与集群运维（含三副本集群宕机演练与分区重分配实测）、Spring Boot 集成、生态选型、3 个应用场景与 15 条踩坑记录，附 7 个可运行脚本与 2 个 Maven 示例工程。
+
 ### Kubernetes 与容器编排 — [kubernetes/](./kubernetes/)
 
 3 篇：Kubernetes 完整知识教程（架构、核心对象、网络、存储、调度、安全、运维、Helm）、minikube 单节点集群的搭建与原理（K8S 架构、部署形态选型、镜像源方案）、SpringBoot + Vue 项目部署到 K8S（compose 到 K8S 的映射、核心对象详解、全链路验证、生产化能力）。全部内容基于本机真实部署过程，命令与输出均为实测。
@@ -131,7 +137,7 @@ study-work/
 - **反向链接**：每篇文档右侧面板显示「谁引用了这篇」
 - **关系图谱**：Graph view 可视化六大方向的知识网络
 - **标签浏览**：frontmatter 的 tags（spring-boot、redis、distributed…）进入标签面板，点击聚合同主题文档
-- **全文搜索**：Ctrl/Cmd + Shift + F 跨 1192 篇文档检索
+- **全文搜索**：Ctrl/Cmd + Shift + F 跨 1193 篇文档检索
 
 建议从 [index.md](./index.md) 开始读，或用图谱视图概览整个知识体系。
 
