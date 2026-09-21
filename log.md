@@ -625,3 +625,12 @@
 - 实测并记录三个真实坑：cu130 torch 在 sm_61 显卡上无内核；`Router(preload=[...])` 加载全部三份权重导致 4 GB 卡 OOM 退回 CPU；hf-mirror 不支持 Xet 协议（下载中途 401）
 - 其他实测：GPU 1 问 84 ms / 100 问 4.7 s、GPU 稳态 p50 220 ms、CPU 单问 276 ms、4 问题稳态 815 ms；显存 fp32 1.69 GB / fp16 0.86 GB；小样本拟合温度反而使 ECE 变差（0.1605 → 0.3087）
 - 索引同步：index.md 新增条目并更新总数（1199 → 1200）、README.md 与 README.en.md 的徽章/统计表/目录树/专题小节同步更新
+
+## [2026-09-21] update | Laya 服务对外接入：接入文档 + 客户端 + systemd 常驻
+
+- 新增 `laya/Laya服务接入文档.md`（9 章）：接口契约（/health、/decide 字段表与错误码表）、X-API-Key 鉴权、token 预算与选项上限、五种客户端、局域网/Tailscale/nginx 接入、实测延迟与容量、运维手册、排错速查
+- `12_service.py` 增强：`LAYA_HOST`（默认 127.0.0.1，可设 0.0.0.0）、`LAYA_API_KEY`（设了则 /decide 校验 X-API-Key，缺失/错误返回 401），/health 增加 auth 字段
+- 新增 `laya/examples/http-clients/`：`client.py`（标准库）、`client.js`（Node 内置 fetch）、`Client.java`（JDK 8 兼容，按 --release 8 编译通过）、`api.js`（Vue 2 + axios）、`client.sh`（curl）——除 Vue 版外全部本机实测通过
+- 本机部署：新增 systemd 单元 `laya-decide.service`（开机自启，0.0.0.0:8077，鉴权开），key 存 `/etc/laya-decide.env`（权限 600），日志 `/opt/ai-lab/laya/logs/laya-decide.log`
+- 外部调用实测（原文 `/opt/ai-lab/laya/logs/external_call_test.txt`）：局域网 192.168.1.167:8077 与 Tailscale 100.71.112.119:8077 双路可达；无 key/错 key 均 401（1.5 ms）；正确 key 首条 5412 ms、随后英文 649.6 ms / 德文 266.0 ms / 中文 197.6 ms；preload 用时 61.8 s（缓存热）
+- 同步 index.md（总数 1200 -> 1201）、README.md / README.en.md（徽章、统计、目录树、专题小节）、教程第 10.4 节与相关文档

@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/docs-1195-2ea44f" alt="docs"/>
+  <img src="https://img.shields.io/badge/docs-1196-2ea44f" alt="docs"/>
   <img src="https://img.shields.io/badge/knowledge%20bases-6-0969da" alt="knowledge bases"/>
   <img src="https://img.shields.io/badge/Spring%20Boot-9-eb6f2d" alt="Spring Boot"/>
   <img src="https://img.shields.io/badge/Obsidian-compatible-7c3aed" alt="Obsidian"/>
@@ -56,12 +56,12 @@ See [index.md](./index.md) for the content index, [SCHEMA.md](./SCHEMA.md) for w
 | Kubernetes & Orchestration | [kubernetes/](./kubernetes/) | — | 3 | Complete |
 | Docker | [docker/](./docker/) | — | 3 | Complete |
 | TypeSafe Jev | [typesafe-jev/](./typesafe-jev/) | — | 1 | Complete |
-| Laya | [laya/](./laya/) | — | 1 | Complete |
+| Laya | [laya/](./laya/) | — | 2 | Complete |
 | Kafka & Messaging | [kafka/](./kafka/) | — | 2 | Complete |
 | Big Data | [bigdata/](./bigdata/README.md) | 30 | 133 | Complete |
 | Linux Operations | [linux/](./linux/README.md) | 26 | 128 | Complete |
 
-**1194 documents** in total ([index.md](./index.md) registers 1199 entries, 4 of which are knowledge-base entry links and 1 is the shared learning-links index).
+**1196 documents** in total ([index.md](./index.md) registers 1201 entries, 4 of which are knowledge-base entry links and 1 is the shared learning-links index).
 
 ## Directory Structure
 
@@ -74,7 +74,7 @@ study-work/
 ├── kubernetes/                      # Kubernetes & orchestration (3 docs)
 ├── docker/                          # Docker (3 docs)
 ├── typesafe-jev/                    # TypeSafe Jev (1 doc: System One decision model)
-├── laya/                            # Laya (1 doc: non-autoregressive decision model, 14 runnable examples)
+├── laya/                            # Laya (2 docs: non-autoregressive decision model + service API guide)
 ├── kafka/                           # Kafka (2 docs: usage introduction + full tutorial + runnable examples)
 ├── bigdata/                         # Big Data knowledge base (30 chapters / 133 docs)
 ├── linux/                            # Linux Operations knowledge base (26 chapters / 128 docs)
@@ -121,7 +121,7 @@ From the command line, Shell scripting, and the text-processing trio, to user pe
 
 ### Laya — [laya/](./laya/)
 
-1 document: a complete guide to Laya, an open-source (Apache 2.0) non-autoregressive System One decision model — self-hosted inference with no API key, three checkpoints (ModernBERT-large, mmBERT-base, typed-decisions), installation in an isolated venv plus torch build selection (a real cu130-has-no-kernel-for-old-GPUs pitfall and its cu126 fix), downloading weights through the hf-mirror endpoint with XET disabled, the three decision primitives and how sequences are assembled, the Router's script/language detection and routing precedence, confidence as normalised entropy plus the checkpoint's temperature buckets, calibration measured with ECE (including an honest small-sample overfitting result), token budgets and high-cardinality option truncation, built-in workflow presets and the email cleaning helper, measured GPU/CPU latency, throughput and VRAM, serving it behind FastAPI, resumable batch labelling, the official RLCD fine-tuning loop, and how it compares with TypeSafe Jev; 14 runnable examples, every command and number measured on this machine.
+2 documents: a complete guide to Laya, an open-source (Apache 2.0) non-autoregressive System One decision model — self-hosted inference with no API key, three checkpoints (ModernBERT-large, mmBERT-base, typed-decisions), installation in an isolated venv plus torch build selection (a real cu130-has-no-kernel-for-old-GPUs pitfall and its cu126 fix), downloading weights through the hf-mirror endpoint with XET disabled, the three decision primitives and how sequences are assembled, the Router's script/language detection and routing precedence, confidence as normalised entropy plus the checkpoint's temperature buckets, calibration measured with ECE (including an honest small-sample overfitting result), token budgets and high-cardinality option truncation, built-in workflow presets and the email cleaning helper, measured GPU/CPU latency, throughput and VRAM, serving it behind FastAPI, resumable batch labelling, the official RLCD fine-tuning loop, and how it compares with TypeSafe Jev; 14 runnable examples, every command and number measured on this machine. A companion service API guide (`laya/Laya服务接入文档.md`) documents the HTTP contract, X-API-Key auth, token budgets, five client implementations (curl / Python / Java 8 / Vue 2 / Node), LAN and Tailscale access, systemd operations and a troubleshooting table; the service itself runs persistently here as a systemd unit on 0.0.0.0:8077.
 
 ## Reading with Obsidian
 
@@ -135,7 +135,7 @@ The documents use Obsidian-native syntax — `[[filename]]` backlinks + YAML fro
 - **Backlink panel**: each document shows "what links here"
 - **Graph view**: visualize the knowledge network across the six tracks
 - **Tag browsing**: frontmatter tags (spring-boot, redis, distributed…) appear in the tag pane; click to group related documents
-- **Full-text search**: Ctrl/Cmd + Shift + F across all 1194 documents
+- **Full-text search**: Ctrl/Cmd + Shift + F across all 1196 documents
 
 Start with [index.md](./index.md), or use graph view to survey the whole system.
 

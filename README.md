@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/学习文档-1195%20篇-2ea44f" alt="学习文档"/>
+  <img src="https://img.shields.io/badge/学习文档-1196%20篇-2ea44f" alt="学习文档"/>
   <img src="https://img.shields.io/badge/知识库-6%20个-0969da" alt="知识库"/>
   <img src="https://img.shields.io/badge/Spring%20Boot-9%20篇-eb6f2d" alt="Spring Boot"/>
   <img src="https://img.shields.io/badge/Obsidian-兼容-7c3aed" alt="Obsidian"/>
@@ -58,10 +58,10 @@
 | Kubernetes 与容器编排 | [kubernetes/](./kubernetes/) | — | 3 | 已完成 |
 | Docker | [docker/](./docker/) | — | 3 | 已完成 |
 | TypeSafe Jev | [typesafe-jev/](./typesafe-jev/) | — | 1 | 已完成 |
-| Laya | [laya/](./laya/) | — | 1 | 已完成 |
+| Laya | [laya/](./laya/) | — | 2 | 已完成 |
 | Kafka 与消息流 | [kafka/](./kafka/) | — | 2 | 已完成 |
 
-合计 **1195 篇**知识库文档（[index.md](./index.md) 注册 1200 条索引，含 4 条知识库入口链接与 1 条学习链接汇总）。
+合计 **1196 篇**知识库文档（[index.md](./index.md) 注册 1201 条索引，含 4 条知识库入口链接与 1 条学习链接汇总）。
 
 ## 目录结构
 
@@ -74,7 +74,7 @@ study-work/
 ├── kubernetes/                      # Kubernetes 与容器编排专题（3 篇）
 ├── docker/                          # Docker 专题（3 篇）
 ├── typesafe-jev/                    # TypeSafe Jev 专题（1 篇：System One 决策模型）
-├── laya/                            # Laya 专题（1 篇：非自回归决策模型，附 14 个可运行示例）
+├── laya/                            # Laya 专题（2 篇：非自回归决策模型 + 服务接入文档，附 14 个示例与 5 个客户端）
 ├── kafka/                           # Kafka 专题（2 篇：使用介绍 + 完整教程 + 可运行示例与脚本）
 ├── bigdata/                         # 大数据学习知识库（30 篇章 / 133 篇）
 ├── linux/                            # Linux 运维学习知识库（26 篇章 / 128 篇）
@@ -121,7 +121,7 @@ study-work/
 
 ### Laya — [laya/](./laya/)
 
-1 篇：Convai Innovations 开源的 System One 决策模型 Laya 的完整教程——非自回归决策原理与三个 checkpoint、独立 venv 安装与 torch 架构选择（cu130 在老显卡上无内核的实测与 cu126 解法）、hf-mirror 镜像下载与 XET 关闭、三种原语与序列拼装（build_sequence）机制、Router 的语言/脚本检测与路由优先级、confidence 归一化熵与温度分桶、ECE 校准实测（含小样本拟合过拟合的真实结果）、head_max_len token 预算与高基数选项截断、内置工作流预设与邮件清洗工具、GPU/CPU 延迟吞吐与显存实测、FastAPI 服务化与 curl 实测、批量打标断点续跑、官方 RLCD 微调流程、与 TypeSafe Jev 的选型对比；附 14 个可运行示例，全部命令、输出与数字来自本机实测。
+2 篇：Convai Innovations 开源的 System One 决策模型 Laya 的完整教程与服务接入文档——非自回归决策原理与三个 checkpoint、独立 venv 安装与 torch 架构选择（cu130 在老显卡上无内核的实测与 cu126 解法）、hf-mirror 镜像下载与 XET 关闭、三种原语与序列拼装（build_sequence）机制、Router 的语言/脚本检测与路由优先级、confidence 归一化熵与温度分桶、ECE 校准实测（含小样本拟合过拟合的真实结果）、head_max_len token 预算与高基数选项截断、内置工作流预设与邮件清洗工具、GPU/CPU 延迟吞吐与显存实测、FastAPI 服务化与 curl 实测、批量打标断点续跑、官方 RLCD 微调流程、与 TypeSafe Jev 的选型对比；附 14 个可运行示例，全部命令、输出与数字来自本机实测。服务接入文档（[Laya服务接入文档.md](./laya/Laya服务接入文档.md)）给出 HTTP 接口契约、鉴权、五种语言客户端（curl / Python / Java 8 / Vue 2 / Node）、局域网与 Tailscale 接入、systemd 常驻与排错速查，服务本身也已在本机以 systemd 单元常驻（0.0.0.0:8077 + X-API-Key）。
 
 ### Kafka 与消息流 — [kafka/](./kafka/)
 
@@ -143,7 +143,7 @@ study-work/
 - **反向链接**：每篇文档右侧面板显示「谁引用了这篇」
 - **关系图谱**：Graph view 可视化六大方向的知识网络
 - **标签浏览**：frontmatter 的 tags（spring-boot、redis、distributed…）进入标签面板，点击聚合同主题文档
-- **全文搜索**：Ctrl/Cmd + Shift + F 跨 1195 篇文档检索
+- **全文搜索**：Ctrl/Cmd + Shift + F 跨 1196 篇文档检索
 
 建议从 [index.md](./index.md) 开始读，或用图谱视图概览整个知识体系。
 
