@@ -615,3 +615,13 @@
 - 本次只新增介绍类文档，未改动任何示例与脚本；kafka/ 目录现有 2 篇（使用介绍 + 完整教程及 examples/）
 - 自检：verify-batch.py 全部通过（frontmatter 完整、围栏偶数、无彩色 emoji、无「待编写」、踩坑 12 条、坏链接 0）；check-toc-anchors.py 0 问题；相关文档 14 条 wikilink 全部指向真实文件
 - 同步更新：index.md「Kafka 与消息流」节 + 1 条 wikilink（总文档数 1198→1199，日期 2026-09-21）；README.md / README.en.md 的徽章（1193→1194 篇）、特性、统计表 Kafka 行、目录树、Kafka 概览段与检索篇数；Kafka完整教程.md 的「相关文档」补一条反向链接
+
+## [2026-09-21] create | Laya 完整教程（非自回归决策模型）
+
+- 新增独立专题目录 `laya/`：`Laya完整教程.md`（14 章 + 4 个应用场景 + 12 条踩坑，约 2000 行）
+- 示例工程 `laya/examples/`：14 个可运行文件 + `.gitignore` + README（每个都在本机跑过，输出回填文档）
+- 本机安装：独立 venv `/opt/ai-lab/laya/.venv`（laya 0.3.4 + torch 2.14.0+cu126 + transformers 5.17.0 + fastapi/uvicorn）
+- 模型：`convaiinnovations/laya` 三个 checkpoint 共 2.37 GB（经 hf-mirror 下载，逐文件与 HF 记录核对一致）
+- 实测并记录三个真实坑：cu130 torch 在 sm_61 显卡上无内核；`Router(preload=[...])` 加载全部三份权重导致 4 GB 卡 OOM 退回 CPU；hf-mirror 不支持 Xet 协议（下载中途 401）
+- 其他实测：GPU 1 问 84 ms / 100 问 4.7 s、GPU 稳态 p50 220 ms、CPU 单问 276 ms、4 问题稳态 815 ms；显存 fp32 1.69 GB / fp16 0.86 GB；小样本拟合温度反而使 ECE 变差（0.1605 → 0.3087）
+- 索引同步：index.md 新增条目并更新总数（1199 → 1200）、README.md 与 README.en.md 的徽章/统计表/目录树/专题小节同步更新

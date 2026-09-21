@@ -1,0 +1,9 @@
+# Laya 示例工程：只提交代码，不提交模型与运行时产物
+models/
+logs/
+*.log
+batch_input.jsonl
+batch_output.jsonl
+__pycache__/
+*.pyc
+.env

@@ -1,7 +1,7 @@
 # 学习笔记索引
 
 > 内容目录。每篇文档附一句话摘要。先读这里找到相关文档。
-> 最后更新：2026-09-21 | 总文档数：1199
+> 最后更新：2026-09-21 | 总文档数：1200
 
 ## 参考资源
 
@@ -36,9 +36,10 @@
 
 ## AI 与模型服务
 
-> 位于 typesafe-jev/ 目录，共 1 篇。
+> 位于 typesafe-jev/、laya/ 目录，共 2 篇。
 
 - [[TypeSafe-Jev完整教程]] — TypeSafe Jev（System One 决策模型）完整教程：Jev 与通用 LLM 的差别（闭合输出、概率化答案、只计输入）、Python / JavaScript SDK 安装与实测、三种问题原语（Noul 是/否、Choice 单选、Score 有序打分）的请求与响应结构、HTTP API 直连、Python SDK（同步/异步/类型化响应/模型列表/底层协议）、JS/TS SDK 与两个 SDK 的差异对照、probabilities 与 confidence 的读法与 SDK 源码解析、异常分层与 RetryPolicy 退避重试（503 重试实测）、无 API Key 时用本地 stub 验证全链路、四种工作流模式（推测性扇出/置信度门控路由/复合打分/意图路由）、成本与限额、与 LLM 及传统分类器的方案对比，含 3 个应用场景（客服工单分诊、LLM 入站出站守门、离线批量打标）与 12 条踩坑记录，14 个可运行示例
+- [[Laya完整教程]] — Laya（Convai Innovations 开源的 System One 决策模型）完整教程：非自回归决策的原理与三个 checkpoint（ModernBERT-large / mmBERT-base / typed-decisions）、pip 安装与 torch 架构选择（cu126 vs cu130 实测）、hf-mirror 镜像与 XET 关闭、三种原语（choice / score / noul）与 render_options 渲染规则、一次前向问多个问题（摊薄 45 ms/问题）、Router 的脚本检测与路由优先级（含 Router(preload=[...]) 全加载的源码级坑）、confidence 归一化熵公式与温度分桶、ECE 与小样本过拟合实测、阈值门控表、head_max_len token 预算与高基数选项截断（77 选项每项只剩 4 token）、内置工作流预设（分诊 / 邮件 / 守门 / 内容安全 / 模型路由）与 clean_email_body、GPU 与 CPU 延迟吞吐实测、4 GB 显存三种活法（单份 / model.half() / 拆分进程）、FastAPI 服务化与 curl 实测、批量打标断点续跑、官方 RLCD 微调流程、与 TypeSafe Jev 及通用 LLM 的选型对比，含 4 个应用场景与 12 条踩坑记录，14 个可运行示例
 
 ## Kafka 与消息流
 
