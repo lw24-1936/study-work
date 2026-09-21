@@ -1240,7 +1240,46 @@ GPU 显存占用：2.62 GB（torch.cuda.max_memory_allocated）
 
 ### 9.3 CPU 对照
 
-CPU 下 laya 用 fp32 推理（源码：`device.type in ("cpu","mps") → dtype=torch.float32`），输出结构不变，慢十几倍。`examples/13_batch_labeling.py` 有一次因为 OOM 掉到 CPU 的运行，量到 **2.5 条/秒**（每条 3 个问题、约 205 tokens），即约 9000 条/小时。CPU 专用的一组延迟测量见 `logs/out_07_cpu.txt`。
+CPU 下 laya 用 fp32 推理（源码：`device.type in ("cpu","mps") → dtype=torch.float32`），输出结构不变，只是慢。`examples/07_timing.py` 用 `LAYA_DEVICE=cpu` 跑一遍的完整输出（本机真实输出）：
+
+```text
+模型：convaiinnovations/laya
+device=cpu  dtype=torch.float32  加载耗时 28.2 s
+cfg：max_len=512 head_max_len=192
+
+=== 同一次 forward 里塞 n 个问题 ===
+问题数    总耗时          每问题耗时          输入 tokens
+1      276 ms       276.1 ms       59
+5      1044 ms      208.8 ms       295
+10     2234 ms      223.4 ms       590
+50     10141 ms     202.8 ms       2950
+
+=== 一次 forward 里塞 100 个不同问题 ===
+100 个问题：19048 ms，即 190.5 ms/问题，5900 tokens
+返回的答案个数： 100
+
+=== 同一批问题重复 20 次（看稳态延迟） ===
+min=776 ms  p50=815 ms  mean=829 ms  max=981 ms
+```
+
+把这组数字和第 9.1 节的 GPU 数字放在一起，本机的真实倍数是：
+
+```text
+                GPU（GTX 1050）      CPU（本机）        倍数
+单个问题            84 ms            276 ms          3.3x
+50 个问题/次        2265 ms          10141 ms        4.5x
+100 个问题/次       4751 ms          19048 ms        4.0x
+每问题（批量）      45~47 ms         190~203 ms      4.3x
+稳态 p50            220 ms（4 问）   815 ms（4 问）   3.7x
+加载                64.6 s（英文）   28.2 s（英文）   CPU 反而更快
+```
+
+两点值得注意：
+
+1. **本机这块 GPU 只快 3~4.5 倍，而不是官方说的 10~15 倍。** 官方那句话是对着 T4 级别的卡说的（`~200-500 ms rather than ~35 ms`），GTX 1050 的 FP32 吞吐和 T4 差着一个数量级，所以「GPU 一定比 CPU 快很多」在低端卡上并不成立——本机实测的 3~4 倍收益，值不值得为它单独维护一个 CUDA 环境，取决于你的吞吐需求。
+2. **CPU 加载反而更快**（28.2 s vs 64.6 s）：GPU 路径上多了一步把权重搬到显存并建立 CUDA 上下文/内核的开销。这也是「每个进程在 GPU 上加载一次要 60 秒以上」那条经验（第 9.5 节）的由来。
+
+另外，`examples/13_batch_labeling.py` 有一次因为 OOM 静默降级到 CPU 的运行，量到 **2.5 条/秒**（每条 3 个问题、约 205 tokens，含 JSON（反）序列化与排序开销），即约 9000 条/小时——这正是「批量任务不要在 4 GB 卡上并发塞多份权重」的代价。
 
 ### 9.4 显存：4 GB 卡上的三种活法
 
