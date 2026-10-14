@@ -634,3 +634,11 @@
 - 本机部署：新增 systemd 单元 `laya-decide.service`（开机自启，0.0.0.0:8077，鉴权开），key 存 `/etc/laya-decide.env`（权限 600），日志 `/opt/ai-lab/laya/logs/laya-decide.log`
 - 外部调用实测（原文 `/opt/ai-lab/laya/logs/external_call_test.txt`）：局域网 192.168.1.167:8077 与 Tailscale 100.71.112.119:8077 双路可达；无 key/错 key 均 401（1.5 ms）；正确 key 首条 5412 ms、随后英文 649.6 ms / 德文 266.0 ms / 中文 197.6 ms；preload 用时 61.8 s（缓存热）
 - 同步 index.md（总数 1200 -> 1201）、README.md / README.en.md（徽章、统计、目录树、专题小节）、教程第 10.4 节与相关文档
+## [2026-10-14] create | AI 与智能体全栈学习知识库（目录文档 + 157 篇骨架）
+
+- 总目录文档 `AI与智能体全栈学习知识库总目录.md`：19 篇章 / 157 个知识主题（AI Agent、AI 人工智能、Codex 教程、Vibe Coding、Claude Code、OpenCode、Skills 技能、Ollama、Hermes Agent、Pi Agent、TensorFlow、PyTorch、Scikit-learn、机器学习、LangChain、NLP、OpenCV、Selenium、Playwright）
+- 用 `scripts/scaffold-kb.py` 生成知识库骨架 `ai-fullstack/`：19 个章节目录、157 篇带 frontmatter 与「知识点清单」的骨架文档、README.md（目录树 + 进度追踪表）
+- 按篇章补入专属 tags（agent/mcp/rag、ai-coding、skills、ollama、pytorch、nlp、opencv、selenium、playwright 等）
+- index.md 新增「AI 与智能体全栈」入口节，总文档数 1201 -> 1202
+- 文档内容按「骨架 -> 已完成」签名逐篇编写中，进度见 `ai-fullstack/README.md`
+
