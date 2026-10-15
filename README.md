@@ -6,16 +6,16 @@
 <h1 align="center">技术学习知识库</h1>
 
 <p align="center">
-  面向 <b>Java 后端</b> · <b>前端</b> · <b>算法工程师</b> · <b>大数据</b> · <b>Linux 运维</b> · <b>微信小程序全栈</b> 六大方向的体系化技术学习笔记<br/>
+  面向 <b>Java 后端</b> · <b>前端</b> · <b>算法工程师</b> · <b>大数据</b> · <b>Linux 运维</b> · <b>微信小程序全栈</b> · <b>AI 与智能体全栈</b> 七大方向的体系化技术学习笔记<br/>
   类 wiki 结构 · 交叉引用 · Obsidian 兼容 · 持续更新
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/学习文档-1196%20篇-2ea44f" alt="学习文档"/>
-  <img src="https://img.shields.io/badge/知识库-6%20个-0969da" alt="知识库"/>
+  <img src="https://img.shields.io/badge/学习文档-1353%20篇-2ea44f" alt="学习文档"/>
+  <img src="https://img.shields.io/badge/知识库-13%20个-0969da" alt="知识库"/>
   <img src="https://img.shields.io/badge/Spring%20Boot-9%20篇-eb6f2d" alt="Spring Boot"/>
   <img src="https://img.shields.io/badge/Obsidian-兼容-7c3aed" alt="Obsidian"/>
-  <img src="https://img.shields.io/badge/更新-2026.09.21-6e7781" alt="更新"/>
+  <img src="https://img.shields.io/badge/更新-2026.10.15-6e7781" alt="更新"/>
 </p>
 
 ## 目录
@@ -31,18 +31,18 @@
 
 ## 项目简介
 
-本仓库是一套面向 **Java 后端**、**前端**、**算法工程师**、**大数据**、**Linux 运维**、**微信小程序全栈** 六个方向的技术学习笔记。知识按体系化篇章组织，每个主题一篇独立文档；文档间以 `[[filename]]` 交叉引用，形成可增量更新、可交叉检索的知识网络。
+本仓库是一套面向 **Java 后端**、**前端**、**算法工程师**、**大数据**、**Linux 运维**、**微信小程序全栈**、**AI 与智能体全栈** 七个方向的技术学习笔记。知识按体系化篇章组织，每个主题一篇独立文档；文档间以 `[[filename]]` 交叉引用，形成可增量更新、可交叉检索的知识网络。
 
 内容索引见 [index.md](./index.md)，文档规范见 [SCHEMA.md](./SCHEMA.md)，操作记录见 [log.md](./log.md)。
 
 ## 特性
 
-- **多方向体系化**：Java 全栈 51 篇章、前端 103 篇章、算法工程师 20 篇章、大数据 30 篇章、Linux 运维 26 篇章、微信小程序全栈 13 篇章，另附 Spring Boot 集成专题 9 篇、Kubernetes 容器编排专题 3 篇、Docker 专题 3 篇、TypeSafe Jev 专题 1 篇、Laya 专题 1 篇、Kafka 专题 2 篇
+- **多方向体系化**：Java 全栈 51 篇章、前端 103 篇章、算法工程师 20 篇章、大数据 30 篇章、Linux 运维 26 篇章、微信小程序全栈 13 篇章、AI 与智能体全栈 19 篇章，另附 Spring Boot 集成专题 9 篇、Kubernetes 容器编排专题 3 篇、Docker 专题 3 篇、TypeSafe Jev 专题 1 篇、Laya 专题 1 篇、Kafka 专题 2 篇
 - **类 wiki 交叉引用**：文档间以 `[[filename]]` 互链，从一个主题顺藤摸瓜到相关主题
 - **Obsidian 原生兼容**：`[[filename]]` 双向链接 + frontmatter 标签正是 Obsidian 语法，整库可直接作为 Vault 打开
 - **统一文档规范**：YAML frontmatter + 固定章节结构，全库格式一致，见 [SCHEMA.md](./SCHEMA.md)
 - **可增量更新**：每篇附 `created` / `updated` 日期，操作留痕于 [log.md](./log.md)
-- **附总目录 roadmap**：六份总目录文件对应六大方向，是知识库的编排蓝图
+- **附总目录 roadmap**：七份总目录文件对应七大方向，是知识库的编排蓝图
 
 ## 数据统计
 
@@ -54,6 +54,7 @@
 | 大数据 | [bigdata/](./bigdata/README.md) | 30 | 133 | 已完成 |
 | Linux 运维 | [linux/](./linux/README.md) | 26 | 128 | 已完成 |
 | 微信小程序全栈 | [weapp-fullstack/](./weapp-fullstack/) | 13 | 106 | 已完成 |
+| AI 与智能体全栈 | [ai-fullstack/](./ai-fullstack/README.md) | 19 | 157 | 已完成 |
 | Spring Boot 集成 | [spring-boot/](./spring-boot/) | — | 9 | 已完成 |
 | Kubernetes 与容器编排 | [kubernetes/](./kubernetes/) | — | 3 | 已完成 |
 | Docker | [docker/](./docker/) | — | 3 | 已完成 |
@@ -61,7 +62,7 @@
 | Laya | [laya/](./laya/) | — | 2 | 已完成 |
 | Kafka 与消息流 | [kafka/](./kafka/) | — | 2 | 已完成 |
 
-合计 **1196 篇**知识库文档（[index.md](./index.md) 注册 1201 条索引，含 4 条知识库入口链接与 1 条学习链接汇总）。
+合计 **1353 篇**知识库文档（[index.md](./index.md) 注册 1203 条索引，含 13 条知识库入口链接与 1 条学习链接汇总；AI 与智能体全栈库以入口链接注册，逐篇索引见该库 README.md 进度表）。
 
 ## 目录结构
 
@@ -79,6 +80,7 @@ study-work/
 ├── bigdata/                         # 大数据学习知识库（30 篇章 / 133 篇）
 ├── linux/                            # Linux 运维学习知识库（26 篇章 / 128 篇）
 ├── weapp-fullstack/                 # 微信小程序与后台知识库（13 篇章 / 106 篇）
+├── ai-fullstack/                    # AI 与智能体全栈学习知识库（19 篇章 / 157 篇）
 ├── index.md                         # 全库内容索引（先读这里找文档）
 ├── SCHEMA.md                        # 文档规范（frontmatter / 标签 / 结构）
 ├── log.md                           # 操作日志
@@ -86,7 +88,9 @@ study-work/
 ├── 前端完整知识库总目录.md            # 前端总目录
 ├── 算法工程师学习知识库总目录.md      # 算法工程师总目录
 ├── 大数据学习知识库总目录.md          # 大数据总目录
-└── Linux学习知识库总目录.md           # Linux 总目录
+├── Linux学习知识库总目录.md           # Linux 总目录
+├── 微信小程序与后台学习知识库总目录.md  # 微信小程序全栈总目录
+└── AI与智能体全栈学习知识库总目录.md    # AI 与智能体全栈总目录
 ```
 
 ## 知识库总览
@@ -110,6 +114,10 @@ study-work/
 ### Linux 运维 — [linux/](./linux/README.md)
 
 从命令行、Shell 脚本与文本三剑客，到用户权限、文件系统、进程内存、网络防火墙、日志监控、性能调优、故障排查，再到虚拟化容器、自动化运维、安全加固、内核与 eBPF、面试与系统设计、综合项目实战，共 26 篇章、128 篇文档。
+
+### AI 与智能体全栈 — [ai-fullstack/](./ai-fullstack/README.md)
+
+从 AI Agent 与 MCP / RAG / 多智能体、AI 与 LLM 原理，到 AI 编程工具（Codex、Claude Code、OpenCode、Pi Agent、Hermes Agent、Vibe Coding）、Skills 技能体系、Ollama 本地模型、机器学习框架（TensorFlow、PyTorch、Scikit-learn）、机器学习、LangChain、NLP、OpenCV 与 Selenium / Playwright 浏览器自动化，共 19 篇章、157 篇文档；示例均在独立 venv 中真实跑过，跑不动（无 GPU、无桌面、无凭据）的段落逐处标注「本机未验证」。
 
 ### Spring Boot 集成 — [spring-boot/](./spring-boot/)
 
@@ -141,9 +149,9 @@ study-work/
 
 - **双向链接**：正文里的 `[[文档名]]` 自动变为可点击链接，Ctrl/Cmd + 点击跳转
 - **反向链接**：每篇文档右侧面板显示「谁引用了这篇」
-- **关系图谱**：Graph view 可视化六大方向的知识网络
+- **关系图谱**：Graph view 可视化七大方向的知识网络
 - **标签浏览**：frontmatter 的 tags（spring-boot、redis、distributed…）进入标签面板，点击聚合同主题文档
-- **全文搜索**：Ctrl/Cmd + Shift + F 跨 1196 篇文档检索
+- **全文搜索**：Ctrl/Cmd + Shift + F 跨 1353 篇文档检索
 
 建议从 [index.md](./index.md) 开始读，或用图谱视图概览整个知识体系。
 

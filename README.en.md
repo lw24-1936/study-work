@@ -11,11 +11,11 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/docs-1196-2ea44f" alt="docs"/>
-  <img src="https://img.shields.io/badge/knowledge%20bases-6-0969da" alt="knowledge bases"/>
+  <img src="https://img.shields.io/badge/docs-1353-2ea44f" alt="docs"/>
+  <img src="https://img.shields.io/badge/knowledge%20bases-13-0969da" alt="knowledge bases"/>
   <img src="https://img.shields.io/badge/Spring%20Boot-9-eb6f2d" alt="Spring Boot"/>
   <img src="https://img.shields.io/badge/Obsidian-compatible-7c3aed" alt="Obsidian"/>
-  <img src="https://img.shields.io/badge/updated-2026.09.20-6e7781" alt="updated"/>
+  <img src="https://img.shields.io/badge/updated-2026.10.15-6e7781" alt="updated"/>
 </p>
 
 ## Table of Contents
@@ -31,18 +31,18 @@
 
 ## About
 
-This repository is a collection of structured technical study notes for six tracks: **Java Backend**, **Frontend**, **Algorithm Engineer**, **Big Data**, **Linux Operations**, and **WeChat Mini-Program Full-Stack**. Knowledge is organized into systematic chapters, with one standalone document per topic. Documents cross-reference each other via `[[filename]]`, forming an incrementally updatable, cross-searchable knowledge network.
+This repository is a collection of structured technical study notes for seven tracks: **Java Backend**, **Frontend**, **Algorithm Engineer**, **Big Data**, **Linux Operations**, **WeChat Mini-Program Full-Stack**, and **AI & Agents Full-Stack**. Knowledge is organized into systematic chapters, with one standalone document per topic. Documents cross-reference each other via `[[filename]]`, forming an incrementally updatable, cross-searchable knowledge network.
 
 See [index.md](./index.md) for the content index, [SCHEMA.md](./SCHEMA.md) for writing conventions, and [log.md](./log.md) for the changelog.
 
 ## Highlights
 
-- **Six systematic tracks**: 51 chapters of Java Full-Stack, 103 chapters of Frontend, 20 chapters of Algorithm Engineer, 30 chapters of Big Data, 26 chapters of Linux Operations, 13 chapters of WeChat Mini-Program Full-Stack, plus 9 Spring Boot integration guides, 3 Kubernetes guides, 3 Docker documents, 1 TypeSafe Jev guide, 1 Laya guide, and 2 Kafka guides
+- **Seven systematic tracks**: 51 chapters of Java Full-Stack, 103 chapters of Frontend, 20 chapters of Algorithm Engineer, 30 chapters of Big Data, 26 chapters of Linux Operations, 13 chapters of WeChat Mini-Program Full-Stack, 19 chapters of AI & Agents Full-Stack, plus 9 Spring Boot integration guides, 3 Kubernetes guides, 3 Docker documents, 1 TypeSafe Jev guide, 1 Laya guide, and 2 Kafka guides
 - **Wiki-style cross-referencing**: documents link to each other via `[[filename]]`, so you can follow a topic to related ones
 - **Obsidian-native**: `[[filename]]` backlinks + frontmatter tags are Obsidian syntax, so the whole repo opens directly as a Vault
 - **Unified conventions**: YAML frontmatter + fixed section structure keep the whole library consistent, see [SCHEMA.md](./SCHEMA.md)
 - **Incremental updates**: every document carries `created` / `updated` dates, and every operation is logged in [log.md](./log.md)
-- **Roadmaps included**: six roadmap files outline the six tracks
+- **Roadmaps included**: seven roadmap files outline the seven tracks
 
 ## Statistics
 
@@ -53,6 +53,7 @@ See [index.md](./index.md) for the content index, [SCHEMA.md](./SCHEMA.md) for w
 | Algorithm Engineer | [algorithm-engineer/](./algorithm-engineer/README.md) | 20 | 142 | Complete |
 | Spring Boot Integration | [spring-boot/](./spring-boot/) | — | 9 | Complete |
 | WeChat Mini-Program Full-Stack | [weapp-fullstack/](./weapp-fullstack/) | 13 | 106 | Complete |
+| AI & Agents Full-Stack | [ai-fullstack/](./ai-fullstack/README.md) | 19 | 157 | Complete |
 | Kubernetes & Orchestration | [kubernetes/](./kubernetes/) | — | 3 | Complete |
 | Docker | [docker/](./docker/) | — | 3 | Complete |
 | TypeSafe Jev | [typesafe-jev/](./typesafe-jev/) | — | 1 | Complete |
@@ -61,7 +62,7 @@ See [index.md](./index.md) for the content index, [SCHEMA.md](./SCHEMA.md) for w
 | Big Data | [bigdata/](./bigdata/README.md) | 30 | 133 | Complete |
 | Linux Operations | [linux/](./linux/README.md) | 26 | 128 | Complete |
 
-**1196 documents** in total ([index.md](./index.md) registers 1201 entries, 4 of which are knowledge-base entry links and 1 is the shared learning-links index).
+**1353 documents** in total ([index.md](./index.md) registers 1203 entries, 13 of which are knowledge-base entry links and 1 is the shared learning-links index; the AI & Agents knowledge base is registered through its entry link, see that repository README for per-document progress).
 
 ## Directory Structure
 
@@ -79,6 +80,7 @@ study-work/
 ├── bigdata/                         # Big Data knowledge base (30 chapters / 133 docs)
 ├── linux/                            # Linux Operations knowledge base (26 chapters / 128 docs)
 ├── weapp-fullstack/                 # WeChat Mini-Program Full-Stack (13 chapters / 106 docs)
+├── ai-fullstack/                    # AI & Agents Full-Stack knowledge base (19 chapters / 157 docs)
 ├── index.md                         # Content index (start here to find documents)
 ├── SCHEMA.md                        # Writing conventions (frontmatter / tags / structure)
 ├── log.md                           # Changelog
@@ -111,6 +113,10 @@ From computer fundamentals, SQL, Hadoop/Hive/Kafka/Spark/Flink, to data warehous
 
 From the command line, Shell scripting, and the text-processing trio, to user permissions, file systems, processes and memory, networking and firewalls, logging and monitoring, performance tuning, and troubleshooting — and on to virtualization and containers, automation, security hardening, kernel and eBPF, interviews and system design, and hands-on projects — 26 chapters and 128 documents.
 
+### AI & Agents Full-Stack — [ai-fullstack/](./ai-fullstack/README.md)
+
+From AI agents with MCP / RAG / multi-agent orchestration and LLM fundamentals, to AI coding tools (Codex, Claude Code, OpenCode, Pi Agent, Hermes Agent, Vibe Coding), the Skills system, Ollama local models, ML frameworks (TensorFlow, PyTorch, Scikit-learn), machine learning, LangChain, NLP, OpenCV, and Selenium / Playwright browser automation - 19 chapters, 157 documents. Every example was executed in a dedicated venv; anything that could not run locally (no GPU, no desktop, no credentials) is explicitly marked as unverified.
+
 ### Spring Boot Integration — [spring-boot/](./spring-boot/)
 
 9 standalone integration guides: Redis, Redisson, MyBatis, MyBatis-Plus, RabbitMQ, AOP, Email, Scheduled Tasks, and Apache Tika file detection.
@@ -133,9 +139,9 @@ The documents use Obsidian-native syntax — `[[filename]]` backlinks + YAML fro
 
 - **Backlinks**: `[[document name]]` references become clickable links; Ctrl/Cmd + click to jump
 - **Backlink panel**: each document shows "what links here"
-- **Graph view**: visualize the knowledge network across the six tracks
+- **Graph view**: visualize the knowledge network across the seven tracks
 - **Tag browsing**: frontmatter tags (spring-boot, redis, distributed…) appear in the tag pane; click to group related documents
-- **Full-text search**: Ctrl/Cmd + Shift + F across all 1196 documents
+- **Full-text search**: Ctrl/Cmd + Shift + F across all 1353 documents
 
 Start with [index.md](./index.md), or use graph view to survey the whole system.
 
