@@ -52,11 +52,11 @@ ai-fullstack/
 | 08-Ollama | 已完成 | 2026-10-15 |
 | 09-Hermes Agent | 已完成 | 2026-10-15 |
 | 10-Pi Agent | 已完成 | 2026-10-15 |
-| 11-TensorFlow | 待编写 | - |
-| 12-PyTorch | 待编写 | - |
-| 13-Scikit-learn | 待编写 | - |
-| 14-机器学习 | 待编写 | - |
-| 15-LangChain | 待编写 | - |
+| 11-TensorFlow | 已完成 | 2026-10-15 |
+| 12-PyTorch | 已完成 | 2026-10-15 |
+| 13-Scikit-learn | 已完成 | 2026-10-15 |
+| 14-机器学习 | 已完成 | 2026-10-15 |
+| 15-LangChain | 已完成 | 2026-10-15 |
 | 16-自然语言处理 NLP | 待编写 | - |
 | 17-OpenCV | 待编写 | - |
 | 18-Selenium | 待编写 | - |

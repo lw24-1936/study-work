@@ -655,3 +655,14 @@
 - 10-Pi Agent 8 篇（10.1~10.8）：概述与设计理念、安装与登录、交互使用、非交互与自动化、上下文与规则、扩展与技能、生态与集成、实践与常见问题（416~760 行/篇）
 - 事实核对：Hermes 官方文档 + 本机 hermes v0.21.6 真实命令实测（tools list、skills list、mcp list、plugins doctor、cron create/run 真跑一轮）；Pi Agent 抓 pi.dev/docs 全站与 earendil-works/pi 仓库文档源，并本机安装 1.2.0 实测（pi --version、auth check、-p、--mode json、RPC get_state）；无凭据/无 GPU 未能验证的部分均如实标注
 - verify-batch.py 18 篇全通过；check-toc-anchors.py 两篇章 0 问题；README 进度表与 index.md 同步
+
+## [2026-10-15] 续写 | ai-fullstack 11~16 篇章 45 篇完成
+
+- 11-TensorFlow 11.5~11.8 完成（训练与回调 / 数据处理 / 保存与部署 / 分布式与性能），全章 8 篇齐
+- 12-PyTorch 12.1~12.5、12.8、12.9 完成，全章 9 篇齐（含导出部署、生态与工具）
+- 13-Scikit-learn 13.1~13.7 完成，全章 7 篇齐（含管道调参、持久化与工程化）
+- 14-机器学习 14.1~14.9 完成，全章 9 篇齐（含强化学习入门、机器学习项目实战）
+- 15-LangChain 15.1~15.10 完成，全章 10 篇齐（LangChain 1.x、LangGraph 1.2、LCEL、检索与向量库）
+- 16-NLP 16.1~16.4 完成（概述与任务版图 / 文本预处理 / 文本表示 / 文本分类与情感分析），余 5 篇编写中
+- 全部示例在本机 venv 实跑（TF 2.20.0 / torch 2.14.1 / sklearn 1.9.1 / langchain 1.4.6），GPU 相关段落标注未本机验证
+- 累计 127 / 157 篇；README 进度表 11~15 篇章标记已完成
