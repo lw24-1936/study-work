@@ -48,8 +48,8 @@ ai-fullstack/
 | 04-Vibe Coding | 已完成 | 2026-10-14 |
 | 05-Claude Code | 已完成 | 2026-10-14 |
 | 06-OpenCode | 已完成 | 2026-10-14 |
-| 07-Skills 技能 | 待编写 | - |
-| 08-Ollama | 待编写 | - |
+| 07-Skills 技能 | 已完成 | 2026-10-15 |
+| 08-Ollama | 已完成 | 2026-10-15 |
 | 09-Hermes Agent | 待编写 | - |
 | 10-Pi Agent | 待编写 | - |
 | 11-TensorFlow | 待编写 | - |

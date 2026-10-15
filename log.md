@@ -642,3 +642,9 @@
 - index.md 新增「AI 与智能体全栈」入口节，总文档数 1201 -> 1202
 - 文档内容按「骨架 -> 已完成」签名逐篇编写中，进度见 `ai-fullstack/README.md`
 
+## [2026-10-15] 编写 | ai-fullstack 07-Skills 技能 / 08-Ollama 两篇章 16 篇
+
+- 07-Skills 技能 8 篇（07.1~07.8）：概念与规范、目录结构与组织、编写高质量 Skill、与工具和脚本集成、分发与安装、维护与迭代、常见反模式、团队 Skill 库建设（488~909 行/篇）
+- 08-Ollama 8 篇（08.1~08.8）：安装与运行环境、模型管理、命令行使用、REST API、Modelfile 与自定义模型、性能与硬件、生态集成、私有化部署与运维（458~870 行/篇）
+- 事实核对：agentskills.io 规范、Claude Code / Codex / OpenCode / Hermes 官方技能文档、docs.ollama.com 全站与 ollama/ollama docs；本机 ollama 0.40.4 实测（/api/version、/api/tags、/api/show、pull 全流程），GPU 与生成类接口因 NVML 驱动不匹配、缺 llama-server 未在本机验证并如实标注
+- verify-batch.py 16 篇全通过；check-toc-anchors.py 两篇章 0 问题；README 进度表与 index.md 同步
