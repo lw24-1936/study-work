@@ -44,7 +44,7 @@
 
 ## AI 与智能体全栈
 
-> 位于 ai-fullstack/ 目录，19 篇章 / 157 篇文档。总目录见 [[AI与智能体全栈学习知识库总目录]]。骨架已搭建、文档正在逐批编写（01~08 篇章 62 篇已完成，其余进度以该库 README.md 进度表为准）。
+> 位于 ai-fullstack/ 目录，19 篇章 / 157 篇文档。总目录见 [[AI与智能体全栈学习知识库总目录]]。骨架已搭建、文档正在逐批编写（01~10 篇章 80 篇已完成，其余进度以该库 README.md 进度表为准）。
 
 - [[ai-fullstack/README]] — AI 与智能体全栈学习知识库：AI Agent 与 MCP/RAG/多智能体、AI 与 LLM 原理、提示工程、AI 编程工具（Codex、Claude Code、OpenCode、Pi、Hermes Agent、Vibe Coding）、Skills 技能体系、Ollama 本地模型、机器学习框架（TensorFlow、PyTorch、Scikit-learn）、机器学习、LangChain、NLP、OpenCV、Selenium 与 Playwright 浏览器自动化
 

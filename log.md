@@ -648,3 +648,10 @@
 - 08-Ollama 8 篇（08.1~08.8）：安装与运行环境、模型管理、命令行使用、REST API、Modelfile 与自定义模型、性能与硬件、生态集成、私有化部署与运维（458~870 行/篇）
 - 事实核对：agentskills.io 规范、Claude Code / Codex / OpenCode / Hermes 官方技能文档、docs.ollama.com 全站与 ollama/ollama docs；本机 ollama 0.40.4 实测（/api/version、/api/tags、/api/show、pull 全流程），GPU 与生成类接口因 NVML 驱动不匹配、缺 llama-server 未在本机验证并如实标注
 - verify-batch.py 16 篇全通过；check-toc-anchors.py 两篇章 0 问题；README 进度表与 index.md 同步
+
+## [2026-10-15] 编写 | ai-fullstack 09-Hermes Agent / 10-Pi Agent 两篇章 18 篇
+
+- 09-Hermes Agent 10 篇（09.1~09.10）：概述与架构、安装与配置、工具与工具集、技能与插件、记忆与用户画像、上下文管理、定时任务与后台运行、MCP 与扩展集成、多平台接入、运维与升级（409~834 行/篇）
+- 10-Pi Agent 8 篇（10.1~10.8）：概述与设计理念、安装与登录、交互使用、非交互与自动化、上下文与规则、扩展与技能、生态与集成、实践与常见问题（416~760 行/篇）
+- 事实核对：Hermes 官方文档 + 本机 hermes v0.21.6 真实命令实测（tools list、skills list、mcp list、plugins doctor、cron create/run 真跑一轮）；Pi Agent 抓 pi.dev/docs 全站与 earendil-works/pi 仓库文档源，并本机安装 1.2.0 实测（pi --version、auth check、-p、--mode json、RPC get_state）；无凭据/无 GPU 未能验证的部分均如实标注
+- verify-batch.py 18 篇全通过；check-toc-anchors.py 两篇章 0 问题；README 进度表与 index.md 同步

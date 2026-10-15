@@ -50,8 +50,8 @@ ai-fullstack/
 | 06-OpenCode | 已完成 | 2026-10-14 |
 | 07-Skills 技能 | 已完成 | 2026-10-15 |
 | 08-Ollama | 已完成 | 2026-10-15 |
-| 09-Hermes Agent | 待编写 | - |
-| 10-Pi Agent | 待编写 | - |
+| 09-Hermes Agent | 已完成 | 2026-10-15 |
+| 10-Pi Agent | 已完成 | 2026-10-15 |
 | 11-TensorFlow | 待编写 | - |
 | 12-PyTorch | 待编写 | - |
 | 13-Scikit-learn | 待编写 | - |
