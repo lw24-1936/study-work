@@ -11,8 +11,8 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/docs-1353-2ea44f" alt="docs"/>
-  <img src="https://img.shields.io/badge/knowledge%20bases-13-0969da" alt="knowledge bases"/>
+  <img src="https://img.shields.io/badge/docs-1354-2ea44f" alt="docs"/>
+  <img src="https://img.shields.io/badge/knowledge%20bases-14-0969da" alt="knowledge bases"/>
   <img src="https://img.shields.io/badge/Spring%20Boot-9-eb6f2d" alt="Spring Boot"/>
   <img src="https://img.shields.io/badge/Obsidian-compatible-7c3aed" alt="Obsidian"/>
   <img src="https://img.shields.io/badge/updated-2026.10.15-6e7781" alt="updated"/>
@@ -59,10 +59,11 @@ See [index.md](./index.md) for the content index, [SCHEMA.md](./SCHEMA.md) for w
 | TypeSafe Jev | [typesafe-jev/](./typesafe-jev/) | — | 1 | Complete |
 | Laya | [laya/](./laya/) | — | 2 | Complete |
 | Kafka & Messaging | [kafka/](./kafka/) | — | 2 | Complete |
+| Jenkins CI/CD | [jenkins/](./jenkins/) | — | 1 | Complete |
 | Big Data | [bigdata/](./bigdata/README.md) | 30 | 133 | Complete |
 | Linux Operations | [linux/](./linux/README.md) | 26 | 128 | Complete |
 
-**1353 documents** in total ([index.md](./index.md) registers 1203 entries, 13 of which are knowledge-base entry links and 1 is the shared learning-links index; the AI & Agents knowledge base is registered through its entry link, see that repository README for per-document progress).
+**1354 documents** in total ([index.md](./index.md) registers 1203 entries, 13 of which are knowledge-base entry links and 1 is the shared learning-links index; the AI & Agents knowledge base is registered through its entry link, see that repository README for per-document progress).
 
 ## Directory Structure
 
@@ -77,6 +78,7 @@ study-work/
 ├── typesafe-jev/                    # TypeSafe Jev (1 doc: System One decision model)
 ├── laya/                            # Laya (2 docs: non-autoregressive decision model + service API guide)
 ├── kafka/                           # Kafka (2 docs: usage introduction + full tutorial + runnable examples)
+├── jenkins/                         # Jenkins (1 tutorial + runnable examples + real screenshots)
 ├── bigdata/                         # Big Data knowledge base (30 chapters / 133 docs)
 ├── linux/                            # Linux Operations knowledge base (26 chapters / 128 docs)
 ├── weapp-fullstack/                 # WeChat Mini-Program Full-Stack (13 chapters / 106 docs)
@@ -141,7 +143,7 @@ The documents use Obsidian-native syntax — `[[filename]]` backlinks + YAML fro
 - **Backlink panel**: each document shows "what links here"
 - **Graph view**: visualize the knowledge network across the seven tracks
 - **Tag browsing**: frontmatter tags (spring-boot, redis, distributed…) appear in the tag pane; click to group related documents
-- **Full-text search**: Ctrl/Cmd + Shift + F across all 1353 documents
+- **Full-text search**: Ctrl/Cmd + Shift + F across all 1354 documents
 
 Start with [index.md](./index.md), or use graph view to survey the whole system.
 

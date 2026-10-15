@@ -1,0 +1,154 @@
+pipeline {
+    // 构建跑在哪个节点上；any 表示任意可用节点
+    agent any
+
+    // 构建时可选参数，触发时通过 UI 或 buildWithParameters 传入
+    parameters {
+        choice(name: 'ENVIRONMENT', choices: ['dev', 'staging', 'prod'], description: '部署环境')
+        string(name: 'BRANCH', defaultValue: 'main', description: '要构建的分支')
+        booleanParam(name: 'RUN_SLOW_TESTS', defaultValue: false, description: '是否执行慢速回归用例')
+    }
+
+    // 全局超时、日志时间戳、禁止并发构建、保留策略
+    options {
+        timeout(time: 30, unit: 'MINUTES')
+        timestamps()
+        disableConcurrentBuilds()
+        buildDiscarder(logRotator(numToKeepStr: '30', artifactNumToKeepStr: '10'))
+        skipDefaultCheckout(true)
+    }
+
+    environment {
+        PYTHONUNBUFFERED = '1'
+        VENV_DIR = '.venv'
+        // 机密信息不要写在这里，用凭据注入（见 Credentials 阶段）
+        APP_NAME = 'demo-app'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // 用 shorthand 代替已废弃的 checkout scm 写法
+                checkout scm
+                sh 'git rev-parse --short HEAD > .git-revision'
+                script {
+                    env.GIT_REVISION = readFile('.git-revision').trim()
+                }
+                echo "构建版本：${env.APP_NAME}-${env.GIT_REVISION}"
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh '''
+                    set -eux
+                    python3 -m venv ${VENV_DIR}
+                    ${VENV_DIR}/bin/pip install -q --upgrade pip
+                    ${VENV_DIR}/bin/pip install -q -r requirements.txt
+                '''
+            }
+        }
+
+        stage('Test') {
+            parallel {
+                stage('Unit Test') {
+                    steps {
+                        sh '''
+                            set -eux
+                            ${VENV_DIR}/bin/python -m pytest -q \
+                                --junitxml=reports/unit.xml \
+                                --cov=app --cov-report=xml:reports/coverage.xml
+                        '''
+                    }
+                    post {
+                        always {
+                            junit 'reports/unit.xml'
+                            // 覆盖率报告要装 coverage 插件后才能识别 recordCoverage
+                            archiveArtifacts artifacts: 'reports/coverage.xml', allowEmptyArchive: true
+                        }
+                    }
+                }
+                stage('Lint') {
+                    steps {
+                        sh '${VENV_DIR}/bin/python -m compileall -q app'
+                    }
+                }
+                stage('Slow Regression') {
+                    // 只有参数勾选时才执行
+                    when { expression { params.RUN_SLOW_TESTS } }
+                    steps {
+                        sh '${VENV_DIR}/bin/python -m pytest -q tests/test_slow.py'
+                    }
+                }
+            }
+        }
+
+        stage('Package') {
+            steps {
+                sh '''
+                    set -eux
+                    mkdir -p dist
+                    tar -czf dist/${APP_NAME}-${GIT_REVISION}.tar.gz app requirements.txt Jenkinsfile
+                    sha256sum dist/*.tar.gz | tee dist/SHA256SUMS
+                '''
+                archiveArtifacts artifacts: 'dist/*', fingerprint: true
+            }
+        }
+
+        stage('Credentials Demo') {
+            steps {
+                // 凭据以环境变量形式注入，展开发生在 shell 里，不会出现在日志中
+                withCredentials([string(credentialsId: 'demo-api-token', variable: 'API_TOKEN'),
+                                 usernamePassword(credentialsId: 'demo-registry', usernameVariable: 'REG_USER', passwordVariable: 'REG_PASS')]) {
+                    sh '''
+                        set -eu
+                        echo "token 长度：${#API_TOKEN}"
+                        echo "用户名：${REG_USER}"
+                        # 下面这行会打印密码，仅用于演示 withCredentials 生效，生产别这样写
+                        echo "密码长度：${#REG_PASS}"
+                    '''
+                }
+                // 把更多凭据一次性注入（credentials-binding 插件提供的组合写法）
+                withCredentials([string(credentialsId: 'demo-api-token', variable: 'API_TOKEN')]) {
+                    sh 'curl -sS -H "Authorization: Bearer ${API_TOKEN}" https://httpbin.org/bearer | head -c 200 || true'
+                }
+            }
+        }
+
+        stage('Deploy') {
+            when { expression { params.ENVIRONMENT != 'prod' } }
+            steps {
+                echo "部署到 ${params.ENVIRONMENT}：这里替换成真实的部署命令"
+                sh 'echo "deploy ${APP_NAME}-${GIT_REVISION} -> ${ENVIRONMENT}" | tee dist/deploy.log'
+            }
+        }
+
+        stage('Approve to Prod') {
+            when { expression { params.ENVIRONMENT == 'prod' } }
+            steps {
+                // prod 环境走人工确认，超时后自动放弃
+                timeout(time: 10, unit: 'MINUTES') {
+                    input message: '确认发布到生产环境？', ok: '发布', submitter: 'admin,ops'
+                }
+                echo '已人工确认，执行生产部署'
+            }
+        }
+    }
+
+    post {
+        always {
+            echo "构建 ${currentBuild.number} 结束，结果：${currentBuild.currentResult}"
+            // 清理工作区，避免占用磁盘
+            cleanWs()
+        }
+        success {
+            echo "成功：${env.BUILD_URL}"
+        }
+        unstable {
+            echo '存在失败用例，构建标记为 UNSTABLE'
+        }
+        failure {
+            echo '构建失败，检查控制台输出与 reports/ 下的报告'
+        }
+    }
+}

@@ -1,7 +1,7 @@
 # 学习笔记索引
 
 > 内容目录。每篇文档附一句话摘要。先读这里找到相关文档。
-> 最后更新：2026-10-15 | 总文档数：1203
+> 最后更新：2026-10-15 | 总文档数：1204
 
 ## 参考资源
 
@@ -47,6 +47,12 @@
 > 位于 ai-fullstack/ 目录，19 篇章 / 157 篇文档。总目录见 [[AI与智能体全栈学习知识库总目录]]。19 篇章 / 157 篇文档全部完成（2026-10-15 收尾），内容覆盖 AI Agent 与 MCP/RAG/多智能体、AI 与 LLM 原理、AI 编程工具（Codex、Claude Code、OpenCode、Pi、Hermes Agent、Vibe Coding）、Skills 技能体系、Ollama、TensorFlow/PyTorch/Scikit-learn、机器学习、LangChain、NLP、OpenCV、Selenium 与 Playwright。
 
 - [[ai-fullstack/README]] — AI 与智能体全栈学习知识库：AI Agent 与 MCP/RAG/多智能体、AI 与 LLM 原理、提示工程、AI 编程工具（Codex、Claude Code、OpenCode、Pi、Hermes Agent、Vibe Coding）、Skills 技能体系、Ollama 本地模型、机器学习框架（TensorFlow、PyTorch、Scikit-learn）、机器学习、LangChain、NLP、OpenCV、Selenium 与 Playwright 浏览器自动化
+
+## Jenkins CI/CD
+
+> 位于 jenkins/ 目录，共 2 篇（教程 + 示例工程）。
+
+- [[Jenkins使用教程]] — Jenkins 使用教程：概念与架构（控制器/节点/执行器/任务类型）、容器与裸机部署（首次向导、JCasC、Compose、反向代理与 HTTPS、升级回滚）、国内插件源与镜像实测（官方 CDN 555KB/s、清华 1.7MB/s、bridge 网络 403 的坑）、插件烧进镜像、界面与触发器、凭据管理、流水线全语法（agent/options/when/parallel/matrix/post/共享库/docker agent）、分布式构建与入站 agent、REST API 与 CLI 与 Job DSL 与 Webhook、实战一 Python 项目流水线、实战二 Spring Boot 4.1.1 + Vue 3 + Vite 8 前后端分离项目 CI/CD（maven/node docker agent 并行构建、镜像构建、部署容器、冒烟测试、回滚）、安全加固、备份恢复升级、监控容量、排错大全与 15 条最佳实践，全部命令与输出来自本机实测
 
 ## Kafka 与消息流
 

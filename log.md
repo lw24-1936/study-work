@@ -681,3 +681,15 @@
 - 根 README.md / README.en.md：新增「AI 与智能体全栈」统计行（19 篇章 / 157 篇）与知识库总览一节；徽章 学习文档 1196 → 1353 篇、知识库 6 → 13 个、更新日期 2026.10.15；「六大方向」表述改为「七大方向」；目录树补 ai-fullstack 与两份缺失总目录
 - 合计数字按磁盘现算：1353 篇（不含各库 README.md），index.md wikilink 注册 1203 条
 - index.md 头部：最后更新 2026-10-15、总文档数 1203
+
+## [2026-10-15] 新增 | Jenkins 使用教程（含 Spring Boot + Vue 实战）
+
+- 新建 jenkins/ 专题目录：Jenkins使用教程.md（正文含 17 个章节）+ images/ 截图 + examples/ 可运行示例
+- 版本事实：jenkins/jenkins:lts-jdk21 = Jenkins 2.580.1 + Temurin JDK 21.0.12.1，容器冷启动到就绪约 6 秒
+- 实战工程：examples/springboot-vue-demo（Spring Boot 4.1.1 + Vue 3.5.44 + Vite 8.3.4），后端 mvn clean package 4 个 MockMvc 用例全过，
+  前端 npm install 62 个包 33 秒 + vite build 393ms
+- 示例脚本：plugins.txt、Dockerfile、docker-compose.yml、casc/jenkins.yaml、init.groovy.d、create-job.sh、manage-credentials.sh、
+  create-agent.sh、jenkins-cli.sh、backup-restore.sh、seed-job.groovy、shared-library、demo-app（Python 流水线）
+- 实测坑：Spring Boot 4 的 @AutoConfigureMockMvc 换包需加 spring-boot-starter-webmvc-test；jenkins-plugin-cli 参数是
+  --jenkins-update-center / --jenkins-update-center-download-url（不是 -i）；镜像站对 bridge 网络容器返回 403、--network host 正常；
+  插件下载中断会留下损坏的 .jpi（用 unzip -t 或对照官方 size/sha256 校验）

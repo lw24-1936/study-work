@@ -1,0 +1,17 @@
+git:latest
+workflow-aggregator:latest
+pipeline-stage-view:latest
+junit:latest
+ws-cleanup:latest
+build-timeout:latest
+timestamper:latest
+credentials-binding:latest
+ssh-credentials:latest
+matrix-auth:latest
+ansicolor:latest
+coverage:latest
+pipeline-utility-steps:latest
+job-dsl:latest
+configuration-as-code:latest
+docker-workflow:latest
+localization-zh-cn:latest

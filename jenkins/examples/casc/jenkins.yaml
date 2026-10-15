@@ -1,0 +1,58 @@
+# Jenkins Configuration as Code（JCasC）
+# 放进镜像的 /usr/share/jenkins/ref/casc/jenkins.yaml，或挂到容器里
+# 用环境变量 CASC_JENKINS_CONFIG 指向它，Jenkins 启动时自动应用。
+#
+# 注意：文件里不要出现明文密码；用 environment/secret 引用或 Jenkins 凭据。
+jenkins:
+  systemMessage: "Jenkins（演示环境）—— 配置由 JCasC 管理，UI 上的改动重启会被覆盖"
+  numExecutors: 2
+  mode: NORMAL
+  # 禁用「任何人可注册」，固定 agent 端口
+  slaveAgentPort: 50000
+
+  # 本地化 + 主题
+  # localization: 需要 localization-zh-cn 与 locale 插件
+
+  # 安全：本地数据库用户 + 矩阵授权
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: "admin"
+          password: "${JENKINS_ADMIN_PASSWORD}"
+
+  authorizationStrategy:
+    globalMatrix:
+      permissions:
+        - "Overall/Administer:admin"
+        - "Overall/Read:authenticated"
+        - "Job/Build:authenticated"
+        - "Job/Read:authenticated"
+
+  # 节点（入站 agent 仍要在 UI/CLI 上拿密钥，JCasC 这里只给静态示例）
+  nodes:
+    - permanent:
+        name: "static-agent"
+        labelString: "linux static"
+        remoteFS: "/home/jenkins/agent"
+        numExecutors: 2
+        launcher:
+          inbound:
+            workDirSettings:
+              disabled: false
+              failIfWorkDirIsMissing: false
+              internalDir: "remoting"
+
+  # 全局环境变量、时区
+  globalNodeProperties:
+    - envVars:
+        env:
+          - key: "LANG"
+            value: "zh_CN.UTF-8"
+          - key: "TZ"
+            value: "Asia/Shanghai"
+
+unclassified:
+  location:
+    url: "http://localhost:8080/"
+    adminAddress: "ops@example.com"

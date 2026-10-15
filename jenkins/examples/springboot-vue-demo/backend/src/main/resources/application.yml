@@ -1,0 +1,23 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: demo-backend
+  threads:
+    virtual:
+      enabled: true       # Java 21 虚拟线程，Spring Boot 4.x 一行开启
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics   # 只暴露需要的端点，别写 *
+  endpoint:
+    health:
+      show-details: always             # 演示用；生产建议 never
+
+logging:
+  level:
+    root: INFO
+    com.example.demo: DEBUG

@@ -11,8 +11,8 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/学习文档-1353%20篇-2ea44f" alt="学习文档"/>
-  <img src="https://img.shields.io/badge/知识库-13%20个-0969da" alt="知识库"/>
+  <img src="https://img.shields.io/badge/学习文档-1354%20篇-2ea44f" alt="学习文档"/>
+  <img src="https://img.shields.io/badge/知识库-14%20个-0969da" alt="知识库"/>
   <img src="https://img.shields.io/badge/Spring%20Boot-9%20篇-eb6f2d" alt="Spring Boot"/>
   <img src="https://img.shields.io/badge/Obsidian-兼容-7c3aed" alt="Obsidian"/>
   <img src="https://img.shields.io/badge/更新-2026.10.15-6e7781" alt="更新"/>
@@ -61,8 +61,9 @@
 | TypeSafe Jev | [typesafe-jev/](./typesafe-jev/) | — | 1 | 已完成 |
 | Laya | [laya/](./laya/) | — | 2 | 已完成 |
 | Kafka 与消息流 | [kafka/](./kafka/) | — | 2 | 已完成 |
+| Jenkins CI/CD | [jenkins/](./jenkins/) | — | 1 | 已完成 |
 
-合计 **1353 篇**知识库文档（[index.md](./index.md) 注册 1203 条索引，含 13 条知识库入口链接与 1 条学习链接汇总；AI 与智能体全栈库以入口链接注册，逐篇索引见该库 README.md 进度表）。
+合计 **1354 篇**知识库文档（[index.md](./index.md) 注册 1204 条索引，含 13 条知识库入口链接与 1 条学习链接汇总；AI 与智能体全栈库以入口链接注册，逐篇索引见该库 README.md 进度表）。
 
 ## 目录结构
 
@@ -77,6 +78,7 @@ study-work/
 ├── typesafe-jev/                    # TypeSafe Jev 专题（1 篇：System One 决策模型）
 ├── laya/                            # Laya 专题（2 篇：非自回归决策模型 + 服务接入文档，附 14 个示例与 5 个客户端）
 ├── kafka/                           # Kafka 专题（2 篇：使用介绍 + 完整教程 + 可运行示例与脚本）
+├── jenkins/                         # Jenkins 专题（1 篇教程 + examples 可运行示例 + 实测截图）
 ├── bigdata/                         # 大数据学习知识库（30 篇章 / 133 篇）
 ├── linux/                            # Linux 运维学习知识库（26 篇章 / 128 篇）
 ├── weapp-fullstack/                 # 微信小程序与后台知识库（13 篇章 / 106 篇）

@@ -1,0 +1,37 @@
+# Jenkins 本地演示环境
+#
+# 只用于学习和本机验证：默认不做安全配置，暴露在公网前必须按文档「安全加固」一节改造。
+# 用法：
+#   docker compose up -d
+#   docker compose logs -f jenkins
+#   docker compose down          # 停止，named volume jenkins_home 保留数据
+#   docker compose down -v       # 停止并删除数据卷（数据全丢，慎用）
+
+services:
+  jenkins:
+    image: jenkins/jenkins:lts-jdk21
+    container_name: jenkins
+    restart: unless-stopped
+    ports:
+      - "8080:8080"          # Web UI 与 REST API
+      - "50000:50000"        # 控制器与入站 agent 的通信端口
+    volumes:
+      - jenkins_home:/var/jenkins_home          # 所有配置、任务、构建记录都在这里
+      - /var/run/docker.sock:/var/run/docker.sock:ro   # 需要「在容器里构建镜像」时再打开
+    environment:
+      # 插件与更新的下载地址，国内网络慢时换成镜像源
+      JENKINS_UC: "https://updates.jenkins.io"
+      JENKINS_UC_DOWNLOAD: "https://updates.jenkins.io/download"
+      # 时区，避免构建日志时间与自己不一致
+      TZ: "Asia/Shanghai"
+      # 让 Jenkins 认为自己在反向代理后面，生成的链接才正确（按实际域名调整）
+      # JENKINS_OPTS: "--prefix=/jenkins"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8080/login >/dev/null || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 90s
+
+volumes:
+  jenkins_home:

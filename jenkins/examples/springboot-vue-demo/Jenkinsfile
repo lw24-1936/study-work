@@ -1,0 +1,181 @@
+// Spring Boot + Vue 的完整 CI/CD 流水线（放在仓库根，文件名 Jenkinsfile）
+//
+// 设计要点：
+// 1. 顶层 agent any：整条流水线在同一个节点、同一个工作区里跑，并行分支共享工作区
+// 2. 构建环境用「docker run 把容器当工具用」而不是 docker agent，原因（本机实测）：
+//    - docker agent 要求镜像满足 Jenkins 的空转命令约定，官方 node/maven 镜像常不满足，
+//      报 "The container started but didn't run the expected command"
+//    - 每个 parallel 分支用独立 agent 时会拿到全新空工作区（workspace@2），
+//      代码没 checkout 进去，npm/mvn 直接找不到文件
+//    用 docker run 手工挂载 $WORKSPACE，行为完全可控
+// 3. 部署用宿主 docker（容器里挂了 docker.sock 与 docker 客户端）
+// 4. 冒烟测试走「nginx → 后端」完整链路，失败即发布失败
+// 5. 参数必须用命名参数写法（name: 'x'）；写成 name = 'x' 会报
+//    Arguments to "string" must be explicitly named
+pipeline {
+    agent any
+
+    parameters {
+        string(name: 'BRANCH', defaultValue: 'main', description: '构建分支')
+        string(name: 'IMAGE_TAG', defaultValue: '1.0.0', description: '镜像 tag，一般用版本号')
+        booleanParam(name: 'DEPLOY', defaultValue: true, description: '构建完成后是否部署并冒烟')
+    }
+
+    options {
+        timestamps()
+        timeout(time: 40, unit: 'MINUTES')
+        buildDiscarder(logRotator(numToKeepStr: '20', artifactNumToKeepStr: '5'))
+        disableConcurrentBuilds()
+        skipDefaultCheckout(true)          // 由「拉取代码」stage 显式 checkout
+    }
+
+    environment {
+        MAVEN_IMAGE  = 'maven:3.9-eclipse-temurin-21-alpine'
+        NODE_IMAGE   = 'node:22-alpine'
+        NPM_REGISTRY = 'https://registry.npmmirror.com'
+        BACKEND_PORT = '9090'
+        FRONTEND_PORT = '8088'
+        NETWORK = 'demo-net'
+    }
+
+    stages {
+        stage('拉取代码') {
+            steps {
+                checkout scm
+                script {
+                    env.SHORT_SHA = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
+                    env.BUILD_VERSION = "${params.IMAGE_TAG}-${env.SHORT_SHA}"
+                    currentBuild.displayName = "#${env.BUILD_NUMBER} ${env.BUILD_VERSION}"
+                }
+                echo "本次构建版本：${env.BUILD_VERSION}（分支 ${params.BRANCH}）"
+            }
+        }
+
+        stage('并行构建') {
+            parallel {
+                stage('后端构建与单测') {
+                    steps {
+                        dir('backend') {
+                            // maven 本地仓库挂控制器的 $HOME/.m2（落在数据卷上），第二次构建不再重下依赖
+                            // 镜像名用 environment{} 里定义的环境变量，shell 直接展开
+                            sh '''
+                                set -eux
+                                docker run --rm \
+                                  -v "$WORKSPACE/backend":/app -w /app \
+                                  -v "$HOME/.m2":/root/.m2 \
+                                  "$MAVEN_IMAGE" \
+                                  mvn -B -ntp clean package
+                            '''
+                        }
+                    }
+                    post {
+                        always {
+                            junit allowEmptyResults: true, testResults: 'backend/target/surefire-reports/*.xml', skipPublishingChecks: true
+                            archiveArtifacts artifacts: 'backend/target/demo-backend.jar', fingerprint: true
+                        }
+                    }
+                }
+
+                stage('前端构建') {
+                    steps {
+                        dir('frontend') {
+                            sh '''
+                                set -eux
+                                docker run --rm \
+                                  -v "$WORKSPACE/frontend":/app -w /app \
+                                  -e NPM_CONFIG_REGISTRY=''' + "${NPM_REGISTRY}" + ''' \
+                                  ''' + "${NODE_IMAGE}" + ''' \
+                                  sh -c 'npm install --no-audit --no-fund && npm run build'
+                                du -sh dist && ls -l dist
+                            '''
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('构建镜像') {
+            steps {
+                sh '''
+                    set -eux
+                    docker build -t demo-backend:${BUILD_VERSION} backend
+                    docker build -t demo-frontend:${BUILD_VERSION} frontend
+                    docker images --format "{{.Repository}}:{{.Tag}} {{.Size}}" | grep demo- || true
+                '''
+            }
+        }
+
+        stage('部署') {
+            when { expression { params.DEPLOY } }
+            steps {
+                sh '''
+                    set -eux
+                    docker network inspect ${NETWORK} >/dev/null 2>&1 || docker network create ${NETWORK}
+                    # 简化版「停旧起新」；生产用蓝绿或滚动，且要等新版本健康后再摘旧版本
+                    docker rm -f demo-backend demo-frontend 2>/dev/null || true
+
+                    docker run -d --name demo-backend --network ${NETWORK} --restart unless-stopped \
+                        -p ${BACKEND_PORT}:9090 \
+                        -e SPRING_PROFILES_ACTIVE=prod -e TZ=Asia/Shanghai \
+                        demo-backend:${BUILD_VERSION}
+
+                    docker run -d --name demo-frontend --network ${NETWORK} --restart unless-stopped \
+                        -p ${FRONTEND_PORT}:80 \
+                        demo-frontend:${BUILD_VERSION}
+
+                    sleep 5
+                    docker ps --filter name=demo- --format "{{.Names}} {{.Status}} {{.Ports}}"
+                '''
+            }
+        }
+
+        stage('冒烟测试') {
+            when { expression { params.DEPLOY } }
+            steps {
+                sh '''
+                    set -eux
+                    for i in $(seq 1 30); do
+                        curl -fsS "http://127.0.0.1:${BACKEND_PORT}/api/todos/health" >/dev/null 2>&1 && break
+                        sleep 2
+                    done
+                    echo "--- 后端直连 ---"
+                    curl -fsS "http://127.0.0.1:${BACKEND_PORT}/api/todos/health"; echo
+                    curl -fsS "http://127.0.0.1:${BACKEND_PORT}/actuator/health"; echo
+
+                    echo "--- 经前端 nginx 反代访问 /api ---"
+                    curl -fsS "http://127.0.0.1:${FRONTEND_PORT}/api/todos/health"; echo
+                    curl -s -o /dev/null -w "frontend HTTP %{http_code}\\n" "http://127.0.0.1:${FRONTEND_PORT}/"
+
+                    echo "--- 走一遍写接口 ---"
+                    curl -fsS -X POST "http://127.0.0.1:${FRONTEND_PORT}/api/todos" \
+                         -H "Content-Type: application/json" -d '{"title":"冒烟测试写入"}'; echo
+                    curl -fsS "http://127.0.0.1:${FRONTEND_PORT}/api/todos"; echo
+
+                    echo "--- 容器健康状态 ---"
+                    docker inspect --format '{{.Name}} health={{if .State.Health}}{{.State.Health.Status}}{{else}}none{{end}}' demo-backend demo-frontend
+                '''
+            }
+            post {
+                always {
+                    sh '''
+                        docker logs --tail 20 demo-backend 2>&1 || true
+                        docker logs --tail 10 demo-frontend 2>&1 || true
+                    '''
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            echo "构建结束：${currentBuild.currentResult}，耗时 ${currentBuild.durationString}"
+            cleanWs()
+        }
+        success {
+            echo "发布成功：后端 http://<host>:${env.BACKEND_PORT}  前端 http://<host>:${env.FRONTEND_PORT}"
+        }
+        failure {
+            echo '发布失败：镜像还在本地，把上一个 tag 重新 docker run 起来即可回滚'
+        }
+    }
+}

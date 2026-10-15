@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Maven 镜像配置：Jenkins 的 maven 容器里用这份配置，国内下载依赖走阿里云。
+  用法（Jenkinsfile 里的 docker agent）：
+    args '-v $HOME/.m2:/root/.m2'
+  把本文件放到 $HOME/.m2/settings.xml（$HOME 在 Jenkins 容器里是 /var/jenkins_home），
+  容器里的 maven 就会自动读取。
+-->
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
+  <mirrors>
+    <mirror>
+      <id>aliyunmaven</id>
+      <mirrorOf>*</mirrorOf>
+      <name>阿里云公共仓库</name>
+      <url>https://maven.aliyun.com/repository/public</url>
+    </mirror>
+  </mirrors>
+  <profiles>
+    <profile>
+      <id>jdk21</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+        <jdk>21</jdk>
+      </activation>
+      <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+      </properties>
+    </profile>
+  </profiles>
+</settings>

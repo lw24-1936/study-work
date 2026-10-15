@@ -1,0 +1,7 @@
+# 构建产物与本地依赖，不进仓库
+node_modules/
+dist/
+target/
+.venv/
+__pycache__/
+*.pyc
